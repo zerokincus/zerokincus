@@ -41,12 +41,7 @@ git clone https://github.com/zerokincus/zerokincus.git
 |---|---|
 | JavaScript基礎 | `chapter/ch01` |
 | kintone JavaScript API | `chapter/ch02` |
-| イベント処理 | `chapter/ch03` |
-| レコード操作 | `chapter/ch04` |
-| ルックアップ制御 | `chapter/ch05` |
-| テーブル操作 | `chapter/ch06` |
-| UIカスタマイズ | `chapter/ch07` |
-| 実践カスタマイズ | `chapter/ch08` |
+
 
 ---
 
@@ -79,8 +74,8 @@ ZIPをダウンロードするか、Gitで取得してください。
 
 ## 動作環境
 
-- kintone 最新版
-- モダンブラウザ（Chrome / Edge / Safari）
+- サンプルコードは、2025年12月版のkintoneで動作確認を行っています。
+- kintoneの動作環境に準じています。
 
 ---
 
@@ -104,7 +99,7 @@ https://github.com/zerokincus/zerokincus/issues
 `docs` フォルダに含まれるPDF資料は、サンプルコードとは異なるライセンスで提供されています。
 
 ```
-Copyright © 2026 Shotaro Matsuda
+Copyright © 2026 Shotaro Matsuda, Kentaro Ishii, Toru Nakamura
 All Rights Reserved
 ```
 
@@ -114,20 +109,31 @@ All Rights Reserved
 
 ## 書籍情報
 
-**ゼロから始めるkintoneカスタマイズ入門**
+**ゼロから始めるkintoneカスタマイズ入門　〜 プログラミング未経験者でもマスターできる！**
+
 
 kintoneカスタマイズをこれから学ぶ方を対象に、  
-JavaScriptの基礎からkintone APIの活用、実践的なカスタマイズまでを段階的に解説しています。
+JavaScriptの基礎からkintone APIの活用、実践的なカスタマイズまでを段階的に学ぶことができます。
+https://amzn.to/3PgItpy
 
 ---
 
 ## 著者
 
-松田 翔太郎  
+**松田 正太郎（まつだ しょうたろう）**
+アスノート株式会社 代表取締役。サイボウズ公認 kintone エバンジェリスト。kintone 認定アプリデザインスペシャリス
+ト（2017 年）、kintone 認定カスタマイズスペシャリスト（2020 年）、kintone 認定カイゼンマネジメントエキスパート（2022
+年）。
 
-kintoneを活用した業務改善・システム構築の支援を行っています。
+**石井 健太郎（いしい けんたろう）**
+株式会社マルテー大塚 システム部勤務。サイボウズ公認 kintone エバンジェリスト。kintone 認定アプリデザインスペシャ
+リスト（2018 年）、kintone 認定カスタマイズスペシャリスト（2019 年）、kintone 認定カイゼンマネジメントエキスパート
+（2022 年）、kintone 認定システムデザインエキスパート（2022 年）。
 
-https://asunote.co.jp
+**中村 徹（なかむら とおる）**
+株式会社 ICT サポートオフィス代表取締役。株式会社 MOVED「クラウドユニバーシティ」にて kintone 教育に携わる。サ
+イボウズ株式会社にて「kintone 認定アソシエイト試験対策テキスト」（日経 BP）監修。株式会社プレゼン製作所 CTO。板
+橋区主任児童委員。
 
 ---
 
