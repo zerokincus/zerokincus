@@ -29,7 +29,7 @@ git clone https://github.com/zerokincus/zerokincus.git
 |---|---|
 | js | 書籍掲載のサンプルコード |
 | docs | 補足資料 |
-| docs¥practice | kintone認定 カスタマイズスペシャリスト練習問題 |
+| docs/practice | kintone認定 カスタマイズスペシャリスト練習問題 |
 
 ---
 
