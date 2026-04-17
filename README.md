@@ -27,50 +27,12 @@ git clone https://github.com/zerokincus/zerokincus.git
 
 | フォルダ | 内容 |
 |---|---|
-| chapter | 書籍各章のサンプルコード |
-| bookmarklets | 本書で紹介するブックマークレット |
-| sample-app | サンプルアプリ作成用データ |
-| plugins | プラグイン作成サンプル |
-| docs | PDF形式の補足資料 |
+| js | 書籍掲載のサンプルコード |
+| docs | 補足資料 |
+| docs¥practice | kintone認定 カスタマイズスペシャリスト練習問題 |
 
 ---
 
-## サンプルコード対応表
-
-| 書籍内容 | フォルダ |
-|---|---|
-| JavaScript基礎 | `chapter/ch01` |
-| kintone JavaScript API | `chapter/ch02` |
-
-
----
-
-## 利用方法
-
-### 1. サンプルコードをダウンロード
-
-ZIPをダウンロードするか、Gitで取得してください。
-
-### 2. JavaScriptカスタマイズに設定
-
-各章フォルダ内のJavaScriptファイルを、kintoneアプリのカスタマイズに設定します。
-
-```
-アプリ設定  
-→ JavaScript / CSSでカスタマイズ  
-→ PC用JavaScript
-```
-
-### 3. サンプルアプリを作成
-
-`sample-app` フォルダ内のCSVデータを使用すると、本書と同じ構成のアプリを再現できます。
-
-```
-アプリ作成  
-→ CSV読み込み
-```
-
----
 
 ## 動作環境
 
@@ -114,7 +76,7 @@ All Rights Reserved
 
 kintoneカスタマイズをこれから学ぶ方を対象に、  
 JavaScriptの基礎からkintone APIの活用、実践的なカスタマイズまでを段階的に学ぶことができます。
-https://amzn.to/3PgItpy
+[https://amzn.to/3PgItpy](https://amzn.to/42eJVvQ)
 
 ---
 
@@ -141,4 +103,4 @@ https://amzn.to/3PgItpy
 
 | Version | 内容 |
 |---|---|
-| v1.0 | 書籍初版対応サンプルコード |
+| v1.0 | カスタマイズスペシャリスト練習問題掲載 |
