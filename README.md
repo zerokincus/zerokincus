@@ -11,7 +11,7 @@
 
 ## ダウンロード
 
-サンプルコード一式は以下からダウンロードできます。
+ダウンロードコンテンツ一式は以下からダウンロードできます。
 
 https://github.com/zerokincus/zerokincus/archive/refs/heads/main.zip
 
