@@ -76,6 +76,7 @@ All Rights Reserved
 
 kintoneカスタマイズをこれから学ぶ方を対象に、  
 JavaScriptの基礎からkintone APIの活用、実践的なカスタマイズまでを段階的に学ぶことができます。
+
 [https://amzn.to/3PgItpy](https://amzn.to/42eJVvQ)
 
 ---
