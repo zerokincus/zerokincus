@@ -1,0 +1,2 @@
+// strictモード
+'use strict';
