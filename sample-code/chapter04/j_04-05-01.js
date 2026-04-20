@@ -1,5 +1,4 @@
 // Promiseオブジェクトを使った記述方法
-// Promiseオブジェクトを使った記述方法
 const data = {
   format: 'RAW',
   value: '<some blob object>'
