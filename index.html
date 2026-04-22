@@ -30,10 +30,19 @@
 
   body {
     font-family: var(--sans);
-    background: var(--surface);
+    background: #e8e8e4;  /* ページ外側の背景 */
     color: var(--ink);
     line-height: 1.7;
     overflow-x: hidden;
+  }
+
+  /* ── PAGE WRAPPER ── */
+  .page-wrap {
+    max-width: 1100px;
+    margin: 0 auto;
+    background: var(--surface);
+    box-shadow: 0 0 40px rgba(0,0,0,.15);
+    overflow: hidden;
   }
 
   /* ── HEADER ── */
@@ -41,7 +50,7 @@
     position: sticky; top: 0; z-index: 100;
     background: #2d2d2d;
     border-bottom: 3px solid var(--accent);
-    padding: 0 clamp(1.5rem, 5vw, 4rem);
+    padding: 0 clamp(1.5rem, 5vw, 3rem);
     display: flex; align-items: center; justify-content: space-between;
     height: 64px;
   }
@@ -382,6 +391,7 @@
 </style>
 </head>
 <body>
+<div class="page-wrap">
 
 <!-- ══ HEADER ══ -->
 <header>
@@ -766,5 +776,6 @@
   <span class="footer-note">// ゼロから始めるkintoneカスタマイズ入門 読者ポータル</span>
 </footer>
 
+</div><!-- /.page-wrap -->
 </body>
 </html>
