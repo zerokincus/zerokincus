@@ -30,19 +30,10 @@
 
   body {
     font-family: var(--sans);
-    background: #e8e8e4;  /* ページ外側の背景 */
+    background: var(--surface);
     color: var(--ink);
     line-height: 1.7;
     overflow-x: hidden;
-  }
-
-  /* ── PAGE WRAPPER ── */
-  .page-wrap {
-    max-width: 1100px;
-    margin: 0 auto;
-    background: var(--surface);
-    box-shadow: 0 0 40px rgba(0,0,0,.15);
-    overflow: hidden;
   }
 
   /* ── HEADER ── */
@@ -50,7 +41,7 @@
     position: sticky; top: 0; z-index: 100;
     background: #2d2d2d;
     border-bottom: 3px solid var(--accent);
-    padding: 0 clamp(1.5rem, 5vw, 3rem);
+    padding: 0 clamp(1.5rem, 6vw, 6rem);
     display: flex; align-items: center; justify-content: space-between;
     height: 64px;
   }
@@ -78,7 +69,7 @@
   /* ── HERO ── */
   .hero {
     background: #2d2d2d;
-    padding: clamp(4rem, 10vw, 7rem) clamp(1.5rem, 5vw, 4rem);
+    padding: clamp(4rem, 10vw, 7rem) clamp(1.5rem, 6vw, 6rem);
     position: relative; overflow: hidden;
   }
   .hero::before {
@@ -152,8 +143,8 @@
 
   /* ── SECTION WRAPPER ── */
   .section {
-    padding: clamp(3.5rem, 8vw, 6rem) clamp(1.5rem, 5vw, 4rem);
-    max-width: 1200px;
+    padding: clamp(3.5rem, 8vw, 6rem) clamp(1.5rem, 6vw, 6rem);
+    max-width: 1400px;
     margin: 0 auto;
   }
   .section-title {
@@ -261,9 +252,9 @@
   /* ── TIPS STRIP ── */
   .tips-strip {
     background: #3a3a3a;
-    padding: clamp(3rem, 6vw, 4.5rem) clamp(1.5rem, 5vw, 4rem);
+    padding: clamp(3rem, 6vw, 4.5rem) clamp(1.5rem, 6vw, 6rem);
   }
-  .tips-inner { max-width: 1200px; margin: 0 auto; }
+  .tips-inner { max-width: 1400px; margin: 0 auto; }
   .tips-header .section-title { color: #fff; }
   .tips-header .section-lead  { color: #aaa; }
   .tips-header .divider { background: linear-gradient(90deg, var(--accent), #fff6a0); }
@@ -319,9 +310,9 @@
   /* ── LINKS FOOTER ── */
   .links-section {
     background: #3a3a3a;
-    padding: clamp(3rem, 6vw, 4rem) clamp(1.5rem, 5vw, 4rem);
+    padding: clamp(3rem, 6vw, 4rem) clamp(1.5rem, 6vw, 6rem);
   }
-  .links-inner { max-width: 1200px; margin: 0 auto; }
+  .links-inner { max-width: 1400px; margin: 0 auto; }
   .links-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -344,7 +335,7 @@
   footer {
     background: #2d2d2d;
     border-top: 2px solid var(--accent);
-    padding: 1.5rem clamp(1.5rem, 5vw, 4rem);
+    padding: 1.5rem clamp(1.5rem, 6vw, 6rem);
     display: flex; align-items: center; justify-content: space-between;
     flex-wrap: wrap; gap: 1rem;
   }
@@ -391,7 +382,6 @@
 </style>
 </head>
 <body>
-<div class="page-wrap">
 
 <!-- ══ HEADER ══ -->
 <header>
@@ -776,6 +766,5 @@
   <span class="footer-note">// ゼロから始めるkintoneカスタマイズ入門 読者ポータル</span>
 </footer>
 
-</div><!-- /.page-wrap -->
 </body>
 </html>
