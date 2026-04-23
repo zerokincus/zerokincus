@@ -1,434 +1,467 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ゼロキンカス道場 — ゼロから始めるkintoneカスタマイズ入門 読者ポータル</title>
-<link rel="icon" type="image/png" href="favicon.png">
-<link rel="apple-touch-icon" href="favicon.png">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Roboto+Mono:wght@400;700&family=Syne:wght@400;600;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ゼロキンカス道場 — ゼロから始めるkintoneカスタマイズ入門 読者ポータル</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="favicon.png">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Roboto+Mono:wght@400;700&family=Syne:wght@400;600;800&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<!-- ══ HEADER ══ -->
-<header>
-  <a class="logo" href="#">
-    <span>ゼロキンカス道場</span>
-    <span class="logo-badge">読者ポータル</span>
-  </a>
-  <nav>
-    <a href="#levels">レベルガイド</a>
-    <a href="#downloads">ダウンロード</a>
-    <a href="#certification">認定資格対応</a>
-    <a href="#tips">活用Tips</a>
-    <a href="#faq">FAQ</a>
-    <a href="#links">リンク集</a>
-  </nav>
-</header>
-
-<!-- ══ HERO ══ -->
-<section class="hero">
-  <div class="hero-inner">
-    <p class="hero-eyebrow">// ゼロから始めるkintoneカスタマイズ入門 — 読者ポータル</p>
-    <h1>
-      ゼロキンカス<em>道場</em>
-    </h1>
-    <p class="hero-sub">
-      「ゼロから始めるkintoneカスタマイズ入門」の読者向けポータルサイトです。<br>
-      プログラミング未経験でも大丈夫。本書を手に取ったその一歩が、kintoneカスタマイズの第一歩です。<br>
-      サンプルコード・補足資料・最新情報をこちらから入手して、ぜひ手を動かしながら読み進めてください。
-    </p>
-    <a class="hero-cta" href="#downloads">
-      <span>サンプルコードをダウンロード</span>
-      <span class="hero-cta-arrow">↓</span>
+  <!-- ══ HEADER ══ -->
+  <header>
+    <a class="logo" href="#">
+      <span>ゼロキンカス道場</span>
+      <span class="logo-badge">読者ポータル</span>
     </a>
-  </div>
-</section>
+    <nav>
+      <a href="#levels">レベルガイド</a>
+      <a href="#downloads">ダウンロード</a>
+      <a href="#certification">認定資格対応</a>
+      <a href="#tips">活用Tips</a>
+      <a href="#faq">FAQ</a>
+      <a href="#links">リンク集</a>
+    </nav>
+  </header>
 
-<!-- ══ BOOK ══ -->
-<div id="book" style="background:#f2f2f0; border-top:1px solid #ddddd8;">
-  <div class="section">
-    <div class="divider"></div>
-    <h2 class="section-title"><span>書籍情報</span></h2>
-    <p class="section-lead">本書の詳細・ご購入はこちらからどうぞ。</p>
-
-    <div style="display:grid; grid-template-columns:200px 1fr 1fr; gap:2rem; align-items:start;">
-
-      <!-- 表紙画像 -->
-      <div style="display:flex;flex-direction:column;align-items:center;gap:1rem;">
-        <img src="https://raw.githubusercontent.com/zerokincus/zerokincus/main/cover.png"
-             alt="ゼロから始めるkintoneカスタマイズ入門 表紙"
-             style="width:100%;max-width:200px;border-radius:8px;box-shadow:0 8px 32px rgba(0,0,0,.2);display:block;" />
-        <a href="https://amzn.to/4cGhJag" target="_blank"
-           style="display:inline-flex;align-items:center;gap:.5rem;background:#ff9900;color:#111;font-weight:700;font-size:.82rem;padding:.6rem 1.2rem;border-radius:6px;text-decoration:none;width:100%;justify-content:center;box-shadow:0 3px 12px rgba(255,153,0,.35);">
-          🛒 Amazonで購入
-        </a>
-        <a href="https://shop.cybozu.co.jp/collections/learn-books/products/9628556361952" target="_blank"
-           style="display:inline-flex;align-items:center;gap:.5rem;background:#fff;color:#2d2d2d;font-weight:700;font-size:.82rem;padding:.6rem 1.2rem;border-radius:6px;text-decoration:none;width:100%;justify-content:center;box-shadow:0 3px 12px rgba(0,0,0,.12);border:1px solid #ddddd8;">
-          🏪 サイボウズ商店で購入
-        </a>
-      </div>
-
-      <!-- 書籍カード -->
-      <div style="background:#f2f2f0; border:1px solid #ddddd8; border-radius:var(--radius); padding:2rem; position:relative; overflow:hidden;">
-        <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#f5c800,#c89600);"></div>
-        <p style="font-family:var(--mono);font-size:.7rem;letter-spacing:.12em;color:#999;margin-bottom:.8rem;">// BOOK INFO</p>
-        <h3 style="font-family:var(--display);font-size:1.25rem;font-weight:800;line-height:1.4;margin-bottom:.4rem;color:#2d2d2d;">ゼロから始めるkintoneカスタマイズ入門</h3>
-        <p style="font-size:.85rem;color:#888;margin-bottom:1.5rem;">〜 プログラミング未経験者でもマスターできる！〜</p>
-        <div style="display:flex;flex-direction:column;gap:.5rem;margin-bottom:1.8rem;">
-          <div style="display:flex;gap:.75rem;font-size:.88rem;">
-            <span style="color:#999;min-width:60px;">著者</span>
-            <span style="color:#2d2d2d;">松田 正太郎・石井 健太郎・中村 徹</span>
-          </div>
-          <div style="display:flex;gap:.75rem;font-size:.88rem;">
-            <span style="color:#999;min-width:60px;">監修</span>
-            <span style="color:#2d2d2d;">サイボウズ株式会社</span>
-          </div>
-          <div style="display:flex;gap:.75rem;font-size:.88rem;">
-            <span style="color:#999;min-width:60px;">出版</span>
-            <span style="color:#2d2d2d;">日経BP</span>
-          </div>
-          <div style="display:flex;gap:.75rem;font-size:.88rem;">
-            <span style="color:#999;min-width:60px;">対象</span>
-            <span style="color:#2d2d2d;">kintone 認定アソシエイト取得レベル〜</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- 著者紹介 -->
-      <div style="display:flex;flex-direction:column;gap:1rem;">
-
-        <div style="background:#fff;border:1px solid #ddddd8;border-radius:var(--radius);padding:1.25rem 1.4rem;">
-          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.3rem;">
-            <p style="font-weight:700;font-size:.93rem;color:#2d2d2d;">松田 正太郎（まつだ しょうたろう）</p>
-            <div style="display:flex;gap:.5rem;flex-shrink:0;margin-left:.75rem;">
-              <a href="https://x.com/Shokun1108" target="_blank" title="X（Twitter）" style="display:flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:6px;background:#000;color:#fff;text-decoration:none;transition:opacity .2s;" onmouseover="this.style.opacity='.7'" onmouseout="this.style.opacity='1'">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-              </a>
-              <a href="https://www.youtube.com/@pjasunote" target="_blank" title="YouTube" style="display:flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:6px;background:#ff0000;color:#fff;text-decoration:none;transition:opacity .2s;" onmouseover="this.style.opacity='.7'" onmouseout="this.style.opacity='1'">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-              </a>
-            </div>
-          </div>
-          <p style="font-size:.82rem;color:#888;line-height:1.65;">アスノート株式会社 代表取締役。サイボウズ公認 kintone エバンジェリスト。kintone 認定アプリデザインスペシャリスト（2017）・カスタマイズスペシャリスト（2020）・カイゼンマネジメントエキスパート（2022）。</p>
-        </div>
-
-        <div style="background:#fff;border:1px solid #ddddd8;border-radius:var(--radius);padding:1.25rem 1.4rem;">
-          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.3rem;">
-            <p style="font-weight:700;font-size:.93rem;color:#2d2d2d;">石井 健太郎（いしい けんたろう）</p>
-            <div style="display:flex;gap:.5rem;flex-shrink:0;margin-left:.75rem;">
-              <a href="https://x.com/kentaro1sh11" target="_blank" title="X（Twitter）" style="display:flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:6px;background:#000;color:#fff;text-decoration:none;transition:opacity .2s;" onmouseover="this.style.opacity='.7'" onmouseout="this.style.opacity='1'">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-              </a>
-            </div>
-          </div>
-          <p style="font-size:.82rem;color:#888;line-height:1.65;">株式会社マルテー大塚 システム部勤務。サイボウズ公認 kintone エバンジェリスト。認定アプリデザインスペシャリスト（2018）・カスタマイズスペシャリスト（2019）・システムデザインエキスパート（2022）。</p>
-        </div>
-
-        <div style="background:#fff;border:1px solid #ddddd8;border-radius:var(--radius);padding:1.25rem 1.4rem;">
-          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.3rem;">
-            <p style="font-weight:700;font-size:.93rem;color:#2d2d2d;">中村 徹（なかむら とおる）</p>
-            <div style="display:flex;gap:.5rem;flex-shrink:0;margin-left:.75rem;">
-              <a href="https://x.com/toru_" target="_blank" title="X（Twitter）" style="display:flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:6px;background:#000;color:#fff;text-decoration:none;transition:opacity .2s;" onmouseover="this.style.opacity='.7'" onmouseout="this.style.opacity='1'">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-              </a>
-            </div>
-          </div>
-          <p style="font-size:.82rem;color:#888;line-height:1.65;">株式会社ICTサポートオフィス 代表取締役。「kintone 認定アソシエイト試験対策テキスト」（日経BP）監修。株式会社MOVED「クラウドユニバーシティ」にて kintone 教育に携わる。</p>
-        </div>
-
-      </div>
+  <!-- ══ HERO ══ -->
+  <section class="hero">
+    <div class="hero-inner">
+      <p class="hero-eyebrow">// ゼロから始めるkintoneカスタマイズ入門 — 読者ポータル</p>
+      <h1>
+        ゼロキンカス<em>道場</em>
+      </h1>
+      <p class="hero-sub">
+        「ゼロから始めるkintoneカスタマイズ入門」の読者向けポータルサイトです。<br>
+        プログラミング未経験でも大丈夫。本書を手に取ったその一歩が、kintoneカスタマイズの第一歩です。<br>
+        サンプルコード・補足資料・最新情報をこちらから入手して、ぜひ手を動かしながら読み進めてください。
+      </p>
+      <a class="hero-cta" href="#downloads">
+        <span>サンプルコードをダウンロード</span>
+        <span class="hero-cta-arrow">↓</span>
+      </a>
     </div>
-  </div>
-</div>
+  </section>
 
-<!-- ══ LEVELS ══ -->
-<div id="levels" style="background: #ffffff; border-top: 1px solid #ddddd8;">
-  <div class="section">
-    <div class="divider"></div>
-    <h2 class="section-title"><span>ゼロキンカスレベル</span></h2>
-    <p class="section-lead">プログラミング未経験からプラグイン開発まで、4段階で体系的に習得できる構成です。</p>
-    <div class="levels-grid">
-
-      <div class="level-card lv1">
-        <div class="level-num">Level 1 — 第1章</div>
-        <div class="level-title">フィールドの制御</div>
-        <div class="level-desc">表示・非表示、グループ開閉など画面制御の基本。初めてのJavaScriptカスタマイズ。</div>
-        <div class="level-tags">
-          <span class="tag">kintone JS API</span>
-          <span class="tag">display/hide</span>
-        </div>
-      </div>
-
-      <div class="level-card lv2">
-        <div class="level-num">Level 2 — 第2章</div>
-        <div class="level-title">イベントオブジェクト</div>
-        <div class="level-desc">開いている画面のレコード操作・バリデーション・エラーチェックを実装する。</div>
-        <div class="level-tags">
-          <span class="tag">イベント</span>
-          <span class="tag">フィールド形式</span>
-          <span class="tag">エラー処理</span>
-        </div>
-      </div>
-
-      <div class="level-card lv3">
-        <div class="level-num">Level 3 — 第3章</div>
-        <div class="level-title">REST API</div>
-        <div class="level-desc">他アプリのレコード取得・更新、非同期処理、@kintone/rest-api-clientの活用。</div>
-        <div class="level-tags">
-          <span class="tag">REST API</span>
-          <span class="tag">async/await</span>
-          <span class="tag">Promise</span>
-        </div>
-      </div>
-
-      <div class="level-card lv4">
-        <div class="level-num">Level 4 — 第4章</div>
-        <div class="level-title">外部連携・プラグイン</div>
-        <div class="level-desc">外部APIとの連携、カスタマイズのプラグイン化。cli-kintoneによるパッケージング。</div>
-        <div class="level-tags">
-          <span class="tag">プラグイン開発</span>
-          <span class="tag">cli-kintone</span>
-          <span class="tag">外部API</span>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</div>
-
-<!-- ══ DOWNLOADS ══ -->
-<div id="downloads" style="background: #f2f2f0; border-top: 1px solid #ddddd8;">
-  <div class="section">
-    <div class="divider"></div>
-    <h2 class="section-title"><span>ダウンロード</span>資料</h2>
-    <p class="section-lead">各章のサンプルコード・補足資料を章ごとにまとめています。</p>
-    <div class="download-grid">
-
-      <a class="dl-card" href="https://github.com/zerokincus/zerokincus/tree/main/sample-code" target="_blank">
-        <div class="dl-icon js">📄</div>
-        <div class="dl-meta">
-          <div class="dl-name">第1・2章 サンプルコード</div>
-          <div class="dl-info">フィールド制御・イベント処理 JS ファイル一式</div>
-        </div>
-        <span class="dl-badge">GitHub</span>
-      </a>
-
-      <a class="dl-card" href="https://github.com/zerokincus/zerokincus/tree/main/sample-code" target="_blank">
-        <div class="dl-icon rest">🔗</div>
-        <div class="dl-meta">
-          <div class="dl-name">第3・4章 サンプルコード</div>
-          <div class="dl-info">REST API・プラグイン・外部連携 コード集</div>
-        </div>
-        <span class="dl-badge">GitHub</span>
-      </a>
-
-      <a class="dl-card" href="https://github.com/zerokincus/zerokincus/archive/refs/heads/main.zip" target="_blank">
-        <div class="dl-icon pdf">📦</div>
-        <div class="dl-meta">
-          <div class="dl-name">全コンテンツ一括ダウンロード</div>
-          <div class="dl-info">サンプルコード・補足資料すべてをZIPで取得</div>
-        </div>
-        <span class="dl-badge">ZIP</span>
-      </a>
-
-      <a class="dl-card" href="https://github.com/zerokincus/zerokincus" target="_blank">
-        <div class="dl-icon js">⚙️</div>
-        <div class="dl-meta">
-          <div class="dl-name">GitHubリポジトリ</div>
-          <div class="dl-info">最新のサンプルコード・更新履歴はこちら</div>
-        </div>
-        <span class="dl-badge">GitHub</span>
-      </a>
-
-      <a class="dl-card" href="https://github.com/zerokincus/zerokincus/issues" target="_blank">
-        <div class="dl-icon pdf">💬</div>
-        <div class="dl-meta">
-          <div class="dl-name">質問・不具合報告</div>
-          <div class="dl-info">サンプルコードに関する質問はGitHub Issueで受け付けています</div>
-        </div>
-        <span class="dl-badge">Issue</span>
-      </a>
-
-    </div>
-  </div>
-</div>
-
-<!-- ══ CERTIFICATION ══ -->
-<div id="certification" style="background: #ffffff; border-top: 1px solid #ddddd8;">
-  <div class="section">
-    <div class="divider"></div>
-    <h2 class="section-title"><span>認定資格</span>対応</h2>
-    <p class="section-lead">本書はkintone認定カスタマイズスペシャリストの試験範囲をカバーしています。練習問題で実力を確認しましょう。</p>
-    <div class="download-grid">
-
-      <a class="dl-card" href="https://github.com/zerokincus/zerokincus/tree/main/doc/practice" target="_blank">
-        <div class="dl-icon zip">📝</div>
-        <div class="dl-meta">
-          <div class="dl-name">カスタマイズスペシャリスト練習問題</div>
-          <div class="dl-info">認定試験対策・実践問題集（v1.0）</div>
-        </div>
-        <span class="dl-badge">PDF</span>
-      </a>
-
-      <a class="dl-card" href="https://cybozu.dev/ja/kintone/miscellaneous/kintone-certification-customize-specialist-guide/" target="_blank">
-        <div class="dl-icon rest">🎓</div>
-        <div class="dl-meta">
-          <div class="dl-name">kintone 認定カスタマイズスペシャリスト</div>
-          <div class="dl-info">試験概要・出題範囲は公式サイトで確認</div>
-        </div>
-        <span class="dl-badge">公式</span>
-      </a>
-
-      <a class="dl-card" href="https://cybozu.dev/ja/kintone/getting-started/" target="_blank">
-        <div class="dl-icon js">📘</div>
-        <div class="dl-meta">
-          <div class="dl-name">kintone カスタマイズ はじめに</div>
-          <div class="dl-info">cybozu developer network 公式入門ガイド</div>
-        </div>
-        <span class="dl-badge">公式</span>
-      </a>
-
-    </div>
-  </div>
-</div>
-
-<!-- ══ TIPS ══ -->
-<div id="tips" class="tips-strip">
-  <div class="tips-inner">
-    <div class="tips-header">
+  <!-- ══ BOOK ══ -->
+  <div id="book" style="background:#f2f2f0; border-top:1px solid #ddddd8;">
+    <div class="section">
       <div class="divider"></div>
-      <h2 class="section-title" style="color:#fff;">活用<span style="color:var(--accent)"> Tips</span></h2>
-      <p class="section-lead" style="color:#aaa;">内容は順次更新していきます。</p>
-    </div>
-    <div class="tips-grid">
-      <div class="tip-card">
-        <div class="tip-icon">🤖</div>
-        <div class="tip-title">コードを理解しながら使う</div>
-        <div class="tip-body">生成AIの出力を「そのまま貼る」のではなく「このコードを初心者向けに解説して」と追加で尋ねて理解を深めましょう。</div>
-      </div>
-      <div class="tip-card">
-        <div class="tip-icon">🔍</div>
-        <div class="tip-title">セキュリティレビューに活用</div>
-        <div class="tip-body">書いたコードを貼り付けて「セキュリティ上の懸念点は？」と質問することで、XSSリスク等を自動検出できます。</div>
-      </div>
-      <div class="tip-card">
-        <div class="tip-icon">📐</div>
-        <div class="tip-title">設計の壁打ち相手に</div>
-        <div class="tip-body">「このアプリの要件定義を整理して」と依頼することで、フィールド設計・画面レイアウトの初期案を素早く作れます。</div>
-      </div>
-      <div class="tip-card">
-        <div class="tip-icon">⚖️</div>
-        <div class="tip-title">「選ぶ判断」を磨く</div>
-        <div class="tip-body">生成AIは手段を提示しますが、「なぜそうするか」の判断は人間の役割。業務課題の背景を整理してから依頼しましょう。</div>
+      <h2 class="section-title"><span>書籍情報</span></h2>
+      <p class="section-lead">本書の詳細・ご購入はこちらからどうぞ。</p>
+
+      <div style="display:grid; grid-template-columns:200px 1fr 1fr; gap:2rem; align-items:start;">
+
+        <!-- 表紙画像 -->
+        <div style="display:flex;flex-direction:column;align-items:center;gap:1rem;">
+          <img src="https://raw.githubusercontent.com/zerokincus/zerokincus/main/cover.png"
+            alt="ゼロから始めるkintoneカスタマイズ入門 表紙"
+            style="width:100%;max-width:200px;border-radius:8px;box-shadow:0 8px 32px rgba(0,0,0,.2);display:block;" />
+          <a href="https://amzn.to/4cGhJag" target="_blank"
+            style="display:inline-flex;align-items:center;gap:.5rem;background:#ff9900;color:#111;font-weight:700;font-size:.82rem;padding:.6rem 1.2rem;border-radius:6px;text-decoration:none;width:100%;justify-content:center;box-shadow:0 3px 12px rgba(255,153,0,.35);">
+            🛒 Amazonで購入
+          </a>
+          <a href="https://shop.cybozu.co.jp/collections/learn-books/products/9628556361952" target="_blank"
+            style="display:inline-flex;align-items:center;gap:.5rem;background:#fff;color:#2d2d2d;font-weight:700;font-size:.82rem;padding:.6rem 1.2rem;border-radius:6px;text-decoration:none;width:100%;justify-content:center;box-shadow:0 3px 12px rgba(0,0,0,.12);border:1px solid #ddddd8;">
+            🏪 サイボウズ商店で購入
+          </a>
+        </div>
+
+        <!-- 書籍カード -->
+        <div
+          style="background:#f2f2f0; border:1px solid #ddddd8; border-radius:var(--radius); padding:2rem; position:relative; overflow:hidden;">
+          <div
+            style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#f5c800,#c89600);">
+          </div>
+          <p style="font-family:var(--mono);font-size:.7rem;letter-spacing:.12em;color:#999;margin-bottom:.8rem;">//
+            BOOK INFO</p>
+          <h3
+            style="font-family:var(--display);font-size:1.25rem;font-weight:800;line-height:1.4;margin-bottom:.4rem;color:#2d2d2d;">
+            ゼロから始めるkintoneカスタマイズ入門</h3>
+          <p style="font-size:.85rem;color:#888;margin-bottom:1.5rem;">〜 プログラミング未経験者でもマスターできる！〜</p>
+          <div style="display:flex;flex-direction:column;gap:.5rem;margin-bottom:1.8rem;">
+            <div style="display:flex;gap:.75rem;font-size:.88rem;">
+              <span style="color:#999;min-width:60px;">著者</span>
+              <span style="color:#2d2d2d;">松田 正太郎・石井 健太郎・中村 徹</span>
+            </div>
+            <div style="display:flex;gap:.75rem;font-size:.88rem;">
+              <span style="color:#999;min-width:60px;">監修</span>
+              <span style="color:#2d2d2d;">サイボウズ株式会社</span>
+            </div>
+            <div style="display:flex;gap:.75rem;font-size:.88rem;">
+              <span style="color:#999;min-width:60px;">出版</span>
+              <span style="color:#2d2d2d;">日経BP</span>
+            </div>
+            <div style="display:flex;gap:.75rem;font-size:.88rem;">
+              <span style="color:#999;min-width:60px;">頁数</span>
+              <span style="color:#2d2d2d;">528頁</span>
+            </div>
+            <div style="display:flex;gap:.75rem;font-size:.88rem;">
+              <span style="color:#999;min-width:60px;">対象</span>
+              <span style="color:#2d2d2d;">kintone 認定アソシエイト取得レベル〜</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 著者紹介 -->
+        <div style="display:flex;flex-direction:column;gap:1rem;">
+
+          <div style="background:#fff;border:1px solid #ddddd8;border-radius:var(--radius);padding:1.25rem 1.4rem;">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.3rem;">
+              <p style="font-weight:700;font-size:.93rem;color:#2d2d2d;">松田 正太郎（まつだ しょうたろう）</p>
+              <div style="display:flex;gap:.5rem;flex-shrink:0;margin-left:.75rem;">
+                <a href="https://x.com/Shokun1108" target="_blank" title="X（Twitter）"
+                  style="display:flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:6px;background:#000;color:#fff;text-decoration:none;transition:opacity .2s;"
+                  onmouseover="this.style.opacity='.7'" onmouseout="this.style.opacity='1'">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                      d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                  </svg>
+                </a>
+                <a href="https://www.youtube.com/@pjasunote" target="_blank" title="YouTube"
+                  style="display:flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:6px;background:#ff0000;color:#fff;text-decoration:none;transition:opacity .2s;"
+                  onmouseover="this.style.opacity='.7'" onmouseout="this.style.opacity='1'">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                      d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+            <p style="font-size:.82rem;color:#888;line-height:1.65;">アスノート株式会社 代表取締役。サイボウズ公認 kintone エバンジェリスト。kintone
+              認定アプリデザインスペシャリスト（2017）・カスタマイズスペシャリスト（2020）・カイゼンマネジメントエキスパート（2022）。</p>
+          </div>
+
+          <div style="background:#fff;border:1px solid #ddddd8;border-radius:var(--radius);padding:1.25rem 1.4rem;">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.3rem;">
+              <p style="font-weight:700;font-size:.93rem;color:#2d2d2d;">石井 健太郎（いしい けんたろう）</p>
+              <div style="display:flex;gap:.5rem;flex-shrink:0;margin-left:.75rem;">
+                <a href="https://x.com/kentaro1sh11" target="_blank" title="X（Twitter）"
+                  style="display:flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:6px;background:#000;color:#fff;text-decoration:none;transition:opacity .2s;"
+                  onmouseover="this.style.opacity='.7'" onmouseout="this.style.opacity='1'">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                      d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+            <p style="font-size:.82rem;color:#888;line-height:1.65;">株式会社マルテー大塚 システム部勤務。サイボウズ公認 kintone
+              エバンジェリスト。認定アプリデザインスペシャリスト（2018）・カスタマイズスペシャリスト（2019）・システムデザインエキスパート（2022）。</p>
+          </div>
+
+          <div style="background:#fff;border:1px solid #ddddd8;border-radius:var(--radius);padding:1.25rem 1.4rem;">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.3rem;">
+              <p style="font-weight:700;font-size:.93rem;color:#2d2d2d;">中村 徹（なかむら とおる）</p>
+              <div style="display:flex;gap:.5rem;flex-shrink:0;margin-left:.75rem;">
+                <a href="https://x.com/toru_" target="_blank" title="X（Twitter）"
+                  style="display:flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:6px;background:#000;color:#fff;text-decoration:none;transition:opacity .2s;"
+                  onmouseover="this.style.opacity='.7'" onmouseout="this.style.opacity='1'">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                      d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+            <p style="font-size:.82rem;color:#888;line-height:1.65;">株式会社ICTサポートオフィス 代表取締役。「kintone
+              認定アソシエイト試験対策テキスト」（日経BP）監修。株式会社MOVED「クラウドユニバーシティ」にて kintone 教育に携わる。</p>
+          </div>
+
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-<!-- ══ FAQ ══ -->
-<div id="faq" style="background: #f2f2f0;">
-  <div class="section">
-    <div class="divider"></div>
-    <h2 class="section-title"><span>よくある質問</span></h2>
-    <p class="section-lead">読者からのよくあるご質問をまとめました。</p>
-    <div class="faq-list">
+  <!-- ══ LEVELS ══ -->
+  <div id="levels" style="background: #ffffff; border-top: 1px solid #ddddd8;">
+    <div class="section">
+      <div class="divider"></div>
+      <h2 class="section-title"><span>ゼロキンカスレベル</span></h2>
+      <p class="section-lead">プログラミング未経験からプラグイン開発まで、4段階で体系的に習得できる構成です。</p>
+      <div class="levels-grid">
 
-      <details>
-        <summary>サンプルコードはどの環境で動作確認されていますか？</summary>
-        <div class="faq-body">
-          kintone の最新バージョンで動作確認しています。@kintone/rest-api-client や KUC についても、執筆時点の最新安定版を使用しています。バージョン変更による差異は Cybozu Developer Network の更新情報をご確認ください。
+        <div class="level-card lv1">
+          <div class="level-num">Level 1 — 第1章</div>
+          <div class="level-title">フィールドの制御</div>
+          <div class="level-desc">表示・非表示、グループ開閉など画面制御の基本。初めてのJavaScriptカスタマイズ。</div>
+          <div class="level-tags">
+            <span class="tag">kintone JS API</span>
+          </div>
         </div>
-      </details>
 
-      <details>
-        <summary>cli-kintone の実行ファイル版でプラグイン操作はできますか？</summary>
-        <div class="faq-body">
-          はい。cli-kintone v1.15.0 以降の実行ファイル版でも plugin keygen・plugin pack・plugin upload 操作が可能です。Node.js の別途インストールは不要です。詳細は第4章および本ポータルの補足資料をご確認ください。
+        <div class="level-card lv2">
+          <div class="level-num">Level 2 — 第2章</div>
+          <div class="level-title">イベントオブジェクト</div>
+          <div class="level-desc">開いている画面のレコード操作・バリデーション・エラーチェックを実装する。</div>
+          <div class="level-tags">
+            <span class="tag">イベント</span>
+            <span class="tag">フィールド形式</span>
+            <span class="tag">エラー処理</span>
+          </div>
         </div>
-      </details>
 
-      <details>
-        <summary>プログラミング未経験でも読み進められますか？</summary>
-        <div class="faq-body">
-          本書は kintone 認定アソシエイト取得レベルの知識があることを前提としていますが、プログラミングはゼロから学べる構成です。手を動かしながら読み進めることを推奨しています。
+        <div class="level-card lv3">
+          <div class="level-num">Level 3 — 第3章</div>
+          <div class="level-title">REST API</div>
+          <div class="level-desc">画面外のレコード取得・更新、非同期処理、コマンドラインツールの活用、User API、外部連携。</div>
+          <div class="level-tags">
+            <span class="tag">REST API</span>
+            <span class="tag">async/await</span>
+            <span class="tag">Promise</span>
+            <span class="tag">cli-kintne</span>
+          </div>
         </div>
-      </details>
 
-      <details>
-        <summary>kintone 認定カスタマイズスペシャリスト試験の対策に使えますか？</summary>
-        <div class="faq-body">
-          本書は認定カスタマイズスペシャリストの試験範囲をカバーしています。ただし試験合格よりも「現場で使える実践力」の習得を主眼においているため、手を動かしながら読み進めることが近道です。
+        <div class="level-card lv4">
+          <div class="level-num">Level 4 — 第4章</div>
+          <div class="level-title">プラグイン開発</div>
+          <div class="level-desc">kintoneプラグイン開発。cli-kintoneによるパッケージング。</div>
+          <div class="level-tags">
+            <span class="tag">プラグイン開発</span>
+            <span class="tag">cli-kintone</span>
+          </div>
         </div>
-      </details>
 
-      <details>
-        <summary>Web版プラグインパッカーはいつまで使えますか？</summary>
-        <div class="faq-body">
-          Webベースのプラグインパッカーは 2026年8月に廃止予定です。本書では cli-kintone を使ったパッケージング方法を解説しています。移行方法の補足資料もダウンロードセクションよりご利用いただけます。
-        </div>
-      </details>
-
+      </div>
     </div>
   </div>
-</div>
 
-<!-- ══ LINKS ══ -->
-<div id="links" class="links-section">
-  <div class="links-inner">
-    <div class="divider"></div>
-    <h2 class="section-title" style="color:#fff">公式<span style="color:var(--accent)">リンク集</span></h2>
-    <div class="links-grid">
+  <!-- ══ DOWNLOADS ══ -->
+  <div id="downloads" style="background: #f2f2f0; border-top: 1px solid #ddddd8;">
+    <div class="section">
+      <div class="divider"></div>
+      <h2 class="section-title"><span>ダウンロード</span>資料</h2>
+      <p class="section-lead">各章のサンプルコード・補足資料を章ごとにまとめています。</p>
+      <div class="download-grid">
 
-      <div class="links-group">
-        <h4>cybozu developer network</h4>
-        <ul>
-          <li><a href="https://cybozu.dev/ja/" target="_blank">トップページ</a></li>
-          <li><a href="https://cybozu.dev/ja/kintone/docs/js-api/" target="_blank">JavaScript API ドキュメント</a></li>
-          <li><a href="https://cybozu.dev/ja/kintone/docs/rest-api/" target="_blank">REST API ドキュメント</a></li>
-          <li><a href="https://cybozu.dev/ja/kintone/tips/development/" target="_blank">開発Tips</a></li>
-          <li><a href="https://cybozu.dev/ja/kintone/sdk/" target="_blank">SDK &amp; Tools</a></li>
-          <li><a href="https://cybozu.dev/ja/tutorials/" target="_blank">チュートリアル</a></li>
-          <li><a href="https://kintone.cybozu.co.jp/kintone-signpost/" target="_blank">kintone SIGNPOST</a></li>
-        </ul>
+        <a class="dl-card" href="https://github.com/zerokincus/zerokincus/tree/main/sample-code" target="_blank">
+          <div class="dl-icon js">📄</div>
+          <div class="dl-meta">
+            <div class="dl-name">サンプルコード</div>
+            <div class="dl-info">各章のサンプルコードを参照・ダウンロードできます。</div>
+          </div>
+          <span class="dl-badge">GitHub</span>
+        </a>
+
+        <a class="dl-card" href="https://github.com/zerokincus/zerokincus/archive/refs/heads/main.zip" target="_blank">
+          <div class="dl-icon pdf">📦</div>
+          <div class="dl-meta">
+            <div class="dl-name">全コンテンツ一括ダウンロード</div>
+            <div class="dl-info">サンプルコード・補足資料すべてをZIPで取得</div>
+          </div>
+          <span class="dl-badge">ZIP</span>
+        </a>
+
+        <a class="dl-card" href="https://github.com/zerokincus/zerokincus" target="_blank">
+          <div class="dl-icon js">⚙️</div>
+          <div class="dl-meta">
+            <div class="dl-name">GitHubリポジトリ</div>
+            <div class="dl-info">最新のサンプルコード・更新履歴はこちら</div>
+          </div>
+          <span class="dl-badge">GitHub</span>
+        </a>
+
+        <a class="dl-card" href="https://github.com/zerokincus/zerokincus/issues" target="_blank">
+          <div class="dl-icon pdf">💬</div>
+          <div class="dl-meta">
+            <div class="dl-name">質問・不具合報告</div>
+            <div class="dl-info">サンプルコードに関する質問はGitHub Issueで受け付けています</div>
+          </div>
+          <span class="dl-badge">Issue</span>
+        </a>
+
       </div>
-
-      <div class="links-group">
-        <h4>ツール・ライブラリ</h4>
-        <ul>
-          <li><a href="https://cli.kintone.dev" target="_blank">cli-kintone 公式ドキュメント</a></li>
-          <li><a href="https://kintone-ui-component.netlify.app/" target="_blank">kintone UI Component (KUC)</a></li>
-          <li><a href="https://github.com/kintone/js-sdk" target="_blank">@kintone/rest-api-client</a></li>
-        </ul>
-      </div>
-
-      <div class="links-group">
-        <h4>認定資格</h4>
-        <ul>
-          <li><a href="https://cybozu.dev/ja/kintone/miscellaneous/kintone-certification-customize-specialist-guide/" target="_blank">kintone 認定カスタマイズスペシャリスト</a></li>
-          <li><a href="https://kintone.cybozu.co.jp/certification/" target="_blank">kintone 認定アソシエイト</a></li>
-        </ul>
-      </div>
-
-      <div class="links-group">
-        <h4>本ポータルについて</h4>
-        <ul>
-          <li><a href="#">正誤表・更新情報</a></li>
-          <li><a href="#">お問い合わせ</a></li>
-          <li><a href="#">ご利用規約</a></li>
-        </ul>
-      </div>
-
     </div>
   </div>
-</div>
 
-<!-- ══ FOOTER ══ -->
-<footer>
-  <span class="footer-copy">© 2026 ゼロキンカス道場. All rights reserved.</span>
-  <span class="footer-note">// ゼロから始めるkintoneカスタマイズ入門 読者ポータル</span>
-</footer>
+  <!-- ══ CERTIFICATION ══ -->
+  <div id="certification" style="background: #ffffff; border-top: 1px solid #ddddd8;">
+    <div class="section">
+      <div class="divider"></div>
+      <h2 class="section-title"><span>認定資格</span>対応</h2>
+      <p class="section-lead">本書はkintone認定カスタマイズスペシャリストの試験範囲をカバーしています。練習問題で実力を確認しましょう。</p>
+      <div class="download-grid">
+
+        <a class="dl-card" href="https://github.com/zerokincus/zerokincus/tree/main/doc/practice" target="_blank">
+          <div class="dl-icon zip">📝</div>
+          <div class="dl-meta">
+            <div class="dl-name">カスタマイズスペシャリスト練習問題</div>
+            <div class="dl-info">認定試験対策・実践問題集（全157問）</div>
+          </div>
+          <span class="dl-badge">PDF</span>
+        </a>
+
+        <a class="dl-card"
+          href="https://cybozu.dev/ja/kintone/miscellaneous/kintone-certification-customize-specialist-guide/"
+          target="_blank">
+          <div class="dl-icon rest">🎓</div>
+          <div class="dl-meta">
+            <div class="dl-name">kintone 認定カスタマイズスペシャリスト</div>
+            <div class="dl-info">試験概要・出題範囲は公式サイトで確認</div>
+          </div>
+          <span class="dl-badge">公式</span>
+        </a>
+
+        <a class="dl-card" href="https://cybozu.dev/ja/kintone/getting-started/" target="_blank">
+          <div class="dl-icon js">📘</div>
+          <div class="dl-meta">
+            <div class="dl-name">kintone カスタマイズ はじめに</div>
+            <div class="dl-info">cybozu developer network 公式入門ガイド</div>
+          </div>
+          <span class="dl-badge">公式</span>
+        </a>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ TIPS ══ -->
+  <div id="tips" class="tips-strip">
+    <div class="tips-inner">
+      <div class="tips-header">
+        <div class="divider"></div>
+        <h2 class="section-title" style="color:#fff;">活用<span style="color:var(--accent)"> Tips</span></h2>
+        <p class="section-lead" style="color:#aaa;">内容は順次更新していきます。</p>
+      </div>
+      <div class="tips-grid">
+        <div class="tip-card">
+          <div class="tip-icon">🤖</div>
+          <div class="tip-title">コードを理解しながら使う</div>
+          <div class="tip-body">生成AIの出力を「そのまま貼る」のではなく「このコードを初心者向けに解説して」と追加で尋ねて理解を深めましょう。</div>
+        </div>
+        <div class="tip-card">
+          <div class="tip-icon">🔍</div>
+          <div class="tip-title">セキュリティレビューに活用</div>
+          <div class="tip-body">書いたコードを貼り付けて「セキュリティ上の懸念点は？」と質問することで、XSSリスク等を自動検出できます。</div>
+        </div>
+        <div class="tip-card">
+          <div class="tip-icon">📐</div>
+          <div class="tip-title">設計の壁打ち相手に</div>
+          <div class="tip-body">「このアプリの要件定義を整理して」と依頼することで、フィールド設計・画面レイアウトの初期案を素早く作れます。</div>
+        </div>
+        <div class="tip-card">
+          <div class="tip-icon">⚖️</div>
+          <div class="tip-title">「選ぶ判断」を磨く</div>
+          <div class="tip-body">生成AIは手段を提示しますが、「なぜそうするか」の判断は人間の役割。業務課題の背景を整理してから依頼しましょう。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ FAQ ══ -->
+  <div id="faq" style="background: #f2f2f0;">
+    <div class="section">
+      <div class="divider"></div>
+      <h2 class="section-title"><span>よくある質問</span></h2>
+      <p class="section-lead">読者からのよくあるご質問をまとめました。</p>
+      <div class="faq-list">
+
+        <details>
+          <summary>サンプルコードはどの環境で動作確認されていますか？</summary>
+          <div class="faq-body">
+            kintone の最新バージョンで動作確認しています。@kintone/rest-api-client や KUC についても、執筆時点の最新安定版を使用しています。バージョン変更による差異は Cybozu
+            Developer Network の更新情報をご確認ください。
+          </div>
+        </details>
+
+        <details>
+          <summary>cli-kintone の実行ファイル版でプラグイン操作はできますか？</summary>
+          <div class="faq-body">
+            はい。cli-kintone v1.15.0 以降の実行ファイル版でも plugin keygen・plugin pack・plugin upload 操作が可能です。Node.js
+            の別途インストールは不要です。詳細は第4章および本ポータルの補足資料をご確認ください。
+          </div>
+        </details>
+
+        <details>
+          <summary>プログラミング未経験でも読み進められますか？</summary>
+          <div class="faq-body">
+            本書は kintone 認定アソシエイト取得レベルの知識があることを前提としていますが、プログラミングはゼロから学べる構成です。手を動かしながら読み進めることを推奨しています。
+          </div>
+        </details>
+
+        <details>
+          <summary>kintone 認定カスタマイズスペシャリスト試験の対策に使えますか？</summary>
+          <div class="faq-body">
+            本書は認定カスタマイズスペシャリストの試験範囲をカバーしています。ただし試験合格よりも「現場で使える実践力」の習得を主眼においているため、手を動かしながら読み進めることが近道です。
+          </div>
+        </details>
+
+        <details>
+          <summary>Web版プラグインパッカーはいつまで使えますか？</summary>
+          <div class="faq-body">
+            Webベースのプラグインパッカーは 2026年8月に廃止予定です。本書では cli-kintone を使ったパッケージング方法を解説しています。移行方法の補足資料もダウンロードセクションよりご利用いただけます。
+          </div>
+        </details>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ LINKS ══ -->
+  <div id="links" class="links-section">
+    <div class="links-inner">
+      <div class="divider"></div>
+      <h2 class="section-title" style="color:#fff">公式<span style="color:var(--accent)">リンク集</span></h2>
+      <div class="links-grid">
+
+        <div class="links-group">
+          <h4>cybozu developer network</h4>
+          <ul>
+            <li><a href="https://cybozu.dev/ja/" target="_blank">トップページ</a></li>
+            <li><a href="https://cybozu.dev/ja/kintone/docs/js-api/" target="_blank">JavaScript API ドキュメント</a></li>
+            <li><a href="https://cybozu.dev/ja/kintone/docs/rest-api/" target="_blank">REST API ドキュメント</a></li>
+            <li><a href="https://cybozu.dev/ja/kintone/tips/development/" target="_blank">開発Tips</a></li>
+            <li><a href="https://cybozu.dev/ja/kintone/sdk/" target="_blank">SDK &amp; Tools</a></li>
+            <li><a href="https://cybozu.dev/ja/tutorials/" target="_blank">チュートリアル</a></li>
+            <li><a href="https://kintone.cybozu.co.jp/kintone-signpost/" target="_blank">kintone SIGNPOST</a></li>
+          </ul>
+        </div>
+
+        <div class="links-group">
+          <h4>ツール・ライブラリ</h4>
+          <ul>
+            <li><a href="https://cli.kintone.dev" target="_blank">cli-kintone 公式ドキュメント</a></li>
+            <li><a href="https://kintone-ui-component.netlify.app/" target="_blank">kintone UI Component (KUC)</a></li>
+            <li><a href="https://github.com/kintone/js-sdk" target="_blank">@kintone/rest-api-client</a></li>
+          </ul>
+        </div>
+
+        <div class="links-group">
+          <h4>認定資格</h4>
+          <ul>
+            <li><a href="https://cybozu.dev/ja/kintone/miscellaneous/kintone-certification-customize-specialist-guide/"
+                target="_blank">kintone 認定カスタマイズスペシャリスト</a></li>
+            <li><a href="https://kintone.cybozu.co.jp/certification/" target="_blank">kintone 認定アソシエイト</a></li>
+          </ul>
+        </div>
+
+        <div class="links-group">
+          <h4>本ポータルについて</h4>
+          <ul>
+            <li><a href="#">正誤表・更新情報</a></li>
+            <li><a href="#">お問い合わせ</a></li>
+            <li><a href="#">ご利用規約</a></li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ FOOTER ══ -->
+  <footer>
+    <span class="footer-copy">© 2026 ゼロキンカス道場. All rights reserved.</span>
+    <span class="footer-note">// ゼロから始めるkintoneカスタマイズ入門 読者ポータル</span>
+  </footer>
 
 </body>
+
 </html>
