@@ -2,7 +2,7 @@
   {
     "url": "https://www.youtube.com/@pjasunote",
     "title": "アスノート業務改善道場チャンネル",
-    "desc": "kintoneカスタマイズの実践的なノウハウを動画で解説しています。",
+    "desc": "kintone業務改善の実践的なノウハウを動画で解説しています。",
     "tag": "YouTube",
     "date": "2026-04-18",
     "cta": "動画を見る",
@@ -22,7 +22,7 @@
     "title": "cybozu developer network",
     "desc": "kintone APIの公式ドキュメントはこちらから。本書と合わせて活用してください。",
     "tag": "公式",
-    "date": "2026-04-18",
+    "date": "",
     "cta": "サイトを見る",
     "thumb": ""
   },
@@ -32,7 +32,7 @@
     "desc": "プログラミング未経験者でもマスターできる！日経BP刊行。",
     "tag": "書籍",
     "date": "2026-04-18",
-    "cta": "購入する",
+    "cta": "Amazonで見る",
     "thumb": "https://raw.githubusercontent.com/zerokincus/zerokincus/main/cover.png"
   }
 ]
