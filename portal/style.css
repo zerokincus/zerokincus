@@ -356,14 +356,25 @@
     #book .section > div[style*="grid-template-columns:200px"] {
       grid-template-columns: 1fr !important;
     }
+    /* モバイルは1.5枚見える幅でスワイプ感を演出 */
+    .article-card { flex: 0 0 clamp(200px, 72vw, 260px); }
   }
 
   /* ── ARTICLE CARDS ── */
   .article-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    display: flex;
     gap: 1.25rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: .75rem;
+    /* スクロールバーを細く */
+    scrollbar-width: thin;
+    scrollbar-color: var(--line) transparent;
   }
+  .article-grid::-webkit-scrollbar { height: 4px; }
+  .article-grid::-webkit-scrollbar-track { background: transparent; }
+  .article-grid::-webkit-scrollbar-thumb { background: var(--line); border-radius: 2px; }
   .article-card {
     background: var(--card);
     border: 1px solid var(--line);
@@ -372,6 +383,9 @@
     text-decoration: none; color: inherit;
     display: flex; flex-direction: column;
     transition: transform .2s, box-shadow .2s;
+    /* カード幅：大画面は4枚並び、小画面は2〜3枚見える幅 */
+    flex: 0 0 clamp(220px, calc(25% - 1rem), 300px);
+    scroll-snap-align: start;
   }
   .article-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,.1); }
   .article-thumb {
