@@ -1,0 +1,38 @@
+[
+  {
+    "url": "https://www.youtube.com/@pjasunote",
+    "title": "アスノート業務改善道場チャンネル",
+    "desc": "kintoneカスタマイズの実践的なノウハウを動画で解説しています。",
+    "tag": "YouTube",
+    "date": "2026-04-18",
+    "cta": "動画を見る",
+    "thumb": ""
+  },
+  {
+    "url": "https://github.com/zerokincus/zerokincus/tree/main/doc/practice",
+    "title": "カスタマイズスペシャリスト練習問題",
+    "desc": "本書に対応した認定試験の練習問題157問を無料公開中。",
+    "tag": "サイト内",
+    "date": "2026-04-20",
+    "cta": "詳しく見る",
+    "thumb": ""
+  },
+  {
+    "url": "https://cybozu.dev/ja/",
+    "title": "cybozu developer network",
+    "desc": "kintone APIの公式ドキュメントはこちらから。本書と合わせて活用してください。",
+    "tag": "公式",
+    "date": "2026-04-18",
+    "cta": "サイトを見る",
+    "thumb": ""
+  },
+  {
+    "url": "https://amzn.to/4cGhJag",
+    "title": "ゼロから始めるkintoneカスタマイズ入門",
+    "desc": "プログラミング未経験者でもマスターできる！日経BP刊行。",
+    "tag": "書籍",
+    "date": "2026-04-18",
+    "cta": "購入する",
+    "thumb": "https://raw.githubusercontent.com/zerokincus/zerokincus/main/cover.png"
+  }
+]
