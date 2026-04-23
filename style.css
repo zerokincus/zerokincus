@@ -126,7 +126,7 @@
     margin: 0 auto;
   }
   .section-title {
-    font-family: var(--display);
+    font-family: var(--sans);
     font-size: clamp(1.4rem, 3vw, 2rem);
     font-weight: 800; color: var(--ink);
     margin-bottom: .5rem;
@@ -176,7 +176,7 @@
     text-transform: uppercase;
   }
   .level-title {
-    font-family: var(--display);
+    font-family: var(--sans);
     font-size: 1.15rem; font-weight: 800;
     color: var(--ink); margin-bottom: .5rem;
   }
