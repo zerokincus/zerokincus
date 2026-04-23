@@ -72,12 +72,16 @@
       <div class="divider"></div>
       <h2 class="section-title"><span>最新情報</span></h2>
       <div style="margin-top:1.5rem;display:flex;flex-direction:column;gap:.75rem;max-width:680px;">
-        <div style="display:flex;align-items:baseline;gap:1.25rem;padding:.75rem 1rem;background:#ffffff;border:1px solid #ddddd8;border-radius:8px;">
-          <span style="font-family:var(--mono);font-size:.78rem;color:var(--accent2);white-space:nowrap;flex-shrink:0;">2026-04-18</span>
+        <div
+          style="display:flex;align-items:baseline;gap:1.25rem;padding:.75rem 1rem;background:#ffffff;border:1px solid #ddddd8;border-radius:8px;">
+          <span
+            style="font-family:var(--mono);font-size:.78rem;color:var(--accent2);white-space:nowrap;flex-shrink:0;">2026-04-18</span>
           <span style="font-size:.9rem;color:var(--ink);">サンプルコード、カスタマイズスペシャリスト練習問題掲載</span>
         </div>
-        <div style="display:flex;align-items:baseline;gap:1.25rem;padding:.75rem 1rem;background:#ffffff;border:1px solid #ddddd8;border-radius:8px;">
-          <span style="font-family:var(--mono);font-size:.78rem;color:var(--accent2);white-space:nowrap;flex-shrink:0;">2026-04-18</span>
+        <div
+          style="display:flex;align-items:baseline;gap:1.25rem;padding:.75rem 1rem;background:#ffffff;border:1px solid #ddddd8;border-radius:8px;">
+          <span
+            style="font-family:var(--mono);font-size:.78rem;color:var(--accent2);white-space:nowrap;flex-shrink:0;">2026-04-18</span>
           <span style="font-size:.9rem;color:var(--ink);">書籍発売開始</span>
         </div>
       </div>
@@ -203,9 +207,7 @@
           <span class="dl-badge">PDF</span>
         </a>
 
-        <a class="dl-card"
-          href="https://cybozu.co.jp/kintone-certification/"
-          target="_blank">
+        <a class="dl-card" href="https://cybozu.co.jp/kintone-certification/" target="_blank">
           <div class="dl-icon rest">🎓</div>
           <div class="dl-meta">
             <div class="dl-name">kintone 認定資格</div>
@@ -280,39 +282,38 @@
       <div class="faq-list">
 
         <details>
-          <summary>サンプルコードはどの環境で動作確認されていますか？</summary>
+          <summary>最新のAPIはどこまで取り上げられていますか？</summary>
           <div class="faq-body">
-            kintone の最新バージョンで動作確認しています。@kintone/rest-api-client や KUC についても、執筆時点の最新安定版を使用しています。バージョン変更による差異は Cybozu
-            Developer Network の更新情報をご確認ください。
+            基本的には2025年12月版のkintoneアップデートまでを対象としています。一部（プラグインのパッケージング等）については、最新情報を取り入れています。JavaScript APIも新しいリリースが続いていますので、最新情報はcybozu developer network 公式ドキュメントをご確認ください。
           </div>
         </details>
 
         <details>
-          <summary>cli-kintone の実行ファイル版でプラグイン操作はできますか？</summary>
+          <summary>サンプルコードはどの環境で動作確認されていますか？</summary>
           <div class="faq-body">
-            はい。cli-kintone v1.15.0 以降の実行ファイル版でも plugin keygen・plugin pack・plugin upload 操作が可能です。Node.js
-            の別途インストールは不要です。詳細は第4章および本ポータルの補足資料をご確認ください。
+            2025年12月版のkintoneで動作確認しています。@kintone/rest-api-client や KUC についても、執筆時点の最新安定版を使用しています。バージョン変更による差異は Cybozu
+            Developer Network の更新情報をご確認ください。
           </div>
-        </details>
+        </details>        
 
         <details>
           <summary>プログラミング未経験でも読み進められますか？</summary>
           <div class="faq-body">
-            本書は kintone 認定アソシエイト取得レベルの知識があることを前提としていますが、プログラミングはゼロから学べる構成です。手を動かしながら読み進めることを推奨しています。
+            本書は kintone 認定アソシエイト取得レベルの知識があることを前提としています。kintone基本機能の知識については、kintoneヘルプ等を活用してください。kintoneカスタマイズに必要な、プログラミングについてはゼロから学べる構成です。手を動かしながら読み進めることを推奨しています。
           </div>
         </details>
 
         <details>
           <summary>kintone 認定カスタマイズスペシャリスト試験の対策に使えますか？</summary>
           <div class="faq-body">
-            本書は認定カスタマイズスペシャリストの試験範囲をカバーしています。ただし試験合格よりも「現場で使える実践力」の習得を主眼においているため、手を動かしながら読み進めることが近道です。
+            本書は kintone認定 カスタマイズスペシャリストの試験範囲をカバーしています。ただし試験合格よりも「現場で使える実践力」の習得を主眼においているため、手を動かしながら読み進めることが近道です。試験対策として活用できる練習問題をダウンロードすることができますので、知識の確認や苦手な領域の確認に活用ください。
           </div>
         </details>
 
         <details>
-          <summary>Web版プラグインパッカーはいつまで使えますか？</summary>
+          <summary>この本を読めばプラグインが作れるようになりますか？</summary>
           <div class="faq-body">
-            Webベースのプラグインパッカーは 2026年8月に廃止予定です。本書では cli-kintone を使ったパッケージング方法を解説しています。移行方法の補足資料もダウンロードセクションよりご利用いただけます。
+            本書では、基本的なプラグインの構成と開発手順についての解説を行っています。実際のプラグイン開発においては、応用的な知識が必要となるため、本書の対象外としています。cybozu developer network のサンプルプラグイン等を参考にしてください。kintone認定 カスタマイズスペシャリストの試験範囲はカバーしています。
           </div>
         </details>
 
@@ -509,4 +510,5 @@
 
 </body>
 </body>
+
 </html>
