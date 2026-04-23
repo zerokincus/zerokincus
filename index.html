@@ -7,380 +7,7 @@
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="apple-touch-icon" href="favicon.png">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Roboto+Mono:wght@400;700&family=Syne:wght@400;600;800&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --ink:       #2d2d2d;
-    --ink-soft:  #3a3a3a;
-    --surface:   #f2f2f0;
-    --card:      #ffffff;
-    --accent:    #f5c800;   /* 表紙イエロー */
-    --accent2:   #c89600;   /* イエロー濃いめ */
-    --accent3:   #2d2d2d;   /* CTA ダークグレー */
-    --muted:     #888888;
-    --line:      #ddddd8;
-    --radius:    12px;
-    --mono:      'Roboto Mono', monospace;
-    --sans:      'Noto Sans JP', sans-serif;
-    --display:   'Syne', sans-serif;
-  }
-
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    font-family: var(--sans);
-    background: var(--surface);
-    color: var(--ink);
-    line-height: 1.7;
-    overflow-x: hidden;
-  }
-
-  /* ── HEADER ── */
-  header {
-    position: sticky; top: 0; z-index: 100;
-    background: #2d2d2d;
-    border-bottom: 3px solid var(--accent);
-    padding: 0 clamp(1.5rem, 6vw, 6rem);
-    display: flex; align-items: center; justify-content: space-between;
-    height: 64px;
-  }
-  .logo {
-    font-family: var(--display);
-    font-size: 1rem; font-weight: 800;
-    color: #fff; letter-spacing: .04em;
-    display: flex; align-items: center; gap: .5rem;
-    text-decoration: none;
-  }
-  .logo-badge {
-    background: var(--accent);
-    color: var(--ink); font-size: .65rem; font-weight: 700;
-    padding: 2px 7px; border-radius: 3px;
-    letter-spacing: .08em;
-  }
-  nav { display: flex; gap: 2rem; }
-  nav a {
-    color: #aaaaaa; text-decoration: none;
-    font-size: .875rem; font-weight: 500;
-    transition: color .2s;
-  }
-  nav a:hover { color: var(--accent); }
-
-  /* ── HERO ── */
-  .hero {
-    background: #2d2d2d;
-    padding: clamp(4rem, 10vw, 7rem) clamp(1.5rem, 6vw, 6rem);
-    position: relative; overflow: hidden;
-  }
-  .hero::before {
-    content: '';
-    position: absolute; inset: 0;
-    background:
-      radial-gradient(ellipse 60% 60% at 80% 50%, rgba(245,200,0,.14) 0%, transparent 70%),
-      radial-gradient(ellipse 40% 80% at 10% 80%, rgba(245,200,0,.07) 0%, transparent 60%);
-    pointer-events: none;
-  }
-  /* grid lines */
-  .hero::after {
-    content: '';
-    position: absolute; inset: 0;
-    background-image:
-      linear-gradient(rgba(245,200,0,.05) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(245,200,0,.05) 1px, transparent 1px);
-    background-size: 40px 40px;
-    pointer-events: none;
-  }
-  .hero-inner {
-    position: relative; z-index: 1;
-    max-width: 780px;
-    margin: 0 auto;
-  }
-  .hero-eyebrow {
-    font-family: var(--mono);
-    font-size: .75rem; letter-spacing: .15em;
-    color: var(--accent); text-transform: uppercase;
-    margin-bottom: 1.2rem;
-  }
-  .hero h1 {
-    font-family: var(--display);
-    font-size: clamp(2rem, 5vw, 3.4rem);
-    font-weight: 800; line-height: 1.15;
-    color: #fff;
-    margin-bottom: .8rem;
-  }
-  .hero h1 em {
-    font-style: normal;
-    background: linear-gradient(90deg, var(--accent), #fff6a0);
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-  }
-  .hero-sub {
-    font-size: 1rem; color: #aaaaaa;
-    max-width: 560px; margin-bottom: 2.4rem;
-  }
-  .hero-cta {
-    display: inline-flex; align-items: center; gap: .6rem;
-    background: var(--accent);
-    color: #1a1a1a; font-weight: 700; font-size: .95rem;
-    padding: .8rem 1.8rem; border-radius: 6px;
-    text-decoration: none;
-    transition: transform .2s, box-shadow .2s;
-    box-shadow: 0 4px 20px rgba(245,200,0,.4);
-  }
-  .hero-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(245,200,0,.6); }
-  .hero-cta-arrow { font-size: 1.1rem; }
-
-  .hero-stats {
-    display: flex; gap: 2.5rem; margin-top: 3.5rem;
-    border-top: 1px solid rgba(255,255,255,.1);
-    padding-top: 2rem;
-  }
-  .stat { color: #fff; }
-  .stat-num {
-    font-family: var(--mono);
-    font-size: 1.8rem; font-weight: 700;
-    color: var(--accent); display: block; line-height: 1;
-  }
-  .stat-label { font-size: .78rem; color: #888; margin-top: .3rem; }
-
-  /* ── SECTION WRAPPER ── */
-  .section {
-    padding: clamp(3.5rem, 8vw, 6rem) clamp(1.5rem, 6vw, 6rem);
-    max-width: 1400px;
-    margin: 0 auto;
-  }
-  .section-title {
-    font-family: var(--display);
-    font-size: clamp(1.4rem, 3vw, 2rem);
-    font-weight: 800; color: var(--ink);
-    margin-bottom: .5rem;
-  }
-  .section-title span { color: var(--accent2); }
-  .section-lead {
-    font-size: .95rem; color: var(--muted);
-    margin-bottom: 2.5rem;
-  }
-  .divider {
-    width: 48px; height: 3px;
-    background: linear-gradient(90deg, var(--accent), var(--accent2));
-    border-radius: 2px;
-    margin-bottom: 1rem;
-  }
-
-  /* ── LEVEL CARDS ── */
-  .levels-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 1.25rem;
-  }
-  .level-card {
-    background: var(--card);
-    border: 1px solid var(--line);
-    border-radius: var(--radius);
-    padding: 1.6rem;
-    position: relative; overflow: hidden;
-    transition: transform .2s, box-shadow .2s;
-    cursor: pointer;
-  }
-  .level-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,.1); }
-  .level-card::before {
-    content: '';
-    position: absolute; top: 0; left: 0; right: 0;
-    height: 3px;
-  }
-  .lv1::before { background: #f5c800; }
-  .lv2::before { background: #e0b400; }
-  .lv3::before { background: #c89600; }
-  .lv4::before { background: #1a1a1a; }
-
-  .level-num {
-    font-family: var(--mono);
-    font-size: .7rem; letter-spacing: .12em;
-    color: var(--muted); margin-bottom: .6rem;
-    text-transform: uppercase;
-  }
-  .level-title {
-    font-family: var(--display);
-    font-size: 1.15rem; font-weight: 800;
-    color: var(--ink); margin-bottom: .5rem;
-  }
-  .level-desc { font-size: .85rem; color: var(--muted); margin-bottom: 1rem; }
-  .level-tags { display: flex; flex-wrap: wrap; gap: .4rem; }
-  .tag {
-    font-family: var(--mono);
-    font-size: .7rem;
-    background: #f5f0d8;
-    border: 1px solid #e8d880;
-    padding: 2px 8px; border-radius: 4px;
-    color: #5a4a00;
-  }
-
-  /* ── DOWNLOAD SECTION ── */
-  .download-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.25rem;
-  }
-  .dl-card {
-    background: var(--card);
-    border: 1px solid var(--line);
-    border-radius: var(--radius);
-    padding: 1.5rem 1.6rem;
-    display: flex; align-items: flex-start; gap: 1rem;
-    transition: border-color .2s, box-shadow .2s;
-    text-decoration: none; color: inherit;
-  }
-  .dl-card:hover { border-color: var(--accent); box-shadow: 0 4px 20px rgba(245,200,0,.2); }
-  .dl-icon {
-    width: 44px; height: 44px; flex-shrink: 0;
-    border-radius: 10px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 1.3rem;
-  }
-  .dl-icon.js   { background: #fef9d0; }
-  .dl-icon.rest { background: #fef3a0; }
-  .dl-icon.zip  { background: #fde87a; }
-  .dl-icon.pdf  { background: #f5d800; }
-  .dl-meta { flex: 1; }
-  .dl-name { font-weight: 700; font-size: .95rem; margin-bottom: .25rem; color: var(--ink); }
-  .dl-info { font-size: .8rem; color: var(--muted); }
-  .dl-badge {
-    font-family: var(--mono);
-    font-size: .65rem; background: #1a1a1a;
-    color: #f5c800; padding: 2px 7px;
-    border-radius: 3px; white-space: nowrap; align-self: center;
-  }
-
-  /* ── TIPS STRIP ── */
-  .tips-strip {
-    background: #3a3a3a;
-    padding: clamp(3rem, 6vw, 4.5rem) clamp(1.5rem, 6vw, 6rem);
-  }
-  .tips-inner { max-width: 1400px; margin: 0 auto; }
-  .tips-header .section-title { color: #fff; }
-  .tips-header .section-lead  { color: #aaa; }
-  .tips-header .divider { background: linear-gradient(90deg, var(--accent), #fff6a0); }
-
-  .tips-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 1.25rem;
-    margin-top: 2rem;
-  }
-  .tip-card {
-    background: rgba(255,255,255,.06);
-    border: 1px solid rgba(245,200,0,.18);
-    border-radius: var(--radius);
-    padding: 1.5rem;
-    transition: background .2s, border-color .2s;
-  }
-  .tip-card:hover { background: rgba(245,200,0,.10); border-color: rgba(245,200,0,.4); }
-  .tip-icon { font-size: 1.6rem; margin-bottom: .8rem; }
-  .tip-title { font-weight: 700; color: #fff; margin-bottom: .4rem; }
-  .tip-body  { font-size: .85rem; color: #aaa; }
-
-  /* ── FAQ ── */
-  .faq-list { display: flex; flex-direction: column; gap: .75rem; max-width: 780px; }
-  details {
-    background: var(--card);
-    border: 1px solid var(--line);
-    border-radius: var(--radius);
-    overflow: hidden;
-  }
-  summary {
-    padding: 1.1rem 1.4rem;
-    font-weight: 600; font-size: .93rem;
-    cursor: pointer; list-style: none;
-    display: flex; justify-content: space-between; align-items: center;
-    gap: 1rem;
-    transition: background .2s;
-    color: var(--ink);
-  }
-  summary:hover { background: #fef9d0; }
-  summary::after {
-    content: '+'; font-size: 1.2rem;
-    color: var(--accent2); flex-shrink: 0;
-    transition: transform .2s;
-  }
-  details[open] summary::after { transform: rotate(45deg); }
-  .faq-body {
-    padding: 0 1.4rem 1.2rem;
-    font-size: .88rem; color: var(--muted);
-    line-height: 1.75;
-  }
-
-  /* ── LINKS FOOTER ── */
-  .links-section {
-    background: #3a3a3a;
-    padding: clamp(3rem, 6vw, 4rem) clamp(1.5rem, 6vw, 6rem);
-  }
-  .links-inner { max-width: 1400px; margin: 0 auto; }
-  .links-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 2rem; margin-top: 2rem;
-  }
-  .links-group h4 {
-    font-family: var(--mono);
-    font-size: .72rem; letter-spacing: .1em;
-    color: var(--accent); text-transform: uppercase;
-    margin-bottom: 1rem;
-  }
-  .links-group ul { list-style: none; display: flex; flex-direction: column; gap: .5rem; }
-  .links-group a {
-    font-size: .88rem; color: #aaa;
-    text-decoration: none; transition: color .2s;
-  }
-  .links-group a:hover { color: var(--accent); }
-
-  /* ── SITE FOOTER ── */
-  footer {
-    background: #2d2d2d;
-    border-top: 2px solid var(--accent);
-    padding: 1.5rem clamp(1.5rem, 6vw, 6rem);
-    display: flex; align-items: center; justify-content: space-between;
-    flex-wrap: wrap; gap: 1rem;
-  }
-  .footer-copy { font-size: .78rem; color: #888; }
-  .footer-note { font-family: var(--mono); font-size: .7rem; color: #666; }
-
-  /* ── ANIMATIONS ── */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-  .hero-inner > * {
-    opacity: 0; animation: fadeUp .6s forwards;
-  }
-  .hero-eyebrow { animation-delay: .1s; }
-  .hero h1      { animation-delay: .22s; }
-  .hero-sub     { animation-delay: .34s; }
-  .hero-cta     { animation-delay: .46s; }
-  .hero-stats   { animation-delay: .58s; }
-
-  /* ── RESPONSIVE ── */
-  @media (max-width: 860px) {
-    #book .section > div[style*="grid-template-columns:200px"] {
-      grid-template-columns: 1fr 1fr !important;
-    }
-    #book .section > div > div:first-child {
-      grid-column: 1 / -1;
-      flex-direction: row !important;
-      align-items: flex-start;
-      gap: 1.5rem;
-    }
-    #book .section > div > div:first-child img {
-      max-width: 140px !important;
-    }
-  }
-  @media (max-width: 640px) {
-    nav { display: none; }
-    .hero-stats { gap: 1.5rem; flex-wrap: wrap; }
-    .stat-num   { font-size: 1.4rem; }
-    #book .section > div[style*="grid-template-columns:200px"] {
-      grid-template-columns: 1fr !important;
-    }
-  }
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -391,9 +18,9 @@
     <span class="logo-badge">読者ポータル</span>
   </a>
   <nav>
-    <a href="#book">書籍情報</a>
-    <a href="#levels">章ガイド</a>
+    <a href="#levels">レベルガイド</a>
     <a href="#downloads">ダウンロード</a>
+    <a href="#certification">認定資格対応</a>
     <a href="#tips">活用Tips</a>
     <a href="#faq">FAQ</a>
     <a href="#links">リンク集</a>
@@ -416,24 +43,6 @@
       <span>サンプルコードをダウンロード</span>
       <span class="hero-cta-arrow">↓</span>
     </a>
-    <div class="hero-stats">
-      <div class="stat">
-        <span class="stat-num">5</span>
-        <div class="stat-label">章構成</div>
-      </div>
-      <div class="stat">
-        <span class="stat-num">Lv4</span>
-        <div class="stat-label">カスタマイズレベル</div>
-      </div>
-      <div class="stat">
-        <span class="stat-num">AI</span>
-        <div class="stat-label">学習パートナー対応</div>
-      </div>
-      <div class="stat">
-        <span class="stat-num">v1.15+</span>
-        <div class="stat-label">cli-kintone 対応</div>
-      </div>
-    </div>
   </div>
 </section>
 
@@ -511,11 +120,11 @@
 </div>
 
 <!-- ══ LEVELS ══ -->
-<div id="levels" style="background: #f2f2f0;">
+<div id="levels" style="background: #ffffff; border-top: 1px solid #ddddd8;">
   <div class="section">
     <div class="divider"></div>
-    <h2 class="section-title">4段階の<span>カスタマイズレベル</span></h2>
-    <p class="section-lead">プログラミング未経験からプラグイン開発まで、段階的に習得できる構成です。</p>
+    <h2 class="section-title"><span>ゼロキンカスレベル</span></h2>
+    <p class="section-lead">プログラミング未経験からプラグイン開発まで、4段階で体系的に習得できる構成です。</p>
     <div class="levels-grid">
 
       <div class="level-card lv1">
@@ -566,11 +175,11 @@
 </div>
 
 <!-- ══ DOWNLOADS ══ -->
-<div id="downloads" style="background: #ffffff; border-top: 1px solid #ddddd8;">
+<div id="downloads" style="background: #f2f2f0; border-top: 1px solid #ddddd8;">
   <div class="section">
     <div class="divider"></div>
     <h2 class="section-title"><span>ダウンロード</span>資料</h2>
-    <p class="section-lead">各章のサンプルコード・補足PDFを章ごとにまとめています。</p>
+    <p class="section-lead">各章のサンプルコード・補足資料を章ごとにまとめています。</p>
     <div class="download-grid">
 
       <a class="dl-card" href="https://github.com/zerokincus/zerokincus/tree/main/sample-code" target="_blank">
@@ -589,15 +198,6 @@
           <div class="dl-info">REST API・プラグイン・外部連携 コード集</div>
         </div>
         <span class="dl-badge">GitHub</span>
-      </a>
-
-      <a class="dl-card" href="https://github.com/zerokincus/zerokincus/tree/main/doc/practice" target="_blank">
-        <div class="dl-icon zip">📝</div>
-        <div class="dl-meta">
-          <div class="dl-name">カスタマイズスペシャリスト練習問題</div>
-          <div class="dl-info">認定試験対策・実践問題集（v1.0）</div>
-        </div>
-        <span class="dl-badge">PDF</span>
       </a>
 
       <a class="dl-card" href="https://github.com/zerokincus/zerokincus/archive/refs/heads/main.zip" target="_blank">
@@ -631,13 +231,52 @@
   </div>
 </div>
 
+<!-- ══ CERTIFICATION ══ -->
+<div id="certification" style="background: #ffffff; border-top: 1px solid #ddddd8;">
+  <div class="section">
+    <div class="divider"></div>
+    <h2 class="section-title"><span>認定資格</span>対応</h2>
+    <p class="section-lead">本書はkintone認定カスタマイズスペシャリストの試験範囲をカバーしています。練習問題で実力を確認しましょう。</p>
+    <div class="download-grid">
+
+      <a class="dl-card" href="https://github.com/zerokincus/zerokincus/tree/main/doc/practice" target="_blank">
+        <div class="dl-icon zip">📝</div>
+        <div class="dl-meta">
+          <div class="dl-name">カスタマイズスペシャリスト練習問題</div>
+          <div class="dl-info">認定試験対策・実践問題集（v1.0）</div>
+        </div>
+        <span class="dl-badge">PDF</span>
+      </a>
+
+      <a class="dl-card" href="https://cybozu.dev/ja/kintone/miscellaneous/kintone-certification-customize-specialist-guide/" target="_blank">
+        <div class="dl-icon rest">🎓</div>
+        <div class="dl-meta">
+          <div class="dl-name">kintone 認定カスタマイズスペシャリスト</div>
+          <div class="dl-info">試験概要・出題範囲は公式サイトで確認</div>
+        </div>
+        <span class="dl-badge">公式</span>
+      </a>
+
+      <a class="dl-card" href="https://cybozu.dev/ja/kintone/getting-started/" target="_blank">
+        <div class="dl-icon js">📘</div>
+        <div class="dl-meta">
+          <div class="dl-name">kintone カスタマイズ はじめに</div>
+          <div class="dl-info">cybozu developer network 公式入門ガイド</div>
+        </div>
+        <span class="dl-badge">公式</span>
+      </a>
+
+    </div>
+  </div>
+</div>
+
 <!-- ══ TIPS ══ -->
 <div id="tips" class="tips-strip">
   <div class="tips-inner">
     <div class="tips-header">
       <div class="divider"></div>
-      <h2 class="section-title">生成AIと学ぶ<span style="color:var(--accent)"> 活用Tips</span></h2>
-      <p class="section-lead">本書では生成AIを「もうひとりの学習パートナー」として活用することを推奨しています。</p>
+      <h2 class="section-title" style="color:#fff;">活用<span style="color:var(--accent)"> Tips</span></h2>
+      <p class="section-lead" style="color:#aaa;">内容は順次更新していきます。</p>
     </div>
     <div class="tips-grid">
       <div class="tip-card">
@@ -689,7 +328,7 @@
       <details>
         <summary>プログラミング未経験でも読み進められますか？</summary>
         <div class="faq-body">
-          本書は kintone 認定アソシエイト取得レベルの知識があることを前提としていますが、プログラミングはゼロから学べる構成です。生成AIを学習パートナーとして活用しながら手を動かして読み進めることを推奨しています。
+          本書は kintone 認定アソシエイト取得レベルの知識があることを前提としていますが、プログラミングはゼロから学べる構成です。手を動かしながら読み進めることを推奨しています。
         </div>
       </details>
 
@@ -743,8 +382,8 @@
       <div class="links-group">
         <h4>認定資格</h4>
         <ul>
-          <li><a href="#" target="_blank">kintone 認定アソシエイト</a></li>
-          <li><a href="#" target="_blank">kintone 認定カスタマイズスペシャリスト</a></li>
+          <li><a href="https://cybozu.dev/ja/kintone/miscellaneous/kintone-certification-customize-specialist-guide/" target="_blank">kintone 認定カスタマイズスペシャリスト</a></li>
+          <li><a href="https://kintone.cybozu.co.jp/certification/" target="_blank">kintone 認定アソシエイト</a></li>
         </ul>
       </div>
 
