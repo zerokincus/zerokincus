@@ -87,8 +87,8 @@
   }
   .hero-eyebrow {
     font-family: var(--mono);
-    font-size: .75rem; letter-spacing: .15em;
-    color: var(--accent); text-transform: uppercase;
+    font-size: .75rem; letter-spacing: .1em;
+    color: var(--accent);
     margin-bottom: 1.2rem;
   }
   .hero h1 {
