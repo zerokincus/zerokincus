@@ -1085,6 +1085,105 @@
     <span class="footer-note">// ゼロから始めるkintoneカスタマイズ入門 読者ポータル</span>
   </footer>
 
+  <!-- ══ FORM MODAL（ご意見・ご要望） ══ -->
+  <div id="form-overlay" style="display:none;position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.6);align-items:center;justify-content:center;padding:1rem;">
+    <div style="background:#fff;border-radius:16px;overflow:hidden;width:100%;max-width:680px;max-height:90vh;display:flex;flex-direction:column;box-shadow:0 24px 64px rgba(0,0,0,.3);">
+      <div style="background:#2d2d2d;padding:.9rem 1.4rem;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;">
+        <div style="display:flex;align-items:center;gap:.6rem;">
+          <span style="font-size:1.1rem;">💬</span>
+          <span style="color:#fff;font-weight:700;font-size:.93rem;">ご意見・ご要望</span>
+        </div>
+        <button id="form-close" aria-label="閉じる" style="background:none;border:none;cursor:pointer;color:#aaa;font-size:1.6rem;line-height:1;padding:.2rem .5rem;">×</button>
+      </div>
+      <div style="flex:1;overflow:hidden;">
+        <iframe src="https://forms.cloud.microsoft/r/bZJA19JmSw?embed=true" frameborder="0" marginwidth="0" marginheight="0" style="width:100%;height:100%;min-height:480px;border:none;" allowfullscreen webkitallowfullscreen mozallowfullscreen msallowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ FORM MODAL（イベントアンケート） ══ -->
+  <div id="event-overlay" style="display:none;position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.6);align-items:center;justify-content:center;padding:1rem;">
+    <div style="background:#fff;border-radius:16px;overflow:hidden;width:100%;max-width:680px;max-height:90vh;display:flex;flex-direction:column;box-shadow:0 24px 64px rgba(0,0,0,.3);">
+      <div style="background:#2d2d2d;padding:.9rem 1.4rem;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;">
+        <div style="display:flex;align-items:center;gap:.6rem;">
+          <span style="font-size:1.1rem;">📋</span>
+          <span style="color:#fff;font-weight:700;font-size:.93rem;">イベントに関するアンケート</span>
+        </div>
+        <button id="event-close" aria-label="閉じる" style="background:none;border:none;cursor:pointer;color:#aaa;font-size:1.6rem;line-height:1;padding:.2rem .5rem;">×</button>
+      </div>
+      <div style="flex:1;overflow:hidden;">
+        <iframe src="https://forms.cloud.microsoft/r/wBZGrnAQyg?embed=true" frameborder="0" marginwidth="0" marginheight="0" style="width:100%;height:100%;min-height:480px;border:none;" allowfullscreen webkitallowfullscreen mozallowfullscreen msallowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ FABボタン群（右下縦並び） ══ -->
+  <div style="position:fixed;bottom:1.5rem;right:1.5rem;z-index:190;display:flex;flex-direction:column;gap:.75rem;align-items:flex-end;">
+    <button id="event-fab" aria-label="イベントに関するアンケート" style="display:flex;align-items:center;gap:.6rem;background:#2d2d2d;color:#f5c800;font-family:'Noto Sans JP',sans-serif;font-weight:700;font-size:.85rem;padding:.75rem 1.25rem;border-radius:50px;border:2px solid #f5c800;cursor:pointer;box-shadow:0 4px 20px rgba(0,0,0,.3);white-space:nowrap;">
+      <span style="font-size:1.1rem;">📋</span>
+      <span>イベントアンケート</span>
+    </button>
+    <button id="form-fab" aria-label="ご意見・ご要望" style="display:flex;align-items:center;gap:.6rem;background:#f5c800;color:#1a1a1a;font-family:'Noto Sans JP',sans-serif;font-weight:700;font-size:.85rem;padding:.75rem 1.25rem;border-radius:50px;border:none;cursor:pointer;box-shadow:0 4px 20px rgba(245,200,0,.5);white-space:nowrap;">
+      <span style="font-size:1.1rem;">💬</span>
+      <span>ご意見・ご要望</span>
+    </button>
+  </div>
+
+  <script>
+    (function() {
+      var fab      = document.getElementById('form-fab');
+      var overlay  = document.getElementById('form-overlay');
+      var closeBtn = document.getElementById('form-close');
+
+      var efab      = document.getElementById('event-fab');
+      var eoverlay  = document.getElementById('event-overlay');
+      var ecloseBtn = document.getElementById('event-close');
+
+      function openForm()  { overlay.style.display  = 'flex'; document.body.style.overflow = 'hidden'; }
+      function closeForm() { overlay.style.display  = 'none'; document.body.style.overflow = ''; }
+      function openEvent()  { eoverlay.style.display = 'flex'; document.body.style.overflow = 'hidden'; }
+      function closeEvent() { eoverlay.style.display = 'none'; document.body.style.overflow = ''; }
+
+      fab.addEventListener('click', openForm);
+      closeBtn.addEventListener('click', closeForm);
+      overlay.addEventListener('click', function(e) { if (e.target === overlay) closeForm(); });
+
+      efab.addEventListener('click', openEvent);
+      ecloseBtn.addEventListener('click', closeEvent);
+      eoverlay.addEventListener('click', function(e) { if (e.target === eoverlay) closeEvent(); });
+
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') { closeForm(); closeEvent(); }
+      });
+    })();
+  </script>
+
+  <script>
+    (function() {
+      var fab     = document.getElementById('form-fab');
+      var overlay = document.getElementById('form-overlay');
+      var closeBtn = document.getElementById('form-close');
+
+      function openForm() {
+        overlay.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+      }
+      function closeForm() {
+        overlay.style.display = 'none';
+        document.body.style.overflow = '';
+      }
+
+      fab.addEventListener('click', openForm);
+      closeBtn.addEventListener('click', closeForm);
+      overlay.addEventListener('click', function(e) {
+        if (e.target === overlay) closeForm();
+      });
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') closeForm();
+      });
+    })();
+  </script>
+
 </body>
 
 </html>
