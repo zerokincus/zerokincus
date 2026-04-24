@@ -578,6 +578,35 @@
     </div>
   </section>
 
+  <!-- ══ FORM STRIP ══ -->
+  <div style="background:linear-gradient(135deg,#1a1a1a 0%,#2d2d2d 100%);border-top:3px solid #f5c800;border-bottom:3px solid #f5c800;padding:2rem clamp(1.5rem,6vw,6rem);">
+    <div style="max-width:1400px;margin:0 auto;display:flex;flex-wrap:wrap;gap:1rem;align-items:center;justify-content:center;">
+
+      <!-- 左：キャッチコピー -->
+      <div style="flex:1;min-width:240px;">
+        <p style="font-family:'Noto Sans JP',sans-serif;font-size:.75rem;color:#f5c800;font-weight:700;letter-spacing:.1em;margin-bottom:.3rem;">// 読者の声を聞かせてください</p>
+        <p style="color:#fff;font-weight:800;font-size:clamp(1rem,2.5vw,1.3rem);line-height:1.4;">より良いコンテンツ・イベントのために<br>ご意見・アンケートにご協力ください</p>
+      </div>
+
+      <!-- 右：2つのボタン -->
+      <div style="display:flex;flex-wrap:wrap;gap:.75rem;align-items:center;flex-shrink:0;">
+        <button onclick="document.getElementById('event-overlay').style.display='flex';document.body.style.overflow='hidden';"
+          style="display:flex;align-items:center;gap:.5rem;background:transparent;color:#f5c800;font-family:'Noto Sans JP',sans-serif;font-weight:700;font-size:.88rem;padding:.7rem 1.4rem;border-radius:6px;border:2px solid #f5c800;cursor:pointer;transition:background .2s,color .2s;white-space:nowrap;"
+          onmouseover="this.style.background='#f5c800';this.style.color='#1a1a1a'"
+          onmouseout="this.style.background='transparent';this.style.color='#f5c800'">
+          <span>📋</span><span>イベントアンケート</span>
+        </button>
+        <button onclick="document.getElementById('form-overlay').style.display='flex';document.body.style.overflow='hidden';"
+          style="display:flex;align-items:center;gap:.5rem;background:#f5c800;color:#1a1a1a;font-family:'Noto Sans JP',sans-serif;font-weight:700;font-size:.88rem;padding:.7rem 1.4rem;border-radius:6px;border:2px solid #f5c800;cursor:pointer;transition:opacity .2s;white-space:nowrap;"
+          onmouseover="this.style.opacity='.85'"
+          onmouseout="this.style.opacity='1'">
+          <span>💬</span><span>ご意見・ご要望</span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
   <!-- ══ NEWS ══ -->
   <div id="news" style="background:#ffffff; border-top:1px solid #ddddd8;">
     <div class="section" style="padding-top:3rem;padding-bottom:3rem;">
