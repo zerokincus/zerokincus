@@ -4,7 +4,31 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ゼロキンカス道場 — ゼロから始めるkintoneカスタマイズ入門 読者ポータル</title>
+  <title>ゼロキンカス道場 | ゼロから始めるkintoneカスタマイズ入門 読者ポータル</title>
+
+  <!-- SEO -->
+  <meta name="description" content="「ゼロから始めるkintoneカスタマイズ入門」（日経BP）の公式読者ポータル。kintoneカスタマイズのサンプルコード・練習問題・最新情報を無料公開。プログラミング未経験者でもkintoneカスタマイズをマスターできます。">
+  <meta name="keywords" content="kintoneカスタマイズ, ゼロキンカス, ゼロから始めるkintoneカスタマイズ入門, kintone, kintone JavaScript, kintone REST API, kintoneプラグイン, サイボウズ, kintone認定カスタマイズスペシャリスト">
+  <meta name="author" content="松田正太郎, 石井健太郎, 中村徹 / アスノート株式会社">
+  <link rel="canonical" href="https://zerokincus.com/">
+  <link rel="sitemap" type="application/xml" href="/sitemap.xml">
+
+  <!-- OGP（SNSシェア用） -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://zerokincus.com/">
+  <meta property="og:title" content="ゼロキンカス道場 | ゼロから始めるkintoneカスタマイズ入門">
+  <meta property="og:description" content="「ゼロから始めるkintoneカスタマイズ入門」（日経BP）の公式読者ポータル。サンプルコード・練習問題・最新情報を無料公開中。">
+  <meta property="og:image" content="https://raw.githubusercontent.com/zerokincus/zerokincus/main/cover.png">
+  <meta property="og:site_name" content="ゼロキンカス道場">
+  <meta property="og:locale" content="ja_JP">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@Shokun1108">
+  <meta name="twitter:title" content="ゼロキンカス道場 | ゼロから始めるkintoneカスタマイズ入門">
+  <meta name="twitter:description" content="「ゼロから始めるkintoneカスタマイズ入門」（日経BP）の公式読者ポータル。サンプルコード・練習問題・最新情報を無料公開中。">
+  <meta name="twitter:image" content="https://raw.githubusercontent.com/zerokincus/zerokincus/main/cover.png">
+
   <link rel="icon" type="image/png" href="portal/favicon.png">
   <link rel="apple-touch-icon" href="portal/favicon.png">
   <link
@@ -170,6 +194,7 @@
           'サイト内': { bg: '#e8f5e9', color: '#2e7d32' },
           '書籍':     { bg: '#fef3c7', color: '#92400e' },
           'お知らせ': { bg: '#ede9fe', color: '#5b21b6' },
+          'note':     { bg: '#d4f5ef', color: '#1a8577' },
         };
         const tagBg = {
           'YouTube':  '#1a1a1a',
@@ -178,6 +203,7 @@
           'サイト内': '#f0f8f0',
           '書籍':     '#fef9d0',
           'お知らせ': '#f3f0ff',
+          'note':     '#41c9b4',
         };
         fetch('portal/articles.json')
           .then(r => r.json())
