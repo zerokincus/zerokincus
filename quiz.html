@@ -168,6 +168,10 @@ body{font-family:'Noto Sans JP',sans-serif;background:var(--bg);color:var(--tx);
     <div class="stat-box"><div class="stat-num" id="stat-wrong" style="color:var(--rd)">0</div><div class="stat-label">不正解</div></div>
   </div>
   <div class="saved-notice" id="saved-notice">前回の学習データを読み込みました</div>
+  <button id="btn-reset" style="margin-top:1rem;background:none;border:1px solid var(--rd);color:var(--rd);font-family:inherit;font-size:12px;padding:6px 16px;border-radius:6px;cursor:pointer;transition:background .15s,color .15s;"
+    onmouseover="this.style.background='var(--rdb)'" onmouseout="this.style.background='none'">
+    🗑️ 学習データをリセット
+  </button>
 </div>
 
 <!-- クイズ画面 -->
@@ -537,6 +541,21 @@ function bindEvents() {
   document.getElementById('res-all-btn').addEventListener('click', function(){ startQuiz('all'); });
   document.getElementById('res-home-btn').addEventListener('click', function(){
     show('start-screen'); updateStats();
+  });
+  document.getElementById('btn-reset').addEventListener('click', function() {
+    if (!confirm('学習データ（回答済み・正解・不正解・進捗）をすべてリセットします。よろしいですか？')) return;
+    try {
+      localStorage.removeItem('kq');
+      localStorage.removeItem('kq_session');
+    } catch(e) {}
+    _store = {};
+    S = { mode: null, queue: [], cur: 0, ok: 0, total: 0, wrong: new Set(), done: false };
+    document.getElementById('btn-resume').style.display = 'none';
+    document.getElementById('btn-retry').style.display  = 'none';
+    document.getElementById('stats-grid').style.display = 'none';
+    document.getElementById('saved-notice').style.display = 'none';
+    updateStats();
+    alert('リセットしました。');
   });
 }
 
