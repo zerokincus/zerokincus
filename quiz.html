@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>kintone カスタマイズスペシャリスト 練習問題</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0d1117;--sf:#161b22;--sf2:#1c2330;--br:#30363d;
+  --ac:#388bfd;--ach:#58a6ff;--tx:#e6edf3;--txm:#7d8590;--txd:#484f58;
+  --gr:#3fb950;--grb:#0d2010;--grbo:#238636;
+  --rd:#f85149;--rdb:#1c0a0a;--rdbo:#6e1a1a;--r:8px;--rs:4px;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Noto Sans JP',sans-serif;background:var(--bg);color:var(--tx);min-height:100vh;line-height:1.7;font-size:15px;}
+.screen{display:none;}
+.screen.active{display:flex;}
+
+/* ── スタート画面 ── */
+#start-screen{flex-direction:column;align-items:center;justify-content:center;min-height:100vh;padding:40px 20px;text-align:center;}
+.logo-badge{display:inline-block;background:linear-gradient(135deg,#1f4b8e,#388bfd);color:#fff;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:6px 16px;border-radius:20px;margin-bottom:20px;}
+.logo-title{font-size:clamp(20px,5vw,32px);font-weight:700;line-height:1.4;margin-bottom:8px;}
+.logo-title span{color:var(--ac);}
+.logo-sub{font-size:14px;color:var(--txm);margin-bottom:32px;}
+.start-card{background:var(--sf);border:1px solid var(--br);border-radius:12px;padding:28px;width:100%;max-width:480px;margin-bottom:20px;}
+.start-card h2{font-size:12px;color:var(--txm);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:14px;font-weight:500;}
+.mode-buttons{display:flex;flex-direction:column;gap:8px;}
+.mode-btn{display:flex;align-items:center;gap:14px;padding:14px 16px;border:1px solid var(--br);border-radius:var(--r);background:var(--sf2);color:var(--tx);cursor:pointer;text-align:left;transition:all .15s;font-size:14px;font-family:inherit;width:100%;}
+.mode-btn:hover:not(:disabled){border-color:var(--ac);background:rgba(56,139,253,.08);}
+.mode-btn:disabled{opacity:.4;cursor:not-allowed;}
+.mode-btn .icon{font-size:20px;flex-shrink:0;}
+.mode-btn .lb{font-weight:700;font-size:15px;display:block;}
+.mode-btn .ds{font-size:12px;color:var(--txm);display:block;margin-top:2px;}
+.stats-grid{display:none;grid-template-columns:repeat(3,1fr);gap:12px;max-width:480px;width:100%;}
+.stat-box{background:var(--sf);border:1px solid var(--br);border-radius:var(--r);padding:14px 10px;text-align:center;}
+.stat-num{font-size:26px;font-weight:700;color:var(--ac);line-height:1;margin-bottom:4px;}
+.stat-label{font-size:11px;color:var(--txm);}
+.saved-notice{font-size:12px;color:var(--txd);margin-top:10px;display:none;}
+
+/* ローディング */
+#loading-screen{flex-direction:column;align-items:center;justify-content:center;min-height:100vh;gap:16px;}
+.spinner{width:40px;height:40px;border:3px solid var(--br);border-top-color:var(--ac);border-radius:50%;animation:spin .8s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg)}}
+.loading-text{font-size:14px;color:var(--txm);}
+#error-screen{flex-direction:column;align-items:center;justify-content:center;min-height:100vh;gap:16px;text-align:center;padding:20px;}
+.error-icon{font-size:48px;}
+.error-msg{font-size:16px;color:var(--rd);}
+.error-sub{font-size:13px;color:var(--txm);max-width:400px;line-height:1.7;}
+
+/* ── クイズ画面 ── */
+#quiz-screen{flex-direction:column;max-width:800px;margin:0 auto;width:100%;padding:16px 16px 60px;}
+.quiz-header{display:flex;align-items:center;justify-content:space-between;padding:12px 0 18px;border-bottom:1px solid var(--br);margin-bottom:22px;gap:10px;}
+#back-btn{background:none;border:1px solid var(--br);color:var(--txm);padding:6px 12px;border-radius:var(--rs);cursor:pointer;font-size:13px;font-family:inherit;transition:all .15s;white-space:nowrap;}
+#back-btn:hover{border-color:var(--txm);color:var(--tx);}
+#progress-label{font-size:13px;color:var(--txm);white-space:nowrap;}
+.pbar-wrap{flex:1;height:4px;background:var(--sf2);border-radius:2px;overflow:hidden;max-width:180px;}
+#pbar-fill{height:100%;background:linear-gradient(90deg,#388bfd,#58a6ff);border-radius:2px;transition:width .3s;}
+#score-badge{font-size:13px;color:var(--gr);white-space:nowrap;}
+.question-card{background:var(--sf);border:1px solid var(--br);border-radius:12px;padding:22px;margin-bottom:12px;animation:fi .2s ease;}
+@keyframes fi{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.q-num-label{font-size:11px;font-weight:700;color:var(--ac);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:10px;}
+.q-text{font-size:15px;line-height:1.75;}
+.q-text code,.c-content code{font-family:'JetBrains Mono',monospace;font-size:12.5px;background:var(--sf2);border:1px solid var(--br);border-radius:3px;padding:1px 5px;color:#79c0ff;}
+.q-text pre,.c-content pre{background:var(--sf2);border:1px solid var(--br);border-radius:var(--r);padding:12px 14px;font-family:'JetBrains Mono',monospace;font-size:12px;line-height:1.6;overflow-x:auto;margin:8px 0 4px;}
+.q-text pre code,.c-content pre code{background:none;border:none;padding:0;color:#e6edf3;font-size:inherit;}
+.hint-bar{font-size:12px;color:var(--txd);margin-bottom:8px;}
+.choices-area{display:flex;flex-direction:column;gap:8px;}
+.c-item{display:flex;align-items:flex-start;gap:12px;padding:12px 16px;border:1px solid var(--br);border-radius:var(--r);cursor:pointer;transition:all .15s;background:var(--sf2);user-select:none;}
+.c-item:hover:not(.locked){border-color:var(--ac);background:rgba(56,139,253,.06);}
+.c-item.sel{border-color:var(--ac);background:rgba(56,139,253,.1);}
+.c-item.correct{border-color:var(--grbo);background:var(--grb);}
+.c-item.wrong{border-color:var(--rdbo);background:var(--rdb);}
+.c-item.missed{border-color:var(--grbo);background:var(--grb);opacity:.75;}
+.c-check{width:20px;height:20px;border:1.5px solid var(--br);border-radius:4px;flex-shrink:0;display:flex;align-items:center;justify-content:center;margin-top:1px;font-size:13px;transition:all .15s;font-weight:700;}
+.c-item.sel .c-check{background:var(--ac);border-color:var(--ac);color:#fff;}
+.c-item.correct .c-check{background:var(--gr);border-color:var(--gr);color:#fff;}
+.c-item.wrong .c-check{background:var(--rd);border-color:var(--rd);color:#fff;}
+.c-item.missed .c-check{background:var(--gr);border-color:var(--gr);color:#fff;}
+.c-content{font-size:14px;line-height:1.65;flex:1;}
+.action-area{margin-top:16px;display:flex;gap:10px;justify-content:flex-end;}
+.fb-box{background:var(--sf);border:1px solid var(--br);border-radius:12px;padding:20px;margin-top:12px;animation:sd .25s ease;}
+@keyframes sd{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
+.fb-header{display:flex;align-items:center;gap:10px;margin-bottom:12px;}
+.fb-icon{font-size:22px;}
+.fb-title{font-size:18px;font-weight:700;}
+.fb-box.ok .fb-title{color:var(--gr);}
+.fb-box.ng .fb-title{color:var(--rd);}
+.ans-info{font-size:13px;color:var(--txm);margin-bottom:12px;padding:9px 13px;background:var(--sf2);border-radius:var(--rs);border-left:3px solid var(--ac);}
+.expl-text{font-size:13.5px;color:#c9d1d9;line-height:1.75;}
+.expl-text p{margin-bottom:8px;}
+.expl-text p:last-child{margin:0;}
+.expl-text code{font-family:'JetBrains Mono',monospace;font-size:12px;background:var(--sf2);border:1px solid var(--br);border-radius:3px;padding:1px 5px;color:#79c0ff;}
+.btn-p{background:var(--ac);color:#fff;border:none;border-radius:var(--r);padding:11px 24px;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit;transition:all .15s;}
+.btn-p:hover{background:var(--ach);}
+.btn-p:disabled{opacity:.4;cursor:not-allowed;}
+.btn-s{background:none;color:var(--txm);border:1px solid var(--br);border-radius:var(--r);padding:11px 16px;font-size:14px;cursor:pointer;font-family:inherit;transition:all .15s;}
+.btn-s:hover{border-color:var(--txm);color:var(--tx);}
+
+/* ── 結果画面 ── */
+#result-screen{flex-direction:column;align-items:center;max-width:680px;margin:0 auto;width:100%;padding:40px 16px 60px;text-align:center;}
+.sc-wrap{position:relative;width:140px;height:140px;margin:0 auto 18px;}
+.sc-wrap svg{transform:rotate(-90deg);}
+.sc-inside{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;}
+.sc-big{font-size:32px;font-weight:700;line-height:1;}
+.sc-den{font-size:13px;color:var(--txm);}
+.res-msg{font-size:20px;font-weight:700;margin-bottom:6px;}
+.res-sub{font-size:14px;color:var(--txm);margin-bottom:28px;}
+.res-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:24px;width:100%;}
+.res-stat{background:var(--sf);border:1px solid var(--br);border-radius:var(--r);padding:14px;}
+.res-stat .n{font-size:24px;font-weight:700;line-height:1;margin-bottom:4px;}
+.res-stat .l{font-size:11px;color:var(--txm);}
+.res-actions{display:flex;flex-direction:column;gap:10px;max-width:300px;width:100%;margin-bottom:32px;}
+.res-actions .btn-p,.res-actions .btn-s{width:100%;text-align:center;}
+.miss-sec{text-align:left;width:100%;}
+.miss-sec h3{font-size:12px;color:var(--txm);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;}
+.miss-list{display:flex;flex-wrap:wrap;gap:6px;}
+.miss-tag{font-size:12px;background:var(--sf2);border:1px solid var(--rdbo);color:var(--rd);border-radius:var(--rs);padding:3px 10px;}
+::-webkit-scrollbar{width:6px;height:6px;}
+::-webkit-scrollbar-track{background:transparent;}
+::-webkit-scrollbar-thumb{background:var(--br);border-radius:3px;}
+</style>
+</head>
+<body>
+
+<!-- ローディング画面 -->
+<div id="loading-screen" class="screen active">
+  <div class="spinner"></div>
+  <div class="loading-text">問題データを読み込み中...</div>
+</div>
+
+<!-- エラー画面 -->
+<div id="error-screen" class="screen">
+  <div class="error-icon">⚠️</div>
+  <div class="error-msg">問題データの読み込みに失敗しました</div>
+  <div class="error-sub" id="error-detail"></div>
+</div>
+
+<!-- スタート画面 -->
+<div id="start-screen" class="screen">
+  <div class="logo-badge">kintone 認定試験対策</div>
+  <div class="logo-title">カスタマイズスペシャリスト<br><span>練習問題集</span></div>
+  <div class="logo-sub" id="logo-sub">読み込み中...</div>
+  <div class="start-card">
+    <h2>出題モードを選択</h2>
+    <div class="mode-buttons">
+      <button class="mode-btn" id="btn-resume" style="display:none">
+        <span class="icon">▶️</span>
+        <span><span class="lb">続きから再開</span><span class="ds" id="resume-desc"></span></span>
+      </button>
+      <button class="mode-btn" id="btn-all">
+        <span class="icon">📚</span>
+        <span><span class="lb">全問出題</span><span class="ds">問1〜問157 を順番に</span></span>
+      </button>
+      <button class="mode-btn" id="btn-random">
+        <span class="icon">🔀</span>
+        <span><span class="lb">ランダム出題</span><span class="ds">全157問をシャッフル</span></span>
+      </button>
+      <button class="mode-btn" id="btn-retry" style="display:none">
+        <span class="icon">🔁</span>
+        <span><span class="lb">間違えた問題のみ</span><span class="ds" id="retry-desc"></span></span>
+      </button>
+    </div>
+  </div>
+  <div class="stats-grid" id="stats-grid">
+    <div class="stat-box"><div class="stat-num" id="stat-done">0</div><div class="stat-label">回答済み</div></div>
+    <div class="stat-box"><div class="stat-num" id="stat-correct" style="color:var(--gr)">0</div><div class="stat-label">正解</div></div>
+    <div class="stat-box"><div class="stat-num" id="stat-wrong" style="color:var(--rd)">0</div><div class="stat-label">不正解</div></div>
+  </div>
+  <div class="saved-notice" id="saved-notice">前回の学習データを読み込みました</div>
+</div>
+
+<!-- クイズ画面 -->
+<div id="quiz-screen" class="screen">
+  <div class="quiz-header">
+    <button id="back-btn">← ホーム</button>
+    <span id="progress-label">問1 / 157</span>
+    <div class="pbar-wrap"><div id="pbar-fill" style="width:0%"></div></div>
+    <span id="score-badge">✓ 0 / 0</span>
+  </div>
+  <div id="question-area"></div>
+</div>
+
+<!-- 結果画面 -->
+<div id="result-screen" class="screen">
+  <div class="sc-wrap">
+    <svg width="140" height="140" viewBox="0 0 140 140">
+      <circle cx="70" cy="70" r="58" fill="none" stroke="#1c2330" stroke-width="10"/>
+      <circle id="sc-circle" cx="70" cy="70" r="58" fill="none" stroke="#388bfd" stroke-width="10"
+        stroke-linecap="round" stroke-dasharray="364" stroke-dashoffset="364"/>
+    </svg>
+    <div class="sc-inside">
+      <div class="sc-big" id="res-score-num">0</div>
+      <div class="sc-den" id="res-score-den">/ 0問</div>
+    </div>
+  </div>
+  <div class="res-msg" id="res-msg">お疲れ様でした！</div>
+  <div class="res-sub" id="res-sub"></div>
+  <div class="res-stats">
+    <div class="res-stat"><div class="n" id="res-total">0</div><div class="l">出題数</div></div>
+    <div class="res-stat"><div class="n" id="res-ok" style="color:var(--gr)">0</div><div class="l">正解</div></div>
+    <div class="res-stat"><div class="n" id="res-ng" style="color:var(--rd)">0</div><div class="l">不正解</div></div>
+  </div>
+  <div class="res-actions">
+    <button class="btn-p" id="res-retry-btn">間違えた問題を再挑戦</button>
+    <button class="btn-s" id="res-all-btn">全問をもう一度</button>
+    <button class="btn-s" id="res-home-btn">ホームに戻る</button>
+  </div>
+  <div class="miss-sec" id="miss-sec" style="display:none">
+    <h3>不正解だった問題</h3>
+    <div class="miss-list" id="miss-list"></div>
+  </div>
+</div>
+
+<script>
+(function () {
+'use strict';
+
+// ================================================================
+// 問題データ（questions.jsonから fetch で取得）
+// ================================================================
+var QUESTIONS = [];
+
+// ================================================================
+// ストレージ
+// ================================================================
+var _store = {};
+function recGet() {
+  try { return JSON.parse(localStorage.getItem('kq') || '{}'); } catch(e) { return _store; }
+}
+function recSet(d) {
+  try { localStorage.setItem('kq', JSON.stringify(d)); } catch(e) { _store = d; }
+}
+function recordAnswer(idx, ok) {
+  var r = recGet();
+  if (!r[idx]) r[idx] = {c:0, w:0};
+  if (ok) r[idx].c++; else r[idx].w++;
+  recSet(r);
+}
+function getWrong() {
+  var r = recGet();
+  return QUESTIONS.map(function(_, i){ return i; })
+    .filter(function(i){ return r[i] && r[i].w > 0; });
+}
+
+// セッション保存・復元
+function saveSession() {
+  try {
+    var wrongArr = [];
+    S.wrong.forEach(function(i){ wrongArr.push(i); });
+    localStorage.setItem('kq_session', JSON.stringify({
+      mode: S.mode, queue: S.queue, cur: S.cur,
+      ok: S.ok, total: S.total, wrong: wrongArr
+    }));
+  } catch(e) {}
+}
+function clearSession() {
+  try { localStorage.removeItem('kq_session'); } catch(e) {}
+}
+function loadSession() {
+  try { return JSON.parse(localStorage.getItem('kq_session') || 'null'); } catch(e) { return null; }
+}
+
+// ================================================================
+// 状態
+// ================================================================
+var S = { mode:'all', queue:[], cur:0, done:false, ok:0, total:0, wrong:new Set() };
+
+// ================================================================
+// 画面切替
+// ================================================================
+var SCREENS = ['loading-screen','error-screen','start-screen','quiz-screen','result-screen'];
+function show(id) {
+  SCREENS.forEach(function(n) {
+    var el = document.getElementById(n);
+    el.classList.remove('active');
+    el.style.display = 'none';
+  });
+  var t = document.getElementById(id);
+  t.style.display = 'flex';
+  t.classList.add('active');
+}
+
+// ================================================================
+// スタート統計
+// ================================================================
+function updateStats() {
+  // 続きがあれば表示
+  var sess = loadSession();
+  if (sess && sess.queue && sess.cur < sess.queue.length) {
+    var modeLabel = {all:'全問順番', random:'ランダム', retry:'間違い問題'}[sess.mode] || sess.mode;
+    var remaining = sess.queue.length - sess.cur;
+    document.getElementById('resume-desc').textContent =
+      modeLabel + ' — ' + sess.cur + '問完了、残り' + remaining + '問';
+    document.getElementById('btn-resume').style.display = 'flex';
+  } else {
+    document.getElementById('btn-resume').style.display = 'none';
+  }
+
+  var r = recGet(), keys = Object.keys(r);
+  if (!keys.length) return;
+  var done = 0, ok = 0, ng = 0;
+  keys.forEach(function(k) {
+    var d = r[k];
+    if (d.c + d.w > 0) done++;
+    if (d.c > 0) ok++;
+    if (d.w > 0) ng++;
+  });
+  document.getElementById('stat-done').textContent = done;
+  document.getElementById('stat-correct').textContent = ok;
+  document.getElementById('stat-wrong').textContent = ng;
+  document.getElementById('stats-grid').style.display = 'grid';
+  document.getElementById('saved-notice').style.display = 'block';
+
+  var wl = getWrong();
+  if (wl.length) {
+    document.getElementById('retry-desc').textContent = wl.length + '問を再チャレンジ';
+    document.getElementById('btn-retry').style.display = 'flex';
+  }
+}
+
+// ================================================================
+// 出題
+// ================================================================
+function startQuiz(mode) {
+  clearSession();
+  S.mode = mode; S.cur = 0; S.done = false; S.ok = 0; S.total = 0; S.wrong = new Set();
+  if (mode === 'all') {
+    S.queue = QUESTIONS.map(function(_, i){ return i; });
+  } else if (mode === 'random') {
+    S.queue = QUESTIONS.map(function(_, i){ return i; }).sort(function(){ return Math.random() - .5; });
+  } else {
+    var wl = getWrong();
+    if (!wl.length) { alert('間違えた問題はまだありません'); return; }
+    S.queue = wl.sort(function(){ return Math.random() - .5; });
+  }
+  show('quiz-screen');
+  renderQ();
+}
+
+function resumeQuiz() {
+  var d = loadSession();
+  if (!d) return;
+  S.mode = d.mode; S.queue = d.queue; S.cur = d.cur;
+  S.ok = d.ok; S.total = d.total; S.done = false;
+  S.wrong = new Set(d.wrong || []);
+  show('quiz-screen');
+  renderQ();
+}
+
+// ================================================================
+// 問題描画
+// ================================================================
+function renderQ() {
+  if (S.cur >= S.queue.length) { showResult(); return; }
+  var idx = S.queue[S.cur];
+  var q = QUESTIONS[idx];
+  var pos = S.cur + 1, total = S.queue.length;
+
+  document.getElementById('progress-label').textContent = '問 ' + pos + ' / ' + total;
+  document.getElementById('pbar-fill').style.width = ((pos - 1) / total * 100) + '%';
+  document.getElementById('score-badge').textContent = '✓ ' + S.ok + ' / ' + S.total;
+
+  var ca = q.answer.split(',').map(function(s){ return s.trim(); });
+  var multi = ca.length > 1;
+
+  var choicesHtml = q.choices.map(function(c) {
+    return '<div class="c-item" data-label="' + c.label + '">'
+      + '<div class="c-check"></div>'
+      + '<div class="c-content">' + c.html + '</div>'
+      + '</div>';
+  }).join('');
+
+  var qa = document.getElementById('question-area');
+  qa.innerHTML =
+    '<div class="question-card">'
+    + '<div class="q-num-label">' + q.num + '</div>'
+    + '<div class="q-text">' + q.body + '</div>'
+    + '</div>'
+    + '<div class="hint-bar">' + (multi ? '複数選択（正しいものをすべて選んでください）' : '1つ選択') + '</div>'
+    + '<div class="choices-area">' + choicesHtml + '</div>'
+    + '<div class="action-area">'
+    + '<button class="btn-s" id="skip-btn">スキップ</button>'
+    + '<button class="btn-p" id="submit-btn" disabled>解答する</button>'
+    + '</div>'
+    + '<div id="feedback-area"></div>';
+
+  S.done = false;
+
+  qa.querySelectorAll('.c-item').forEach(function(el) {
+    el.addEventListener('click', function(){ onChoiceClick(el, multi); });
+  });
+  document.getElementById('skip-btn').addEventListener('click', function(){ S.cur++; renderQ(); });
+  document.getElementById('submit-btn').addEventListener('click', submitAnswer);
+}
+
+function onChoiceClick(el, multi) {
+  if (S.done) return;
+  var area = document.getElementById('question-area');
+  if (multi) {
+    el.classList.toggle('sel');
+    el.querySelector('.c-check').textContent = el.classList.contains('sel') ? '✓' : '';
+  } else {
+    area.querySelectorAll('.c-item').forEach(function(i){
+      i.classList.remove('sel');
+      i.querySelector('.c-check').textContent = '';
+    });
+    el.classList.add('sel');
+    el.querySelector('.c-check').textContent = '●';
+  }
+  document.getElementById('submit-btn').disabled =
+    area.querySelectorAll('.c-item.sel').length === 0;
+}
+
+function submitAnswer() {
+  if (S.done) return;
+  S.done = true;
+  var idx = S.queue[S.cur];
+  var q = QUESTIONS[idx];
+  var ca = q.answer.split(',').map(function(s){ return s.trim(); });
+  var sel = [];
+  document.querySelectorAll('.c-item.sel').forEach(function(el){ sel.push(el.dataset.label); });
+  var ok = sel.length === ca.length && ca.every(function(l){ return sel.indexOf(l) >= 0; });
+
+  S.total++;
+  if (ok) S.ok++; else S.wrong.add(idx);
+  recordAnswer(idx, ok);
+
+  document.querySelectorAll('.c-item').forEach(function(el) {
+    el.classList.add('locked');
+    var lbl = el.dataset.label;
+    var right = ca.indexOf(lbl) >= 0;
+    var was = el.classList.contains('sel');
+    if (right && was)  el.classList.add('correct');
+    else if (!right && was) el.classList.add('wrong');
+    else if (right && !was) el.classList.add('missed');
+    if (right) el.querySelector('.c-check').textContent = '✓';
+    else if (was) el.querySelector('.c-check').textContent = '✗';
+  });
+
+  document.getElementById('submit-btn').style.display = 'none';
+
+  var explHtml = q.explanations.map(function(e){ return '<p>' + e + '</p>'; }).join('');
+  var fb = document.createElement('div');
+  fb.className = 'fb-box ' + (ok ? 'ok' : 'ng');
+  fb.innerHTML =
+    '<div class="fb-header">'
+    + '<span class="fb-icon">' + (ok ? '✅' : '❌') + '</span>'
+    + '<span class="fb-title">' + (ok ? '正解！' : '不正解') + '</span>'
+    + '</div>'
+    + '<div class="ans-info">【正解】 ' + q.answer
+    + (ok ? '' : '　│　あなたの解答: ' + (sel.join(', ') || '(なし)'))
+    + '</div>'
+    + (explHtml ? '<div class="expl-text">' + explHtml + '</div>' : '')
+    + '<div class="action-area">'
+    + '<button class="btn-p" id="next-btn">'
+    + (S.cur + 1 < S.queue.length ? '次の問題 →' : '結果を見る')
+    + '</button></div>';
+
+  document.getElementById('feedback-area').appendChild(fb);
+  document.getElementById('next-btn').addEventListener('click', function() {
+    S.cur++;
+    saveSession();
+    renderQ();
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  });
+  fb.scrollIntoView({behavior: 'smooth', block: 'nearest'});
+}
+
+// ================================================================
+// 結果画面
+// ================================================================
+function showResult() {
+  clearSession();
+  show('result-screen');
+  var t = S.total, ok = S.ok, ng = t - ok;
+  var pct = t > 0 ? Math.round(ok / t * 100) : 0;
+
+  document.getElementById('res-score-num').textContent = ok;
+  document.getElementById('res-score-den').textContent = '/ ' + t + '問';
+  document.getElementById('res-total').textContent = t;
+  document.getElementById('res-ok').textContent = ok;
+  document.getElementById('res-ng').textContent = ng;
+
+  var msg, sub;
+  if (pct >= 90) { msg = '🎉 素晴らしい成績！'; sub = '合格圏内です。自信を持って試験に臨みましょう！'; }
+  else if (pct >= 70) { msg = '👍 よくできました！'; sub = '正解率 ' + pct + '% — あと一息で合格圏内です。'; }
+  else if (pct >= 50) { msg = '📖 もう少しです！'; sub = '正解率 ' + pct + '% — 苦手分野を重点的に復習しましょう。'; }
+  else { msg = '💪 頑張りましょう！'; sub = '正解率 ' + pct + '% — 解説をしっかり読んで再挑戦してください。'; }
+  document.getElementById('res-msg').textContent = msg;
+  document.getElementById('res-sub').textContent = sub;
+
+  var circ = 2 * Math.PI * 58;
+  var el = document.getElementById('sc-circle');
+  el.setAttribute('stroke-dasharray', String(circ));
+  el.setAttribute('stroke-dashoffset', String(circ));
+  setTimeout(function() {
+    el.style.transition = 'stroke-dashoffset 1s ease';
+    el.style.strokeDashoffset = String(circ * (1 - pct / 100));
+  }, 100);
+
+  var missArr = [];
+  S.wrong.forEach(function(i){ missArr.push(i); });
+  missArr.sort(function(a, b){ return a - b; });
+  if (missArr.length) {
+    document.getElementById('miss-sec').style.display = 'block';
+    document.getElementById('miss-list').innerHTML =
+      missArr.map(function(i){ return '<span class="miss-tag">' + QUESTIONS[i].num + '</span>'; }).join('');
+    document.getElementById('res-retry-btn').style.display = '';
+  } else {
+    document.getElementById('miss-sec').style.display = 'none';
+    document.getElementById('res-retry-btn').style.display = 'none';
+  }
+  updateStats();
+}
+
+// ================================================================
+// イベント登録
+// ================================================================
+function bindEvents() {
+  document.getElementById('btn-resume').addEventListener('click', function(){ resumeQuiz(); });
+  document.getElementById('btn-all').addEventListener('click', function(){ startQuiz('all'); });
+  document.getElementById('btn-random').addEventListener('click', function(){ startQuiz('random'); });
+  document.getElementById('btn-retry').addEventListener('click', function(){ startQuiz('retry'); });
+  document.getElementById('back-btn').addEventListener('click', function(){
+    saveSession();
+    show('start-screen');
+    updateStats();
+  });
+  document.getElementById('res-retry-btn').addEventListener('click', function() {
+    var wl = []; S.wrong.forEach(function(i){ wl.push(i); });
+    if (!wl.length) return;
+    S.mode = 'retry'; S.cur = 0; S.done = false; S.ok = 0; S.total = 0; S.wrong = new Set();
+    S.queue = wl.sort(function(){ return Math.random() - .5; });
+    show('quiz-screen'); renderQ();
+  });
+  document.getElementById('res-all-btn').addEventListener('click', function(){ startQuiz('all'); });
+  document.getElementById('res-home-btn').addEventListener('click', function(){
+    show('start-screen'); updateStats();
+  });
+}
+
+// ================================================================
+// 起動 — questions.json を fetch して開始
+// ================================================================
+// index.htmlと同じディレクトリのquestions.jsonを読み込む
+var JSON_PATH = 'questions.json';
+
+fetch(JSON_PATH)
+  .then(function(res) {
+    if (!res.ok) throw new Error('HTTP ' + res.status + ': ' + res.statusText);
+    return res.json();
+  })
+  .then(function(data) {
+    QUESTIONS = data;
+    document.getElementById('logo-sub').textContent =
+      '全' + QUESTIONS.length + '問 ／ 解答後に正解・解説を確認';
+    document.querySelectorAll('.mode-btn').forEach(function(b){ b.disabled = false; });
+    bindEvents();
+    updateStats();
+    show('start-screen');
+  })
+  .catch(function(err) {
+    document.getElementById('error-detail').textContent =
+      '詳細: ' + err.message + '\n\nquestions.json が index.html と同じフォルダにあるか確認してください。'
+      + '\nローカルファイルとして開く場合はWebサーバー経由でアクセスしてください（GitHub Pages上では正常に動作します）。';
+    show('error-screen');
+  });
+
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,4156 @@
+[
+  {
+    "num": "問1",
+    "body": "kintone JavaScript API を使用しグループフィールドを開く方法として正しいものを1つ選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. <code>kintone.app.record.setFieldShown('グループフィールドコード', true);</code>"
+      },
+      {
+        "label": "B",
+        "html": "B. <code>kintone.app.record.setGroupFieldOpen('グループフィールドコード', true);</code>"
+      },
+      {
+        "label": "C",
+        "html": "C. <code>kintone.app.record.setGroupFieldOpen('グループフィールドコード', false);</code>"
+      },
+      {
+        "label": "D",
+        "html": "D. <code>kintone.app.record.setFieldGroup('グループフィールドコード', true);</code>"
+      }
+    ],
+    "answer": "B",
+    "explanations": [
+      "<code>kintone.app.record.setFieldShown()</code> は、フィールドの表示・非表示を制御する API であり、グループフィールドの開閉には使用できない。",
+      "<code>kintone.app.record.setGroupFieldOpen()</code> で <code>false</code> を指定した場合はグループフィールドを閉じる操作となる。",
+      "<code>kintone.app.record.setFieldGroup()</code> という API は存在しない。"
+    ]
+  },
+  {
+    "num": "問2",
+    "body": "フィールドの表示・非表示を切り替えるための関数 <code>setFieldShown()</code> の使用方法として誤っているものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. <code>kintone.app.record.setFieldShown('フィールドコード', true);</code>"
+      },
+      {
+        "label": "B",
+        "html": "B. <code>kintone.app.record.setFieldShown('フィールドコード', false);</code>"
+      },
+      {
+        "label": "C",
+        "html": "C. <code>kintone.app.record.setFieldShown('フィールドコード');</code>"
+      },
+      {
+        "label": "D",
+        "html": "D. <code>kintone.app.record.setFieldShown('フィールドコード', 'false');</code>"
+      }
+    ],
+    "answer": "C, D",
+    "explanations": [
+      "<code>setFieldShown()</code> の引数には、フィールドコードと <code>true</code> または <code>false</code> を指定する必要がある。",
+      "第2引数はシングルクォートで囲んだ文字列ではなく、boolean 型である。"
+    ]
+  },
+  {
+    "num": "問3",
+    "body": "イベントオブジェクトで実行できる操作について正しいものを1つ選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. <code>app.record.detail.show</code> では、フィールドの値を書き換えることができない"
+      },
+      {
+        "label": "B",
+        "html": "B. レコード編集画面のフィールド値変更イベントは、Promise に対応している"
+      },
+      {
+        "label": "C",
+        "html": "C. <code>app.record.create.submit</code> では、ルックアップを自動取得することができる"
+      },
+      {
+        "label": "D",
+        "html": "D. <code>app.record.edit.submit</code> では、ルックアップを自動取得することができる"
+      }
+    ],
+    "answer": "A",
+    "explanations": [
+      "レコード編集画面のフィールド値変更イベントでは、Promise を返して非同期処理を行うことはできない。",
+      "また、レコード追加画面やレコード編集画面で保存するとき、ルックアップを自動取得することはできない。"
+    ]
+  },
+  {
+    "num": "問4",
+    "body": "アプリのカスタマイズが適用される画面として、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. アプリからの通知を開くと表示されるレコード詳細画面"
+      },
+      {
+        "label": "B",
+        "html": "B. ポータルやスペースに貼り付けたアプリ画面"
+      },
+      {
+        "label": "C",
+        "html": "C. アプリのレコード印刷画面"
+      },
+      {
+        "label": "D",
+        "html": "D. アプリのレコード一覧画面"
+      }
+    ],
+    "answer": "A, C, D",
+    "explanations": [
+      "ポータルやスペースに貼り付けたアプリ画面は、アプリ本体の画面ではないため、アプリの JavaScript カスタマイズは適用されない。"
+    ]
+  },
+  {
+    "num": "問5",
+    "body": "レコード編集画面で、フィールドコード「ドロップダウン」を編集不可にするカスタマイズとして正しいものを1つ選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "<span class=\"choice-label\">A.</span><pre><code>kintone.events.on('app.record.create.show', (event) =&gt; {\n    event.record['ドロップダウン'].disabled = true;\n    return event;\n});</code></pre>"
+      },
+      {
+        "label": "B",
+        "html": "<span class=\"choice-label\">B.</span><pre><code>kintone.events.on('app.record.create.show', (event) =&gt; {\n    event.record['ドロップダウン'].disabled = false;\n    return event;\n});</code></pre>"
+      },
+      {
+        "label": "C",
+        "html": "<span class=\"choice-label\">C.</span><pre><code>kintone.events.on('app.record.edit.show', (event) =&gt; {\n    event.record['ドロップダウン'].disabled = true;\n    return event;\n});</code></pre>"
+      },
+      {
+        "label": "D",
+        "html": "<span class=\"choice-label\">D.</span><pre><code>kintone.events.on('app.record.edit.show', (event) =&gt; {\n    event.record['ドロップダウン'].disabled = false;\n    return event;\n});</code></pre>"
+      }
+    ],
+    "answer": "C",
+    "explanations": [
+      "レコード編集画面で編集不可にするには、編集画面の表示イベント <code>app.record.edit.show</code> で <code>disabled = true</code> を設定する。",
+      "<code>disabled</code> プロパティの値が <code>false</code> の場合は編集可能となる。"
+    ]
+  },
+  {
+    "num": "問6",
+    "body": "<code>kintone.app.record.set()</code> について正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. 添付ファイルフィールドでは、レコードの値を書き換えられない"
+      },
+      {
+        "label": "B",
+        "html": "B. <code>kintone.app.record.set()</code> では、フィールドのエラーの指定ができない"
+      },
+      {
+        "label": "C",
+        "html": "C. <code>kintone.events.on()</code> のイベントハンドラー内では実行できない"
+      },
+      {
+        "label": "D",
+        "html": "D. モバイル版のレコード追加画面と編集画面でも <code>kintone.app.record.set()</code> を利用できる"
+      }
+    ],
+    "answer": "A, C",
+    "explanations": [
+      "<code>kintone.app.record.set()</code> では、フィールドのエラーを指定することができる。",
+      "なお、モバイル版では <code>kintone.mobile.app.record.set()</code> を使用する必要がある。"
+    ]
+  },
+  {
+    "num": "問7",
+    "body": "イベントオブジェクトから、テーブルの1行目のフィールドコード「金額」の値を取得する場合、正しいものを1つ選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. record['テーブル'].value[0].value['金額'].value;"
+      },
+      {
+        "label": "B",
+        "html": "B. record['テーブル'].value[1]['金額'].value;"
+      },
+      {
+        "label": "C",
+        "html": "C. record['テーブル'].value[0]['金額'].value;"
+      },
+      {
+        "label": "D",
+        "html": "D. record['テーブル'].value[1].value['金額'].value;"
+      }
+    ],
+    "answer": "A",
+    "explanations": [
+      "テーブルのデータ形式は次のように <code>value</code> を3つ記述する。",
+      "1. テーブル全体の <code>value</code>",
+      "2. 各行の配列 <code>value</code>（各要素は <code>{ id, value }</code> で、ここでの <code>value</code> が行内のフィールドデータ群）",
+      "3. 各フィールドの <code>value</code>"
+    ]
+  },
+  {
+    "num": "問8",
+    "body": "モバイル版のレコード一覧画面を開いたときに、ログインユーザーのユーザー名を取得しアラート表示するカスタマイズとして正しいものを1つ選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "<span class=\"choice-label\">A.</span><pre><code>kintone.events.on('mobile.app.record.index.show', (event) =&gt; {\n    const userName = kintone.mobile.getLoginUser().name;\n    window.alert(`${userName}さん、ようこそ！`);\n    return event;\n});</code></pre>"
+      },
+      {
+        "label": "B",
+        "html": "<span class=\"choice-label\">B.</span><pre><code>kintone.events.on('mobile.app.record.index.show', (event) =&gt; {\n    const userName = kintone.getLoginUser().name;\n    window.alert(`${userName}さん、ようこそ！`);\n    return event;\n});</code></pre>"
+      },
+      {
+        "label": "C",
+        "html": "<span class=\"choice-label\">C.</span><pre><code>kintone.events.on('mobile.app.record.index.show', (event) =&gt; {\n    const userName = kintone.mobile.getLoginUser().value.name;\n    window.alert(`${userName}さん、ようこそ！`);\n    return event;\n});</code></pre>"
+      },
+      {
+        "label": "D",
+        "html": "<span class=\"choice-label\">D.</span><pre><code>kintone.events.on('mobile.app.record.index.show', (event) =&gt; {\n    const userName = kintone.getLoginUser().value.name;\n    window.alert(`${userName}さん、ようこそ！`);\n    return event;\n});</code></pre>"
+      }
+    ],
+    "answer": "B",
+    "explanations": [
+      "ログインユーザーの情報を取得する関数は、PC版およびモバイル版ともに <code>kintone.getLoginUser()</code> を使用し、<code>kintone.mobile.getLoginUser()</code> という関数は存在しない。",
+      "<code>kintone.getLoginUser()</code> の戻り値は <code>value</code> を介して参照しない。"
+    ]
+  },
+  {
+    "num": "問9",
+    "body": "レコード一覧画面で表示するレコードを絞り込むときに利用する、クエリパラメーターに関する説明として正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. クエリの条件に日本語を含める場合はエンコードが必要である"
+      },
+      {
+        "label": "B",
+        "html": "B. <code>limit</code>、<code>offset</code>、<code>order by</code> を用いて、レコード一覧画面の表示件数やソート順を指定できる"
+      },
+      {
+        "label": "C",
+        "html": "C. <code>kintone.app.getQueryCondition()</code> を使うと現在の絞り込み条件を取得できる"
+      },
+      {
+        "label": "D",
+        "html": "D. クエリ内で文字列を指定する際は、必ずダブルクォートで囲む必要がある"
+      }
+    ],
+    "answer": "A, C, D",
+    "explanations": [
+      "レコード一覧画面の URL に指定するクエリパラメーターでは、<code>limit</code>、<code>offset</code>、<code>order by</code> を指定しても表示結果には反映されない。",
+      "そのため、表示件数やソート順を指定する目的では利用できない。"
+    ]
+  },
+  {
+    "num": "問10",
+    "body": "次のうち、kintone REST API で公式にサポートされている認証方法のうち、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. セッション認証"
+      },
+      {
+        "label": "B",
+        "html": "B. Cookie 認証"
+      },
+      {
+        "label": "C",
+        "html": "C. パスワード認証"
+      },
+      {
+        "label": "D",
+        "html": "D. API トークン認証"
+      }
+    ],
+    "answer": "A, C, D",
+    "explanations": [
+      "kintone REST API の認証方式として、セッション認証／パスワード認証／API トークン認証／OAuth 認証がある。"
+    ]
+  },
+  {
+    "num": "問11",
+    "body": "kintone REST API のパスワード認証の説明のうち、正しいものを1つ選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. <code>kintone.api()</code> では自動的にパスワード認証が使われる"
+      },
+      {
+        "label": "B",
+        "html": "B. ヘッダーには <code>X-Cybozu-Authorization</code> を指定する"
+      },
+      {
+        "label": "C",
+        "html": "C. 値はログイン名とパスワードを連結して平文で渡す"
+      },
+      {
+        "label": "D",
+        "html": "D. ログイン名とパスワードは、Base32 エンコードを使用する"
+      }
+    ],
+    "answer": "B",
+    "explanations": [
+      "<code>kintone.api()</code> では、自動的にセッション認証が使われる。",
+      "また、パスワード認証では、ログイン名とパスワードをコロンで結合した文字列を <code>Base64</code> エンコードする必要がある。"
+    ]
+  },
+  {
+    "num": "問12",
+    "body": "JavaScript カスタマイズでの CSRF トークンについて、誤っているものを1つ選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. kintone からパスワード認証で kintone REST API を実行するときに必要である"
+      },
+      {
+        "label": "B",
+        "html": "B. 有効期間は、最終アクセス時間から 86,400秒(1日)である"
+      },
+      {
+        "label": "C",
+        "html": "C. <code>kintone.api()</code> を使って kintone REST API を実行するときには不要である"
+      },
+      {
+        "label": "D",
+        "html": "D. ブラウザーの Fetch API を使って、レコードを取得するときには不要である"
+      }
+    ],
+    "answer": "A",
+    "explanations": [
+      "CSRF トークンは、セッション認証で REST API を実行する際に、<code>kintone.api()</code> を使わず、Fetch API や <code>XMLHttpRequest</code> などでリクエストを送信する場合に必要となる。",
+      "一方、<code>kintone.api()</code> を用いて REST API を実行する場合は、リクエストに CSRF トークンを明示的に付与する必要はない。"
+    ]
+  },
+  {
+    "num": "問13",
+    "body": "アプリのレコードを取得する API で、「確度」フィールド(フィールドタイプ：ドロップダウン)が「100%」で、「日付」フィールド(フィールドタイプ：日付)が今月のレコードを、「金額」フィールド(フィールドタイプ：数値)の値が大きい順に10件取得したい。<br/>クエリとして正しいものを1つ選びなさい。<br/>なお、各フィールドのフィールド名とフィールドコードは一致している。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. 確度 = \"100%\" and 日付 = THIS_MONTH() order by 金額 desc limit 10"
+      },
+      {
+        "label": "B",
+        "html": "B. 確度 in (\"100%\") and 日付 = THIS_MONTH() order by 金額 desc limit 10"
+      },
+      {
+        "label": "C",
+        "html": "C. 確度 = \"100%\" and 日付 = THIS_MONTH() limit 10 order by 金額 desc"
+      },
+      {
+        "label": "D",
+        "html": "D. 確度 in (\"100%\") and 日付 = THIS_MONTH() limit 10 order by 金額 desc"
+      }
+    ],
+    "answer": "B",
+    "explanations": [
+      "ドロップダウンフィールドで利用可能な演算子は、<code>in</code>、<code>not in</code> である。",
+      "また、クエリのオプションは <code>order by</code> → <code>limit</code> → <code>offset</code> の順で指定する。"
+    ]
+  },
+  {
+    "num": "問14",
+    "body": "イベントオブジェクトによるフィールド書き換えを使った自動採番カスタマイズを適用したアプリで、自動採番フィールドをユーザーに編集させないようにしたい。<br/>対応方法として正しいものを1つ選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. フィールドのアクセス権で編集権限を外し、ユーザーが編集できないようにする"
+      },
+      {
+        "label": "B",
+        "html": "B. JavaScript でフィールドの <code>disabled</code> プロパティに <code>true</code> を設定し、編集を禁止する"
+      },
+      {
+        "label": "C",
+        "html": "C. フィールドの設定で「編集不可」を設定することで編集を禁止する"
+      },
+      {
+        "label": "D",
+        "html": "D. フィールドのアクセス権で閲覧権限を外し、ユーザーが閲覧できないようにする"
+      }
+    ],
+    "answer": "B",
+    "explanations": [
+      "閲覧権限や編集権限が無いと、自動採番結果を書き込むことができない。",
+      "なお、フィールドの設定で「編集不可」にすることはできない。"
+    ]
+  },
+  {
+    "num": "問15",
+    "body": "kintone REST API の制限値について、誤っているものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. REST API の同時アクセス数は、1つのドメインにつき 10 までである"
+      },
+      {
+        "label": "B",
+        "html": "B. 1日に実行できる API リクエスト回数の上限は、スタンダードコースの場合、1アプリあたり 10,000回である"
+      },
+      {
+        "label": "C",
+        "html": "C. リクエストボディのサイズは 50MB までである"
+      },
+      {
+        "label": "D",
+        "html": "D. 一時保存領域にアップロードしたファイルの保存期間は、1日である"
+      }
+    ],
+    "answer": "A, D",
+    "explanations": [
+      "REST API の同時アクセス数は、1つのドメインにつき100までである。",
+      "なお、一時保存領域にアップロードしたファイルは、レコード登録 API やレコード更新 API によってレコードに添付しない限り3日間で削除される。"
+    ]
+  },
+  {
+    "num": "問16",
+    "body": "kintone コマンドラインツール（cli-kintone）について、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. レコードの作成者フィールドを更新できる"
+      },
+      {
+        "label": "B",
+        "html": "B. レコードを削除するときは、API トークン認証が必要である"
+      },
+      {
+        "label": "C",
+        "html": "C. cli-kintone でダウンロードした添付ファイルは、CSV と <code>--attachments-dir</code> を指定してインポートすることで、元とは異なる添付ファイルフィールドに設定できる"
+      },
+      {
+        "label": "D",
+        "html": "D. テーブル内に更新しない行があっても、CSV ファイルにはすべての行データを記載する必要がある"
+      }
+    ],
+    "answer": "B, C, D",
+    "explanations": [
+      "新規レコードを追加するときに作成者を登録できるが、既存レコードの作成者フィールドは更新できない。"
+    ]
+  },
+  {
+    "num": "問17",
+    "body": "複数のレコードを取得する API で一度に取得できる上限件数として正しいものを1つ選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. 100件"
+      },
+      {
+        "label": "B",
+        "html": "B. 500件"
+      },
+      {
+        "label": "C",
+        "html": "C. 1,000件"
+      },
+      {
+        "label": "D",
+        "html": "D. 10,000件"
+      }
+    ],
+    "answer": "B",
+    "explanations": [
+      "複数のレコードを取得する API で一度に取得できる上限は 500件である。"
+    ]
+  },
+  {
+    "num": "問18",
+    "body": "10,000件を超えるレコード数があるアプリの全レコードを取得する方法について、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. <code>/k/v1/records.json</code> で、レコードID を昇順に並び替えて、順に分割取得することができる"
+      },
+      {
+        "label": "B",
+        "html": "B. <code>/k/v1/records.json</code> で、<code>offset</code> と <code>limit</code> を使って取得可能である"
+      },
+      {
+        "label": "C",
+        "html": "C. カーソル API を使って分割取得が可能である"
+      },
+      {
+        "label": "D",
+        "html": "D. kintone REST API Client の <code>getAllRecords()</code> を使って取得可能である"
+      }
+    ],
+    "answer": "A, C, D",
+    "explanations": [
+      "<code>offset</code> の上限値は10,000であるため、10,000件を超えるレコードは取得できない。"
+    ]
+  },
+  {
+    "num": "問19",
+    "body": "kintone Webhook の説明として、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. Excel/CSV ファイルの読み込みを実行したときに通知が送信される"
+      },
+      {
+        "label": "B",
+        "html": "B. レコードの追加／編集／ステータスの変更操作で送信される Webhook の通知には、レコードデータが含まれる"
+      },
+      {
+        "label": "C",
+        "html": "C. レコード削除の操作で送信される Webhook の通知には、削除されたレコードデータが含まれる"
+      },
+      {
+        "label": "D",
+        "html": "D. 実行ログは直近10件まで確認できる"
+      }
+    ],
+    "answer": "B, D",
+    "explanations": [
+      "Excel/CSV のファイル読み込みによるレコード操作を行った場合は、Webhook は送信されない。",
+      "レコード削除の Webhook 通知には、レコードデータは含まれない。"
+    ]
+  },
+  {
+    "num": "問20",
+    "body": "kintone REST API Client を使う利点として正しいものを1つ選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. API 呼び出しを自動的にキャッシュして高速化できる"
+      },
+      {
+        "label": "B",
+        "html": "B. 全件取得などのよく使う処理を簡潔に記述できる"
+      },
+      {
+        "label": "C",
+        "html": "C. パラメーターの HTTP メソッドを省略しても自動判別してくれる"
+      },
+      {
+        "label": "D",
+        "html": "D. kintone のアクセス権設定を無視してデータを取得できる"
+      }
+    ],
+    "answer": "B",
+    "explanations": [
+      "kintone REST API Client に、API 呼び出しをキャッシュする機能はない。",
+      "また、操作ごとに対応するメソッドが定義されており、HTTP メソッドをパラメーターとして指定することはできない。",
+      "なお、kintone REST API Client は、kintone のアクセス権設定が適用される。"
+    ]
+  },
+  {
+    "num": "問21",
+    "body": "テーブルを含むアプリにおいて、レコードを一括で追加・更新する方法について、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. レコード一覧画面の「ファイルから読み込む」機能では、テーブルを含むレコードも一括で追加・更新できる"
+      },
+      {
+        "label": "B",
+        "html": "B. レコード一覧画面の「ファイルから読み込む」機能では、テーブルを含むアプリのレコードは一括で追加・更新できない"
+      },
+      {
+        "label": "C",
+        "html": "C. kintone コマンドラインツールを利用すれば、テーブルを含むアプリでも一括で追加・更新が可能である"
+      },
+      {
+        "label": "D",
+        "html": "D. kintone REST API を利用すれば、テーブルを含むアプリでも一括で追加・更新が可能である"
+      }
+    ],
+    "answer": "A, C, D",
+    "explanations": [
+      "レコード一覧画面の「ファイルから読み込む」では、テーブルを含むアプリの一括で追加・更新が可能である。"
+    ]
+  },
+  {
+    "num": "問22",
+    "body": "複数のレコードを取得する API のリクエストの中で <code>fields</code> 指定について正しいものを1つ選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. テーブル内のフィールドを指定できる"
+      },
+      {
+        "label": "B",
+        "html": "B. リクエストボディでは最大1,000フィールドまで指定できる"
+      },
+      {
+        "label": "C",
+        "html": "C. クエリ文字列で指定できる添字は、0から999までである"
+      },
+      {
+        "label": "D",
+        "html": "D. テーブルフィールドのフィールドコードを指定できない"
+      }
+    ],
+    "answer": "B",
+    "explanations": [
+      "テーブル内のフィールドは指定できない。",
+      "一方、テーブルそのもののフィールドコードは指定することができ、テーブル内のすべてのフィールドが取得される。",
+      "また、クエリ文字列で指定できる添字は、0から99までである。"
+    ]
+  },
+  {
+    "num": "問23",
+    "body": "レコードを追加するときや編集するときの「作成者」「更新者」「作成日時」「更新日時」フィールドについて、正しいものを1つ選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. REST API を用いれば、登録・更新が可能である"
+      },
+      {
+        "label": "B",
+        "html": "B. システム的に記録されるデータなので、登録・更新はできない"
+      },
+      {
+        "label": "C",
+        "html": "C. アプリ管理権限があれば、レコード追加時のみ登録可能である"
+      },
+      {
+        "label": "D",
+        "html": "D. アプリ管理権限があれば、フィールドの登録・更新が可能である"
+      }
+    ],
+    "answer": "C",
+    "explanations": [
+      "アプリ管理権限があれば、ファイル読み込みや REST API を用いて、レコードを追加するときに限り登録が可能である。"
+    ]
+  },
+  {
+    "num": "問24",
+    "body": "User API について、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. ユーザーを取得する API を実行するとき、cybozu.com 共通管理者のアクセス権が必要である"
+      },
+      {
+        "label": "B",
+        "html": "B. ユーザーを取得する API を実行するとき、一度に取得できるユーザーは100件までである"
+      },
+      {
+        "label": "C",
+        "html": "C. kintone のゲストユーザーは取得することができない"
+      },
+      {
+        "label": "D",
+        "html": "D. CSV ファイルでユーザー情報をインポートするとき、ヘッダー（見出し行）を必ずつける"
+      }
+    ],
+    "answer": "B, C",
+    "explanations": [
+      "ユーザーを取得する API の実行自体に、特別な管理権限は定義されていない。",
+      "また、CSV ファイルでユーザー情報をインポートするとき、ヘッダー（見出し行）はつけない仕様である。"
+    ]
+  },
+  {
+    "num": "問25",
+    "body": "kintone のプラグインについて、誤っているものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. 社内専用のプラグインであるため、秘密鍵は不要となり、zip 圧縮して作成してもよい"
+      },
+      {
+        "label": "B",
+        "html": "B. 秘密鍵ファイルは、無くさないよう管理し、2回目以降のパッケージングで使用する"
+      },
+      {
+        "label": "C",
+        "html": "C. 同じ秘密鍵を用いてパッケージングしたプラグインを、kintone に読み込むことでプラグインのアップデートができる"
+      },
+      {
+        "label": "D",
+        "html": "D. マニフェストファイルには、プラグイン設定画面のHTMLが書かれている"
+      }
+    ],
+    "answer": "A, D",
+    "explanations": [
+      "パッケージングではない zip 圧縮を行っただけでは、プラグインとして動作しない。",
+      "マニフェストファイル（manifest.json）には、プラグインで必要な情報やファイルのパス、ファイル名が JSON 形式で記載されている。"
+    ]
+  },
+  {
+    "num": "問26",
+    "body": "プラグイン作成時に、API トークンや他サービスの API キーなどの秘匿する方法について、誤っているものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. JavaScript コード中にコーディングして、設定画面から見えなくする"
+      },
+      {
+        "label": "B",
+        "html": "B. 設定画面で入力させ、<code>kintone.plugin.app.setConfig()</code> を用いてプラグイン設定情報として保存する"
+      },
+      {
+        "label": "C",
+        "html": "C. JavaScript ファイルとは別にファイルを作成し、一緒にパッケージングする"
+      },
+      {
+        "label": "D",
+        "html": "D. 設定画面で入力させ、<code>kintone.plugin.app.setProxyConfig()</code> を用いて、外部 API の実行に必要な情報として保存する"
+      }
+    ],
+    "answer": "A, B, C",
+    "explanations": [
+      "JavaScript コード中へのコーディングは、ユーザーから参照可能になる。",
+      "<code>kintone.plugin.app.setConfig()</code> で保存した情報は、プラグインの設定情報を取得する API で取得可能である。",
+      "JavaScript ファイルとは別にファイルを作成し、一緒にパッケージングする場合、ユーザーから参照可能になる。"
+    ]
+  },
+  {
+    "num": "問27",
+    "body": "ユーザーが入力した文字列 <code>userInput</code> を画面に表示する方法のうち、クロスサイトスクリプティングを防ぐ手段として、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. <code>element.innerHTML = userInput;</code>"
+      },
+      {
+        "label": "B",
+        "html": "B. <code>document.write(userInput);</code>"
+      },
+      {
+        "label": "C",
+        "html": "C. <code>element.innerText = userInput;</code>"
+      },
+      {
+        "label": "D",
+        "html": "D. <code>userInput</code> に含まれる特殊な意味をもつ文字（<code>&lt;</code> <code>&gt;</code> <code>\"</code> など）をエスケープ処理してから表示する"
+      }
+    ],
+    "answer": "C, D",
+    "explanations": [
+      "<code>innerHTML</code> や <code>document.write</code> を使用して HTML を動的に生成する実装に該当するため不適切である。"
+    ]
+  },
+  {
+    "num": "問28",
+    "body": "外部サービスの認証や認可に関する情報の保存先のうち、cybozu developer network が推奨する保存先として、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. kintone JavaScript カスタマイズなどのフロントエンドのプログラムに直接記述して保存する"
+      },
+      {
+        "label": "B",
+        "html": "B. <code>kintone.plugin.app.setProxyConfig()</code> を利用し、kintone プラグインのプロキシに保存する"
+      },
+      {
+        "label": "C",
+        "html": "C. <code>HttpOnly</code> の <code>Cookie</code> に保存する"
+      },
+      {
+        "label": "D",
+        "html": "D. <code>kintone.plugin.app.setConfig()</code> を利用し、kintone プラグインの設定に保存する"
+      }
+    ],
+    "answer": "B, C",
+    "explanations": [
+      "フロントエンドのプログラムに直接記述した場合、一般ユーザーが閲覧できる。",
+      "kintone プラグインの設定に保存した内容は、管理者でなくても <code>kintone.plugin.app.getConfig()</code> を利用し取得できる。"
+    ]
+  },
+  {
+    "num": "問29",
+    "body": "kintone セキュアコーディングガイドラインの方針として、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. 通信に HTTPS を使用する"
+      },
+      {
+        "label": "B",
+        "html": "B. ユーザーを識別する際はログイン名を使用する"
+      },
+      {
+        "label": "C",
+        "html": "C. <code>strict</code> モードを使用する"
+      },
+      {
+        "label": "D",
+        "html": "D. cybozu.com と外部サイトの通信を行う際は、<code>XMLHttpRequest</code> を使用する"
+      }
+    ],
+    "answer": "A, C",
+    "explanations": [
+      "ユーザーを識別する際はログイン名ではなくユーザーIDを使用する。",
+      "<code>XMLHttpRequest</code> を使用した cybozu.com と外部サイトとの通信はクロスドメイン制約により行えない。"
+    ]
+  },
+  {
+    "num": "問30",
+    "body": "kintone JavaScript カスタマイズにおいて、セキュアコーディングガイドラインで示されている注意点として、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. <code>eval()</code> を利用して、文字列として JavaScript コードを記述する"
+      },
+      {
+        "label": "B",
+        "html": "B. <code>kintone.api()</code> で取得した JSON オブジェクトのパースには、<code>JSON.parse()</code> を利用する"
+      },
+      {
+        "label": "C",
+        "html": "C. <code>location.href</code> を書き換える場合は <code>encodeURIComponent()</code> でエンコードする"
+      },
+      {
+        "label": "D",
+        "html": "D. <code>jQuery</code> では <code>text()</code> を使わず <code>html()</code> を利用する"
+      }
+    ],
+    "answer": "B, C",
+    "explanations": [
+      "<code>eval()</code> を利用して文字列をコードとして実行することは避けるべきである。",
+      "<code>jQuery</code> では <code>html()</code> ではなく <code>text()</code> を利用する。"
+    ]
+  },
+  {
+    "num": "問31",
+    "body": "kintone JavaScript カスタマイズでフィールドを指定する際の説明として、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. ステータスはフィールドコードで指定する"
+      },
+      {
+        "label": "B",
+        "html": "B. 作業者はフィールド名で指定する"
+      },
+      {
+        "label": "C",
+        "html": "C. 作成者はフィールド名で指定する"
+      },
+      {
+        "label": "D",
+        "html": "D. 数値フィールドはフィールドコードで指定する"
+      }
+    ],
+    "answer": "B, D",
+    "explanations": [
+      "ステータスはフィールドコードでは指定せず、フィールド名で指定する。",
+      "また、作成者はフィールド名で指定する対象に含まれないためフィールドコードで指定する。"
+    ]
+  },
+  {
+    "num": "問32",
+    "body": "数値フィールドに関する説明として、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. 数値フィールドには、数値の他に符号として <code>+</code> と <code>-</code> を設定できる"
+      },
+      {
+        "label": "B",
+        "html": "B. 数値フィールドに <code>null</code> を設定すると、値は空になる"
+      },
+      {
+        "label": "C",
+        "html": "C. 数値フィールドに <code>\"#INVALID!\"</code> を設定すると、値は更新されない"
+      },
+      {
+        "label": "D",
+        "html": "D. 数値フィールドには、指数表記として <code>e</code> を設定できるが <code>E</code> は設定できない"
+      }
+    ],
+    "answer": "A, B, C",
+    "explanations": [
+      "指数表記では <code>e</code> だけでなく <code>E</code> も使用できる。"
+    ]
+  },
+  {
+    "num": "問33",
+    "body": "レコードIDとレコード番号に関する説明として、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. レコードIDは、レコードに自動的に割り当てられた、他のレコードと重複しない数値である"
+      },
+      {
+        "label": "B",
+        "html": "B. アプリコードを設定していない場合、レコード番号はレコードIDと同じである"
+      },
+      {
+        "label": "C",
+        "html": "C. アプリコードが <code>APPCODE</code> の場合、レコードIDが1のレコードでは、レコード番号は <code>APPCODE-0001</code> になる"
+      },
+      {
+        "label": "D",
+        "html": "D. レコード番号は、レコードに自動的に割り当てられた、他のレコードと重複しない番号である"
+      }
+    ],
+    "answer": "A, B, D",
+    "explanations": [
+      "アプリコードを設定している場合、レコード番号はゼロ埋めされず、<code>APPCODE-1</code> の形式になる。"
+    ]
+  },
+  {
+    "num": "問34",
+    "body": "関連レコード一覧フィールドに関する説明として、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. <code>kintone.app.record.get()</code> を使うと、関連レコード一覧に表示されているレコードの一覧を取得できる"
+      },
+      {
+        "label": "B",
+        "html": "B. 関連レコード一覧に表示される情報を取得したい場合、参照条件に相当するクエリで参照先アプリのレコードを取得する必要がある"
+      },
+      {
+        "label": "C",
+        "html": "C. 関連レコード一覧に行を追加したい場合、参照先アプリにレコードを追加すると結果として表示が変わる"
+      },
+      {
+        "label": "D",
+        "html": "D. 関連レコード一覧の表示される情報を更新したい場合、参照先アプリの当該レコードを更新すると結果として表示が変わる"
+      }
+    ],
+    "answer": "B, C, D",
+    "explanations": [
+      "関連レコード一覧は、参照先アプリのレコードを条件に基づいて表示する仕組みであり、<code>kintone.app.record.get()</code> を利用した情報取得はできない。"
+    ]
+  },
+  {
+    "num": "問35",
+    "body": "kintone JavaScript カスタマイズでテーブルフィールドを扱う際のデータ構造として、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. テーブルフィールドは、各行に行IDを持つ"
+      },
+      {
+        "label": "B",
+        "html": "B. テーブル内の各行は、フィールドコードをキーとするオブジェクトを持つ"
+      },
+      {
+        "label": "C",
+        "html": "C. テーブルフィールド全体は、単一の値として扱われる"
+      },
+      {
+        "label": "D",
+        "html": "D. テーブル内のフィールドは、テーブル外のフィールドと同じ形式で値を持つ"
+      }
+    ],
+    "answer": "A, B, D",
+    "explanations": [
+      "テーブルフィールドは、複数の行を要素として持つ配列として扱われ、単一の値ではない。"
+    ]
+  },
+  {
+    "num": "問36",
+    "body": "テーブルフィールドの行IDに関する説明として、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. 行IDは、テーブル内の各行を一意に識別するための情報である"
+      },
+      {
+        "label": "B",
+        "html": "B. 行IDを確認する方法として、cli-kintone でレコードを書き出す方法がある"
+      },
+      {
+        "label": "C",
+        "html": "C. 行IDは、API でテーブル行を更新する際に使用される"
+      },
+      {
+        "label": "D",
+        "html": "D. 行IDは、フォーム画面上で通常のフィールドとして表示される"
+      }
+    ],
+    "answer": "A, B, C",
+    "explanations": [
+      "行IDは画面上には表示されない。"
+    ]
+  },
+  {
+    "num": "問37",
+    "body": "<code>record</code> オブジェクトにおける、テーブル <code>table</code> 内のチェックボックスフィールド <code>check</code> の値を取得する表記として正しいものを1つ選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. <code>record.table.value[0].value.check.value</code>"
+      },
+      {
+        "label": "B",
+        "html": "B. <code>record.table[0].check</code>"
+      },
+      {
+        "label": "C",
+        "html": "C. <code>record.table.value.check.value</code>"
+      },
+      {
+        "label": "D",
+        "html": "D. <code>record.table.value[0].check.value</code>"
+      }
+    ],
+    "answer": "A",
+    "explanations": [
+      "テーブルフィールドの値は、行の配列と各行のフィールドを <code>value</code> プロパティ配下に持つ構造であるため、その構造に沿わない表記では値を取得できない。"
+    ]
+  },
+  {
+    "num": "問38",
+    "body": "テーブル内の特定行を更新する方法として、正しいものを1つ選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "<span class=\"choice-label\">A.</span><pre><code>record.table.value = [\n  {\n    id: '12345',\n    value: {\n      text: { value: '更新後' }\n    }\n  }\n];</code></pre>"
+      },
+      {
+        "label": "B",
+        "html": "<span class=\"choice-label\">B.</span><pre><code>record.table.value[0].id = '12345';\nrecord.table.value[0].text.value = '更新後';</code></pre>"
+      },
+      {
+        "label": "C",
+        "html": "<span class=\"choice-label\">C.</span><pre><code>record.table.value = {\n  id: '12345',\n  text: '更新後'\n};</code></pre>"
+      },
+      {
+        "label": "D",
+        "html": "<span class=\"choice-label\">D.</span><pre><code>record.table['12345'].text.value = '更新後';</code></pre>"
+      }
+    ],
+    "answer": "A",
+    "explanations": [
+      "テーブルは <code>record.table.value</code> が「行オブジェクトの配列」で、各行は <code>id</code> と <code>value</code> を持つ。",
+      "<code>value</code> の配下に各フィールドが入るため、行やフィールドの参照・更新はこの構造に沿わないと成立しない（例：<code>record.table.value[0].value.text.value</code>）。",
+      "行 ID をキーにして <code>record.table['12345']</code> のように参照することもできない。"
+    ]
+  },
+  {
+    "num": "問39",
+    "body": "フィールドに関する次の説明のうち、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. 選択されていない日付フィールドの値を取得した場合、<code>null</code> が取得される"
+      },
+      {
+        "label": "B",
+        "html": "B. 文字列（1行）フィールドを空に更新したい場合は、<code>\"\"</code> を設定して更新する"
+      },
+      {
+        "label": "C",
+        "html": "C. ユーザー選択フィールドを空に更新したい場合は、<code>[]</code> を設定して更新する"
+      },
+      {
+        "label": "D",
+        "html": "D. ラジオボタンフィールドを空に更新したい場合は、<code>null</code> を設定して更新する"
+      }
+    ],
+    "answer": "A, B, C",
+    "explanations": [
+      "ラジオボタンフィールドは必ずいずれかの選択肢を持つため、<code>null</code> を指定して空に更新することはできない。"
+    ]
+  },
+  {
+    "num": "問40",
+    "body": "kintone JavaScript API の関数について、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. <code>kintone.api()</code> は、kintone REST API のリクエストを送信するために使用される"
+      },
+      {
+        "label": "B",
+        "html": "B. <code>kintone.api.urlForGet()</code> は、クエリ文字列付きの API の URL を取得するために使用される"
+      },
+      {
+        "label": "C",
+        "html": "C. <code>kintone.getRequestToken()</code> は、API トークンを取得するために使用される"
+      },
+      {
+        "label": "D",
+        "html": "D. <code>kintone.api.getConcurrencyLimit()</code> は、kintone REST API の同時接続数の上限値と現在の同時接続数を取得するために使用される"
+      }
+    ],
+    "answer": "A, B, D",
+    "explanations": [
+      "<code>kintone.getRequestToken()</code> は CSRF 対策用のリクエストトークンを取得する関数であり、API トークンを取得する目的の関数ではない。"
+    ]
+  },
+  {
+    "num": "問41",
+    "body": "kintone JavaScript API において、PC版とモバイル版で関数名が同一であるものとして、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. <code>kintone.events.on()</code>"
+      },
+      {
+        "label": "B",
+        "html": "B. <code>kintone.app.record.getId()</code>"
+      },
+      {
+        "label": "C",
+        "html": "C. <code>kintone.app.record.getPermissions()</code>"
+      },
+      {
+        "label": "D",
+        "html": "D. <code>kintone.api()</code>"
+      }
+    ],
+    "answer": "A, C, D",
+    "explanations": [
+      "モバイル版でレコード ID を取得する API は、<code>kintone.mobile.app.record.getId()</code> である。"
+    ]
+  },
+  {
+    "num": "問42",
+    "body": "kintone JavaScript API において定義されている関数名として、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. <code>kintone.api.getConcurrencyLimit()</code>"
+      },
+      {
+        "label": "B",
+        "html": "B. <code>kintone.api.url()</code>"
+      },
+      {
+        "label": "C",
+        "html": "C. <code>kintone.getRequestToken()</code>"
+      },
+      {
+        "label": "D",
+        "html": "D. <code>kintone.getCSRFToken()</code>"
+      }
+    ],
+    "answer": "A, B, C",
+    "explanations": [
+      "CSRF 対策用のトークンを取得する関数は <code>kintone.getRequestToken()</code> であり、<code>kintone.getCSRFToken()</code> という名称の関数は定義されていない。"
+    ]
+  },
+  {
+    "num": "問43",
+    "body": "モバイル版で利用できない関数として、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. <code>kintone.app.showDescription(state)</code>"
+      },
+      {
+        "label": "B",
+        "html": "B. <code>kintone.app.getHeaderMenuSpaceElement()</code>"
+      },
+      {
+        "label": "C",
+        "html": "C. <code>kintone.app.getView()</code>"
+      },
+      {
+        "label": "D",
+        "html": "D. <code>kintone.app.showAppSettingsButton()</code>"
+      }
+    ],
+    "answer": "A, B, D",
+    "explanations": [
+      "<code>kintone.app.getView()</code> は PC版・モバイル版の両方で利用できる。"
+    ]
+  },
+  {
+    "num": "問44",
+    "body": "現在のアプリ ID を取得するために定義されている関数として、正しいものを1つ選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. <code>kintone.app.getId()</code>"
+      },
+      {
+        "label": "B",
+        "html": "B. <code>kintone.app.record.getId()</code>"
+      },
+      {
+        "label": "C",
+        "html": "C. <code>kintone.app.get()</code>"
+      },
+      {
+        "label": "D",
+        "html": "D. <code>kintone.app.getFormFields()</code>"
+      }
+    ],
+    "answer": "A",
+    "explanations": [
+      "<code>kintone.app.get()</code> はアプリ情報を取得する関数であり、<code>kintone.app.getFormFields()</code> はアプリのフィールド情報を一括取得する関数である。",
+      "また、<code>kintone.app.record.getId()</code> はレコード ID を取得する関数である。"
+    ]
+  },
+  {
+    "num": "問45",
+    "body": "外部 API を実行するために使用される関数として、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. <code>kintone.proxy()</code>"
+      },
+      {
+        "label": "B",
+        "html": "B. <code>kintone.proxy.upload()</code>"
+      },
+      {
+        "label": "C",
+        "html": "C. <code>kintone.api()</code>"
+      },
+      {
+        "label": "D",
+        "html": "D. <code>kintone.api.urlForGet()</code>"
+      }
+    ],
+    "answer": "A, B",
+    "explanations": [
+      "<code>kintone.api()</code> は kintone REST API リクエストを送信する関数であり、<code>kintone.api.urlForGet()</code> はクエリ文字列付きの API の URL を取得する関数である。"
+    ]
+  },
+  {
+    "num": "問46",
+    "body": "イベントハンドラーの登録・削除に利用できると定義されている関数名として、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. <code>kintone.event.on()</code>"
+      },
+      {
+        "label": "B",
+        "html": "B. <code>kintone.events.off()</code>"
+      },
+      {
+        "label": "C",
+        "html": "C. <code>kintone.events.on()</code>"
+      },
+      {
+        "label": "D",
+        "html": "D. <code>kintone.events.remove()</code>"
+      }
+    ],
+    "answer": "B, C",
+    "explanations": [
+      "<code>kintone.event.on()</code> や <code>kintone.events.remove()</code> といった名称の関数は定義されていない。"
+    ]
+  },
+  {
+    "num": "問47",
+    "body": "<code>Cybozu CDN</code> の説明のうち、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. <code>Cybozu CDN</code> で提供されている <code>Chart.js</code> を利用すると、レーダーチャートを作成できる"
+      },
+      {
+        "label": "B",
+        "html": "B. <code>Cybozu CDN</code> では、<code>JavaScript</code> および <code>CSS</code> などのコンテンツが提供されている"
+      },
+      {
+        "label": "C",
+        "html": "C. <code>JSEdit for kintone</code> は <code>kintone REST API</code> を <code>JavaScript</code> で扱うときに必要な処理をまとめたライブラリである"
+      },
+      {
+        "label": "D",
+        "html": "D. <code>Cybozu CDN</code> で提供されている <code>SweetAlert2</code> を利用すると、ブラウザ標準とは異なるメッセージ表示を <code>kintone</code> 上で行うことができる"
+      }
+    ],
+    "answer": "A, B, D",
+    "explanations": [
+      "<code>JSEdit for kintone</code> は <code>kintone</code> 上で <code>JavaScript</code> や <code>CSS</code> を編集できるプラグインであり、<code>kintone REST API</code> を <code>JavaScript</code> で扱うときに必要な処理をまとめたライブラリは <code>kintone REST API Client</code> である。"
+    ]
+  },
+  {
+    "num": "問48",
+    "body": "<code>kintone.events.off(type, handler)</code> について、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. <code>handler</code> を省略した場合、<code>type</code> で指定したタイプのすべてのイベントハンドラーが削除される"
+      },
+      {
+        "label": "B",
+        "html": "B. <code>type</code> も <code>handler</code> も省略した場合、すべてのタイプのすべてのイベントハンドラーが削除される"
+      },
+      {
+        "label": "C",
+        "html": "C. イベントハンドラーの削除が行われた場合は <code>true</code> が返る"
+      },
+      {
+        "label": "D",
+        "html": "D. 戻り値として、削除対象のイベントハンドラーがひとつも見つからなかった場合は <code>true</code> が返る"
+      }
+    ],
+    "answer": "A, B, C",
+    "explanations": [
+      "削除対象がひとつも見つからなかった場合は <code>false</code> が返る。"
+    ]
+  },
+  {
+    "num": "問49",
+    "body": "<code>kintone.events.on(type, handler)</code> について、誤っているものを1つ選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. <code>type</code> には、文字列を指定できる"
+      },
+      {
+        "label": "B",
+        "html": "B. 複数のイベントに同じイベントハンドラーを登録したい場合、<code>type</code> にイベントタイプの配列を指定できる"
+      },
+      {
+        "label": "C",
+        "html": "C. <code>kintone.events.on()</code> の戻り値はない"
+      },
+      {
+        "label": "D",
+        "html": "D. 同じイベントタイプにイベントハンドラーを登録すると、既存のイベントハンドラーは上書きされる"
+      }
+    ],
+    "answer": "D",
+    "explanations": [
+      "同じイベントタイプにイベントハンドラーを登録した場合でも、既存のイベントハンドラーが上書きされることはなく、追加されていく。"
+    ]
+  },
+  {
+    "num": "問50",
+    "body": "次の説明のうち、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. kintone にはあらかじめ定義されたイベントがあり、それらのイベントにイベントハンドラーを登録するために <code>kintone.events.on()</code> を利用する"
+      },
+      {
+        "label": "B",
+        "html": "B. kintone のイベントに登録したイベントハンドラーの引数として、イベント発生時の情報が格納されたイベントオブジェクトを受け取ることができる"
+      },
+      {
+        "label": "C",
+        "html": "C. イベントハンドラー内でイベントオブジェクトを加工し、戻り値として返すことで、加工内容を kintone に反映できる"
+      },
+      {
+        "label": "D",
+        "html": "D. イベントオブジェクトを取得・操作しても、ルックアップのコピー先のフィールドの値を自動でクリアすることはできない"
+      }
+    ],
+    "answer": "A, B, C",
+    "explanations": [
+      "イベントオブジェクトを取得・操作することで、ルックアップのコピー先のフィールドの値を自動でクリアすることができる。"
+    ]
+  },
+  {
+    "num": "問51",
+    "body": "次の説明のうち、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. kintone の画面表示イベントが、ブラウザーの <code>DOMContentLoaded</code> イベントより先に発生することはない"
+      },
+      {
+        "label": "B",
+        "html": "B. イベントハンドラーの登録よりもイベントが先に発生した場合、イベントハンドラーは呼び出されない"
+      },
+      {
+        "label": "C",
+        "html": "C. <code>load</code> のイベントハンドラー内で、<code>app.record.create.show</code> などのイベントハンドラーの登録はトラブルの原因となることがある"
+      },
+      {
+        "label": "D",
+        "html": "D. <code>kintone.events.on()</code> によるイベントハンドラーの登録が、カスタマイズ JavaScript が読み込まれた時に同期的に実行されていない場合、警告がブラウザーの開発者コンソールに表示されることがある"
+      }
+    ],
+    "answer": "B, C, D",
+    "explanations": [
+      "kintone の画面表示イベントは、ブラウザーの <code>DOMContentLoaded</code> イベントより先に発生することがある。"
+    ]
+  },
+  {
+    "num": "問52",
+    "body": "レコード一覧画面のイベントに関する次の説明のうち、正しいものを1つ選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. <code>app.record.index.edit.submit.success</code> では、保存処理を中断することができる"
+      },
+      {
+        "label": "B",
+        "html": "B. <code>app.record.index.edit.show</code> は、インライン編集の保存が完了した後に発生する"
+      },
+      {
+        "label": "C",
+        "html": "C. <code>app.record.index.edit.change.フィールドコード</code> は、指定したフィールドの値が変更されたときに発生する"
+      },
+      {
+        "label": "D",
+        "html": "D. <code>app.record.index.delete.submit</code> は、レコードの削除処理が完了した後に発生する"
+      }
+    ],
+    "answer": "C",
+    "explanations": [
+      "<code>app.record.index.edit.submit.success</code> は、保存処理が完了した後に発生するイベントであり、保存処理を中断する用途では使用できない。",
+      "<code>app.record.index.edit.show</code> は、インライン編集を開始した直後に発生するイベントであり、保存完了後に発生するものではない。",
+      "また、<code>app.record.index.delete.submit</code> は、レコード削除が実行される前に発生するイベントであり、削除完了後に発生するイベントではない。"
+    ]
+  },
+  {
+    "num": "問53",
+    "body": "レコード詳細画面のイベントに関する次の説明のうち、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. <code>app.record.detail.delete.submit</code> では、イベントオブジェクトを return することで削除処理を継続させるかどうかを制御できる"
+      },
+      {
+        "label": "B",
+        "html": "B. 通知を開いて表示されたレコード詳細画面では、<code>app.record.detail.show</code> が発生しない"
+      },
+      {
+        "label": "C",
+        "html": "C. <code>app.record.detail.process.proceed</code> では、イベントオブジェクトを return することでステータス変更処理を継続させるかどうかを制御できる"
+      },
+      {
+        "label": "D",
+        "html": "D. <code>app.record.detail.process.proceed</code> は、プロセス管理が有効になっていないアプリでも発生する"
+      }
+    ],
+    "answer": "A, C",
+    "explanations": [
+      "<code>app.record.detail.show</code> は、通知を開いて表示されたレコード詳細画面でも発生する。",
+      "また、プロセス管理が有効になっていないアプリではステータス変更自体が存在しないため、<code>app.record.detail.process.proceed</code> は発生しない。"
+    ]
+  },
+  {
+    "num": "問54",
+    "body": "レコード追加画面とレコード編集画面のイベントに関する次の説明のうち、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. レコード編集画面を表示した後のイベントは、PC版／モバイル版でイベントタイプが異なる"
+      },
+      {
+        "label": "B",
+        "html": "B. レコード追加画面でフィールドの値を変更したときのイベントオブジェクトには、変更したフィールドやテーブル行の情報を保持する <code>changes</code> が含まれる"
+      },
+      {
+        "label": "C",
+        "html": "C. レコード編集画面で保存するときのイベントでは、イベントハンドラーで <code>false</code> を return することで保存処理をキャンセルできる"
+      },
+      {
+        "label": "D",
+        "html": "D. レコード追加画面で保存に成功した後のイベントのイベントオブジェクトに含まれる <code>record</code> から、常に保存したレコードのデータが取得できる"
+      }
+    ],
+    "answer": "A, B, C",
+    "explanations": [
+      "追加したレコードに対して閲覧権限がない場合には <code>null</code> が返るため、常に保存したレコードのデータが取得できるとは限らない。"
+    ]
+  },
+  {
+    "num": "問55",
+    "body": "ポータル画面を表示した後のイベントおよびスペースのポータル画面表示後イベントに関する説明として、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. ポータル画面を表示した後のイベントは、ポータルの表示対象に設定されているウィジェットがすべて描画された後に発生する"
+      },
+      {
+        "label": "B",
+        "html": "B. ポータル画面を表示した後のイベントは、2枚目以降のポータル画面でも発生する"
+      },
+      {
+        "label": "C",
+        "html": "C. スペースのポータル画面表示後イベントのイベントハンドラー関数の引数として渡されるオブジェクトには、<code>spaceId</code> が含まれる"
+      },
+      {
+        "label": "D",
+        "html": "D. スペースのポータル画面表示後イベントは、ゲストスペースのポータル画面でも発生する"
+      }
+    ],
+    "answer": "A, C",
+    "explanations": [
+      "ポータル画面を表示した後のイベントは、2枚目以降のポータル画面でも発生しない。",
+      "また、スペースのポータル画面表示後イベントは、ゲストスペースのポータル画面でも発生しない。"
+    ]
+  },
+  {
+    "num": "問56",
+    "body": "各種画面を表示した後のイベントに関する説明として、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. グラフ画面を表示した後のイベントには、モバイル版に対応していないグラフが表示された後には発生しない"
+      },
+      {
+        "label": "B",
+        "html": "B. レコード印刷画面を表示した後のイベントは、モバイル版では定義されていない"
+      },
+      {
+        "label": "C",
+        "html": "C. ポータル画面を表示した後のイベントは、PC版とモバイル版で異なるイベントタイプが定義されている"
+      },
+      {
+        "label": "D",
+        "html": "D. スペースのポータル画面を表示した後のイベントには、PC版とモバイル版の両方が定義されている"
+      }
+    ],
+    "answer": "B, C, D",
+    "explanations": [
+      "グラフ画面を表示した後のイベントは、モバイル版に対応していないグラフ（クロス集計や定期レポートなど）が表示された後も発生する。"
+    ]
+  },
+  {
+    "num": "問57",
+    "body": "各種画面を表示した後のイベントに関する説明として、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. グラフ画面を表示した後のイベントオブジェクトのプロパティには <code>appId</code> が含まれる"
+      },
+      {
+        "label": "B",
+        "html": "B. レコード印刷画面表示後のイベントオブジェクトのプロパティには <code>recordId</code> が含まれる"
+      },
+      {
+        "label": "C",
+        "html": "C. ポータル画面を表示した後のイベントオブジェクトのプロパティには、<code>type</code> は含まれない"
+      },
+      {
+        "label": "D",
+        "html": "D. スペースのポータル画面を表示した後のイベントオブジェクトのプロパティには、<code>type</code> が含まれる"
+      }
+    ],
+    "answer": "A, B, D",
+    "explanations": [
+      "ポータル画面を表示した後のイベントオブジェクトのプロパティには <code>type</code> が含まれ、具体的には <code>portal.show</code> または <code>mobile.portal.show</code> が返される。"
+    ]
+  },
+  {
+    "num": "問58",
+    "body": "CSRF トークンに関する説明として、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. CSRF トークンは、セッション認証以外の認証方式で kintone REST API を実行する場合は不要である"
+      },
+      {
+        "label": "B",
+        "html": "B. kintone REST API リクエストを送信する API 以外の方法で kintone REST API を実行する場合、HTTP メソッドが GET であれば、CSRF トークンを付与する必要がある"
+      },
+      {
+        "label": "C",
+        "html": "C. ブラウザーの Fetch API を使って kintone REST API を実行する場合、HTTP メソッドが POST／PUT／DELETE のいずれかであれば、CSRF トークンを付与する必要がある"
+      },
+      {
+        "label": "D",
+        "html": "D. XMLHttpRequest を使って kintone REST API を実行する場合、HTTP メソッドにかかわらず CSRF トークンを付与する必要がある"
+      }
+    ],
+    "answer": "A, C",
+    "explanations": [
+      "kintone REST API リクエストを送信する API 以外の方法で kintone REST API を実行する場合、HTTP メソッドがGETであれば、CSRF トークンを付与する必要はない。",
+      "なお、XMLHttpRequest も、kintone REST API リクエストを送信する API 以外の方法に含まれるため、HTTP メソッドが GET であれば、CSRF トークンを付与する必要はない。"
+    ]
+  },
+  {
+    "num": "問59",
+    "body": "<code>kintone.getRequestToken()</code> に関する説明として、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. <code>kintone.getRequestToken()</code> は、CSRF トークンを取得するための関数である"
+      },
+      {
+        "label": "B",
+        "html": "B. <code>kintone.getRequestToken()</code> は、引数として HTTP メソッドを指定して呼び出す必要がある"
+      },
+      {
+        "label": "C",
+        "html": "C. <code>kintone.getRequestToken()</code> は、PC版とモバイル版の両方で利用できる"
+      },
+      {
+        "label": "D",
+        "html": "D. <code>kintone.getRequestToken()</code> を利用できる画面は、kintone 全体のカスタマイズが適用される画面に従う"
+      }
+    ],
+    "answer": "A, C, D",
+    "explanations": [
+      "この関数は引数を指定して呼び出す関数ではない。"
+    ]
+  },
+  {
+    "num": "問60",
+    "body": "<code>kintone.app.record.setFieldShown()</code> に関する説明として、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. <code>kintone.app.record.setFieldShown()</code> は、指定したフィールドの表示／非表示を切り替えるための API である"
+      },
+      {
+        "label": "B",
+        "html": "B. <code>kintone.app.record.setFieldShown()</code> の第1引数には、対象となるフィールドのフィールドコードを指定する"
+      },
+      {
+        "label": "C",
+        "html": "C. <code>kintone.app.record.setFieldShown()</code> の第2引数に <code>true</code> を指定すると、フィールドを非表示にする"
+      },
+      {
+        "label": "D",
+        "html": "D. <code>kintone.app.record.setFieldShown()</code> は、レコードの詳細画面、編集画面、追加画面で使用できる"
+      }
+    ],
+    "answer": "A, B, D",
+    "explanations": [
+      "第2引数に <code>true</code> を指定した場合はフィールドを表示し、<code>false</code> を指定した場合に非表示となる。"
+    ]
+  },
+  {
+    "num": "問61",
+    "body": "グループフィールドを開閉する JavaScript API に関する説明として、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. <code>kintone.mobile.app.record.setGroupFieldOpen()</code> は、モバイル版のレコード印刷画面で使用できる"
+      },
+      {
+        "label": "B",
+        "html": "B. 第2引数に <code>true</code> を指定すると、グループフィールドを開いて表示する"
+      },
+      {
+        "label": "C",
+        "html": "C. この JavaScript API に戻り値はない"
+      },
+      {
+        "label": "D",
+        "html": "D. PC版では、<code>kintone.app.record.setGroupFieldOpen()</code> を使用する"
+      }
+    ],
+    "answer": "B, C, D",
+    "explanations": [
+      "モバイル版にレコード印刷画面はない。"
+    ]
+  },
+  {
+    "num": "問62",
+    "body": "レコードのデータ取得および設定に関する JavaScript API の説明として、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. <code>kintone.app.record.getId()</code> は、現在表示しているレコードのレコードIDを取得する"
+      },
+      {
+        "label": "B",
+        "html": "B. <code>kintone.app.record.get()</code> は、<code>kintone.events.on()</code> のイベントハンドラー内で利用できる"
+      },
+      {
+        "label": "C",
+        "html": "C. kintone.events.on() のイベントハンドラー内では、引数として渡されるイベントオブジェクトを用いてレコードのデータを取得する"
+      },
+      {
+        "label": "D",
+        "html": "D. <code>kintone.app.record.set()</code> は、<code>onclick</code> や <code>onchange</code> などの JavaScript のイベントハンドラー内で実行できる"
+      }
+    ],
+    "answer": "A, C, D",
+    "explanations": [
+      "<code>kintone.app.record.get()</code> は、 <code>kintone.events.on()</code> のイベントハンドラー内では実行できないため、<code>onclick</code> や <code>onchange</code> といった、JavaScript のイベントハンドラー内で実行する。"
+    ]
+  },
+  {
+    "num": "問63",
+    "body": "<code>kintone.app.record.getHeaderMenuSpaceElement()</code> について正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. 引数として、表示されているレコードのレコード番号が必要となる"
+      },
+      {
+        "label": "B",
+        "html": "B. PC版では、レコード詳細画面・レコード追加画面・レコード編集画面で利用できる"
+      },
+      {
+        "label": "C",
+        "html": "C. 戻り値は、メニューの上側の要素を表す Element オブジェクトである"
+      },
+      {
+        "label": "D",
+        "html": "D. モバイル版では、レコード詳細画面で利用できる"
+      }
+    ],
+    "answer": "B, C",
+    "explanations": [
+      "<code>kintone.app.record.getHeaderMenuSpaceElement()</code> は、引数を必要としない。",
+      "また、モバイル版として <code>kintone.app.record.getHeaderMenuSpaceElement()</code> は提供されていない。"
+    ]
+  },
+  {
+    "num": "問64",
+    "body": "グループフィールドの開閉やフィールドの表示制御に関する説明として、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. <code>kintone.app.record.setFieldShown('フィールドコード', true)</code> は、指定したフィールドを表示する"
+      },
+      {
+        "label": "B",
+        "html": "B. <code>kintone.app.record.isFieldVisible('フィールドコード')</code> は、指定したフィールドが表示されているかどうかを取得する"
+      },
+      {
+        "label": "C",
+        "html": "C. <code>kintone.app.record.setGroupFieldOpen('グループフィールドコード')</code> は、指定したグループフィールドを開く"
+      },
+      {
+        "label": "D",
+        "html": "D. <code>kintone.app.record.isGroupFieldOpen('グループフィールドコード')</code> は、指定したグループフィールドが開いているかどうかを取得する"
+      }
+    ],
+    "answer": "A, B, D",
+    "explanations": [
+      "<code>kintone.app.record.setGroupFieldOpen()</code> では、開くか閉じるかを指定する第2引数が必要である。"
+    ]
+  },
+  {
+    "num": "問65",
+    "body": "レコードに関連する権限や履歴情報を取得する API の説明として、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. <code>kintone.app.record.getRecordActions()</code> は、現在開いているレコードの実行可能なプロセス管理のアクション一覧を取得する"
+      },
+      {
+        "label": "B",
+        "html": "B. <code>kintone.app.record.getRecordFieldPermissions()</code> は、ログインユーザーの現在開いているレコードのフィールドに対するアクセス権を取得する"
+      },
+      {
+        "label": "C",
+        "html": "C. <code>kintone.app.record.getStatusHistory()</code> は、モバイルのレコード詳細画面で利用できる"
+      },
+      {
+        "label": "D",
+        "html": "D. <code>kintone.app.record.getRecordPermissions()</code> は、ログインユーザーの現在開いているレコードに対するアクセス権を取得する"
+      }
+    ],
+    "answer": "B, C, D",
+    "explanations": [
+      "<code>kintone.app.record.getRecordActions()</code> は、プロセス管理のアクション一覧ではなく、アプリアクションの一覧を取得する API である。"
+    ]
+  },
+  {
+    "num": "問66",
+    "body": "レコード画面上のボタン表示制御に関する説明として、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. <code>kintone.app.record.showAddRecordButton()</code> は、現在開いているアプリにおいて、レコードの追加ボタンの表示／非表示を切り替える"
+      },
+      {
+        "label": "B",
+        "html": "B. <code>kintone.app.getOptionsButtonDisplayState()</code> は、現在開いているアプリにおいて、アプリ設定ボタンの表示状態を取得する"
+      },
+      {
+        "label": "C",
+        "html": "C. <code>kintone.app.record.showEditRecordButton(true)</code> と記述した場合は、レコード編集ボタンを表示する"
+      },
+      {
+        "label": "D",
+        "html": "D. <code>kintone.app.record.getDuplicateRecordButtonDisplayState()</code> は、現在開いているアプリのレコード再利用ボタンの表示状態を取得する"
+      }
+    ],
+    "answer": "A, D",
+    "explanations": [
+      "<code>kintone.app.record.showEditRecordButton()</code> の引数は <code>VISIBLE</code> または <code>HIDDEN</code> である。",
+      "<code>kintone.app.getOptionsButtonDisplayState()</code> は、現在開いているアプリのオプションボタンの表示状態を取得する API である。"
+    ]
+  },
+  {
+    "num": "問67",
+    "body": "レコード画面上のボタン表示制御に関する説明として、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. <code>kintone.app.record.showActionButton()</code> は、現在開いているレコードのアプリのアクションボタンの表示／非表示を切り替える"
+      },
+      {
+        "label": "B",
+        "html": "B. <code>kintone.app.record.showStatusActionButton()</code> の戻り値は Promise オブジェクトである"
+      },
+      {
+        "label": "C",
+        "html": "C. <code>kintone.app.record.getActionButtonDisplayState()</code> は、現在開いているレコードのプロセス管理のアクションボタンの表示状態を取得する"
+      },
+      {
+        "label": "D",
+        "html": "D. <code>kintone.app.record.getChangeAssigneeButtonDisplayState()</code> は、現在の作業者を変更するボタンの表示状態を取得する"
+      }
+    ],
+    "answer": "A, B, D",
+    "explanations": [
+      "<code>kintone.app.record.getActionButtonDisplayState()</code> はアプリのアクションボタンの表示状態を取得する API であり、プロセス管理のアクションボタンの表示状態取得には <code>kintone.app.record.getStatusActionButtonDisplayState()</code> を用いる。"
+    ]
+  },
+  {
+    "num": "問68",
+    "body": "画面上の表示に関する説明として、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. <code>kintone.app.showViewAndReportSelector()</code> は、現在開いているアプリにおいて、一覧とグラフを選択するパーツの表示／非表示を切り替える"
+      },
+      {
+        "label": "B",
+        "html": "B. <code>kintone.mobile.app.showReportSelector()</code> は、モバイル版のレコード一覧画面で利用できる"
+      },
+      {
+        "label": "C",
+        "html": "C. <code>kintone.app.getViewAndReportSelectorDisplayState()</code> は、現在開いているアプリにおいて、一覧／グラフ選択パーツの表示状態を取得する"
+      },
+      {
+        "label": "D",
+        "html": "D. <code>kintone.mobile.app.getReportSelectorDisplayState()</code> は、現在開いているアプリにおいて、グラフを選択するパーツの表示状態を取得する"
+      }
+    ],
+    "answer": "A, C, D",
+    "explanations": [
+      "<code>kintone.mobile.app.showReportSelector()</code> はモバイル版のグラフ画面で利用できる API であり、モバイル版のレコード一覧画面では利用できない。"
+    ]
+  },
+  {
+    "num": "問69",
+    "body": "画面上の表示に関する説明として、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. <code>kintone.app.record.showPager('HIDDEN')</code> と記述した場合、現在開いているアプリの「前／次のレコードに移動する」ボタンを非表示にする"
+      },
+      {
+        "label": "B",
+        "html": "B. <code>kintone.app.getReportButtonDisplayState()</code> は、現在開いているアプリにおける集計ボタンの表示状態を取得する"
+      },
+      {
+        "label": "C",
+        "html": "C. コメント機能が無効になっている場合、<code>kintone.app.record.showSideBar('OPEN')</code> は、レコードの変更履歴が開く"
+      },
+      {
+        "label": "D",
+        "html": "D. <code>kintone.app.getFilterButtonDisplayState()</code> は、PC版とモバイル版の両方のレコード一覧画面で利用できる"
+      }
+    ],
+    "answer": "A, B, C",
+    "explanations": [
+      "<code>kintone.app.getFilterButtonDisplayState()</code>はPC版のみで利用でき、モバイル版では <code>kintone.mobile.app.getFilterButtonDisplayState()</code> を利用する。"
+    ]
+  },
+  {
+    "num": "問70",
+    "body": "アプリに関する JavaScript API の説明として、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. <code>kintone.app.get()</code> は、非同期な API である"
+      },
+      {
+        "label": "B",
+        "html": "B. <code>kintone.app.get()</code> は、引数としてアプリIDが必要である"
+      },
+      {
+        "label": "C",
+        "html": "C. <code>kintone.app.getId()</code> の戻り値の型は数値である"
+      },
+      {
+        "label": "D",
+        "html": "D. モバイルでアプリのIDを取得する関数は <code>kintone.mobile.app.getId()</code> である"
+      }
+    ],
+    "answer": "A, C, D",
+    "explanations": [
+      "<code>kintone.app.get()</code> に引数は不要で、現在開いているアプリを対象とする。"
+    ]
+  },
+  {
+    "num": "問71",
+    "body": "アプリの実行環境や状態に関する JavaScript API の説明として、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. <code>kintone.app.isTestEnvironment()</code> は、現在の画面が動作テスト環境かどうかを取得できる"
+      },
+      {
+        "label": "B",
+        "html": "B. <code>kintone.app.isMaintenanceMode()</code> は、アプリがメンテナンスモードかどうかを取得できる"
+      },
+      {
+        "label": "C",
+        "html": "C. <code>kintone.app.isTestEnvironment()</code> は、同期的に結果を返す API である"
+      },
+      {
+        "label": "D",
+        "html": "D. <code>kintone.app.isMaintenanceMode()</code> は、PC版とモバイル版のどちらの環境でも利用できる"
+      }
+    ],
+    "answer": "A, B, D",
+    "explanations": [
+      "<code>kintone.app.isTestEnvironment()</code> は、Promise を返す非同期 API である。"
+    ]
+  },
+  {
+    "num": "問72",
+    "body": "フォーム設計情報を取得する JavaScript API の説明として、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. <code>kintone.app.getFormFields()</code> の戻り値は Promise オブジェクトである"
+      },
+      {
+        "label": "B",
+        "html": "B. <code>kintone.app.getFormFields()</code> は、フィールドを取得する REST API <code>properties</code> と同様の値を取得できる"
+      },
+      {
+        "label": "C",
+        "html": "C. <code>kintone.app.getFormLayout()</code> は、フォームのレイアウトを取得する REST API <code>layout</code> と同様の値を取得できる"
+      },
+      {
+        "label": "D",
+        "html": "D. <code>kintone.app.getFormLayout()</code> は、アプリ設定画面で利用できる"
+      }
+    ],
+    "answer": "A, B, C",
+    "explanations": [
+      "<code>kintone.app.getFormLayout()</code> は、アプリ設定画面では利用できない。"
+    ]
+  },
+  {
+    "num": "問73",
+    "body": "レコード一覧に関する JavaScript API の説明として、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. <code>kintone.app.getViews()</code> の戻り値である配列の各要素の <code>id</code> の型は数値である"
+      },
+      {
+        "label": "B",
+        "html": "B. <code>kintone.app.getViews()</code> の戻り値である配列は、画面上設定されている一覧の並び順にソートされている"
+      },
+      {
+        "label": "C",
+        "html": "C. <code>kintone.app.getView()</code> の戻り値には、絞り込み条件とソート条件が含まれる"
+      },
+      {
+        "label": "D",
+        "html": "D. <code>kintone.app.getView()</code> は、一覧の絞り込み条件やソート条件が画面上で変更されている場合、変更後の現在の値を返す"
+      }
+    ],
+    "answer": "B, C",
+    "explanations": [
+      "<code>kintone.app.getViews()</code> で取得できる配列の各要素に含まれる <code>id</code> は文字列であり、数値ではない。",
+      "<code>kintone.app.getView()</code> は、一覧の絞り込み条件／ソート条件が変更されている場合でも、アプリ設定で定義されている一覧設定の値を返す。"
+    ]
+  },
+  {
+    "num": "問74",
+    "body": "レコード一覧のクエリ文字列を取得する JavaScript API の説明として、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. <code>kintone.app.getQueryCondition()</code> は、並び順が設定されていない場合でも <code>limit</code> を含むクエリ文字列を返す"
+      },
+      {
+        "label": "B",
+        "html": "B. <code>kintone.app.getQueryCondition()</code> は、レコード一覧画面で絞り込みをしていない場合、空文字列を返す"
+      },
+      {
+        "label": "C",
+        "html": "C. <code>kintone.app.getQuery()</code> は、レコード一覧画面で設定されている <code>limit</code> や <code>offset</code> を含むクエリ文字列を返す"
+      },
+      {
+        "label": "D",
+        "html": "D. <code>kintone.app.getQuery()</code> は、並び順が設定されていない場合、<code>order by</code> を含まないクエリ文字列を返す"
+      }
+    ],
+    "answer": "B, C, D",
+    "explanations": [
+      "<code>kintone.app.getQueryCondition()</code> は、レコード一覧の絞り込み条件のみをクエリ文字列として返す API であり、<code>limit</code> や <code>offset</code>、<code>order by</code> は含まれない。"
+    ]
+  },
+  {
+    "num": "問75",
+    "body": "URL 内のクエリ文字列で、表示する一覧や表示するレコードの条件を指定する方法として、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. <code>view</code> パラメーターに指定できるのは、表示する一覧の ID である"
+      },
+      {
+        "label": "B",
+        "html": "B. <code>query</code> パラメーターには、表示するレコードの絞り込み条件を指定できる"
+      },
+      {
+        "label": "C",
+        "html": "C. <code>query</code> パラメーターに <code>limit</code> を指定すると、表示件数に反映される"
+      },
+      {
+        "label": "D",
+        "html": "D. <code>view</code> パラメーターを省略すると、エラーになる"
+      }
+    ],
+    "answer": "A, B",
+    "explanations": [
+      "<code>query</code> パラメーターに <code>limit</code> や <code>offset</code>、<code>order by</code> を含めても、表示結果には反映されない。",
+      "また、<code>view</code> パラメーターは省略可能であり、省略してもエラーにはならない。"
+    ]
+  },
+  {
+    "num": "問76",
+    "body": "レコード一覧のフィールド要素を取得する JavaScript API の説明として、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. PC版では <code>kintone.app.getFieldElements()</code> を利用できる"
+      },
+      {
+        "label": "B",
+        "html": "B. モバイル版でのみ利用できるレコード一覧のフィールド要素を取得する API は存在しない"
+      },
+      {
+        "label": "C",
+        "html": "C. レコード一覧に表示されるレコードが1件もない場合、空配列が返る"
+      },
+      {
+        "label": "D",
+        "html": "D. テーブルやテーブルに含まれるフィールドを指定した場合、空配列が返る"
+      }
+    ],
+    "answer": "A, B, C",
+    "explanations": [
+      "テーブルやテーブル内のフィールドを指定した場合は、空配列ではなく <code>null</code> が返る。"
+    ]
+  },
+  {
+    "num": "問77",
+    "body": "ヘッダー領域の要素取得に関する JavaScript API の説明として、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. <code>kintone.app.getHeaderMenuSpaceElement()</code> は、集計アイコンの右側にある要素を取得する"
+      },
+      {
+        "label": "B",
+        "html": "B. <code>kintone.app.getHeaderSpaceElement()</code> の戻り値は Promise オブジェクトである"
+      },
+      {
+        "label": "C",
+        "html": "C. <code>kintone.mobile.app.getHeaderSpaceElement()</code> は、モバイル版のレコード編集画面で利用できる"
+      },
+      {
+        "label": "D",
+        "html": "D. <code>kintone.app.getHeaderMenuSpaceElement()</code> は、引数を必要としない"
+      }
+    ],
+    "answer": "A, C, D",
+    "explanations": [
+      "<code>kintone.app.getHeaderSpaceElement()</code> は同期 API であり、非同期処理を行わないため、戻り値は Promise ではない。"
+    ]
+  },
+  {
+    "num": "問78",
+    "body": "アプリに関する情報取得 API の説明として、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. <code>kintone.app.getIcons()</code> の戻り値は Promise オブジェクトである"
+      },
+      {
+        "label": "B",
+        "html": "B. <code>kintone.app.getIcons()</code> は、引数としてアプリID のリスト（配列）を必要とする"
+      },
+      {
+        "label": "C",
+        "html": "C. <code>kintone.app.getCategories()</code> は、引数を必要としない"
+      },
+      {
+        "label": "D",
+        "html": "D. <code>kintone.app.get()</code> の戻り値に含まれる <code>id</code> は数値である"
+      }
+    ],
+    "answer": "A, B, C",
+    "explanations": [
+      "<code>kintone.app.get()</code> の戻り値に含まれる <code>id</code> は文字列である。"
+    ]
+  },
+  {
+    "num": "問79",
+    "body": "<code>kintone.app.getPermissions()</code> に関する説明として、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. <code>kintone.app.getPermissions()</code> は、ログインユーザーの現在開いているアプリに対するアクセス権を取得する"
+      },
+      {
+        "label": "B",
+        "html": "B. <code>kintone.app.getPermissions()</code> は非同期な API であり、戻り値は Promise オブジェクトである"
+      },
+      {
+        "label": "C",
+        "html": "C. 戻り値の <code>editApp</code> は、レコードの編集権限があるかどうかを表す真偽値である"
+      },
+      {
+        "label": "D",
+        "html": "D. <code>kintone.app.getPermissions()</code> は、レコード一覧画面で利用できる"
+      }
+    ],
+    "answer": "A, B, D",
+    "explanations": [
+      "戻り値の <code>editApp</code> は、レコードの編集権限ではなく、アプリ管理権限の有無を表す。レコードの追加可否は <code>addRecord</code> で判定される。"
+    ]
+  },
+  {
+    "num": "問80",
+    "body": "ルックアップフィールドおよび関連レコード一覧フィールドの参照先アプリID を取得する JavaScript API に関する説明として、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. <code>kintone.app.getLookupTargetAppId()</code> は、ルックアップフィールドの参照先アプリ ID を取得する"
+      },
+      {
+        "label": "B",
+        "html": "B. <code>kintone.app.getRelatedRecordsTargetAppId()</code> は、関連レコード一覧フィールドの参照先アプリ ID を取得する"
+      },
+      {
+        "label": "C",
+        "html": "C. <code>kintone.app.getLookupTargetAppId()</code> の戻り値は、参照先アプリ ID を表す数値である"
+      },
+      {
+        "label": "D",
+        "html": "D. モバイル版でも、PC版と同じ <code>kintone.app.getRelatedRecordsTargetAppId()</code> を利用できる"
+      }
+    ],
+    "answer": "A, B, C",
+    "explanations": [
+      "モバイル版では <code>kintone.mobile.app.getRelatedRecordsTargetAppId()</code> を利用する。"
+    ]
+  },
+  {
+    "num": "問81",
+    "body": "プロセス管理に関する次の JavaScript API の説明として、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. <code>kintone.app.getStatus()</code> は、引数としてアプリIDを必要とする"
+      },
+      {
+        "label": "B",
+        "html": "B. <code>kintone.app.record.getStatusActions()</code> は、現在開いているレコードで実行可能なプロセス管理のアクション一覧を取得する"
+      },
+      {
+        "label": "C",
+        "html": "C. <code>kintone.app.record.getAssignees()</code> は、現在開いているレコードの作業者情報を取得する"
+      },
+      {
+        "label": "D",
+        "html": "D. <code>kintone.app.getStatus()</code> は、レコード一覧画面で利用できる"
+      }
+    ],
+    "answer": "B, C, D",
+    "explanations": [
+      "<code>kintone.app.getStatus()</code> は、現在開いているアプリのプロセス管理の設定を取得するための API であり、アプリIDを指定する必要はない。"
+    ]
+  },
+  {
+    "num": "問82",
+    "body": "クエリのオプションに関する説明として、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. 指定する順番は <code>order by</code>、<code>offset</code>、<code>limit</code>である"
+      },
+      {
+        "label": "B",
+        "html": "B. <code>limit</code> は、複数のレコードを取得する REST API の場合のみ最大 500 まで指定できる"
+      },
+      {
+        "label": "C",
+        "html": "C. <code>limit</code> は、省略すると、100が設定される"
+      },
+      {
+        "label": "D",
+        "html": "D. <code>offset</code> は、0から100,000までの数値を指定できる"
+      }
+    ],
+    "answer": "B, C",
+    "explanations": [
+      "クエリのオプションを指定する場合、指定する順番は <code>order by</code> → <code>limit</code> → <code>offset</code> である。",
+      "<code>offset</code> は取得開始位置を指定するためのオプションであり、指定できる数値の範囲は0から10,000までである。"
+    ]
+  },
+  {
+    "num": "問83",
+    "body": "クエリの条件指定に関する説明として、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. ラジオボタンは単一選択であるため、クエリでは <code>=</code> や <code>!=</code> を用いて条件指定できる"
+      },
+      {
+        "label": "B",
+        "html": "B. ドロップダウンをクエリで指定する場合、<code>in</code> または <code>not in</code> を用いて条件指定する"
+      },
+      {
+        "label": "C",
+        "html": "C. <code>like</code> を用いた文字列検索では、検索結果が100,000件に達すると検索が打ち切られる"
+      },
+      {
+        "label": "D",
+        "html": "D. <code>order by</code> を省略した場合、レコードはレコードIDの昇順で並び替えられる"
+      }
+    ],
+    "answer": "B, C",
+    "explanations": [
+      "ラジオボタンは単一選択のフィールドであるが、クエリで条件指定する場合は <code>=</code> や <code>!=</code> ではなく、<code>in</code> または <code>not in</code> を用いる。",
+      "また、<code>order by</code> を省略した場合は、レコードIDの降順で並び替えられる。"
+    ]
+  },
+  {
+    "num": "問84",
+    "body": "クエリで使用できる関数に関する説明として、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. <code>TODAY()</code> は、クエリ内で現在の日付を表すために使用できる"
+      },
+      {
+        "label": "B",
+        "html": "B. <code>LAST_YEAR()</code> は、API を実行した年の前年を表すために使用できる"
+      },
+      {
+        "label": "C",
+        "html": "C. APIを実行した日の翌日を表すために使用する関数は <code>NEXT_DAY()</code> である"
+      },
+      {
+        "label": "D",
+        "html": "D. <code>FROM_TODAY()</code> の引数には、数値と、期間の単位として例えば四半期を指定できる"
+      }
+    ],
+    "answer": "A, B",
+    "explanations": [
+      "API を実行した日の翌日を表す関数は <code>TOMORROW()</code> である。",
+      "<code>FROM_TODAY()</code> の引数に期間の単位として指定できるのは「日」「週」「月」「年」のみで、四半期を指定することはできない。"
+    ]
+  },
+  {
+    "num": "問85",
+    "body": "スペースに関する次の JavaScript API の説明として、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. <code>kintone.space.get()</code> は引数としてスペースIDを必要とする"
+      },
+      {
+        "label": "B",
+        "html": "B. <code>kintone.space.getPermissions()</code> は、ログインユーザーが現在開いているスペースの管理者か否かを取得する"
+      },
+      {
+        "label": "C",
+        "html": "C. <code>kintone.mobile.space.portal.getContentSpaceElement()</code> は、モバイル版のスペースのポータル画面で利用できる"
+      },
+      {
+        "label": "D",
+        "html": "D. <code>kintone.space.portal.getContentSpaceElement()</code> は、引数としてゲストスペースであるか否かの真偽値 isGuest を必要とする"
+      }
+    ],
+    "answer": "B, C",
+    "explanations": [
+      "<code>kintone.space.get()</code> は、現在開いているスペースの情報を取得する API であり、スペースIDを引数として指定する必要はない。",
+      "<code>kintone.space.portal.getContentSpaceElement()</code> は、引数として isGuest を指定する必要はない。"
+    ]
+  },
+  {
+    "num": "問86",
+    "body": "<code>kintone.getLoginUser()</code> に関する説明として、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. <code>kintone.getLoginUser()</code> は、ゲストユーザーの情報も取得できる"
+      },
+      {
+        "label": "B",
+        "html": "B. <code>kintone.getLoginUser()</code> の戻り値には優先する組織のIDが含まれる"
+      },
+      {
+        "label": "C",
+        "html": "C. ゲストユーザーの場合、<code>code</code> の値は「Email」である"
+      },
+      {
+        "label": "D",
+        "html": "D. <code>kintone.getLoginUser()</code> は、プラグイン設定画面でも利用できる"
+      }
+    ],
+    "answer": "A, C, D",
+    "explanations": [
+      "<code>kintone.getLoginUser()</code> の戻り値にはログイン名やメールアドレスなどのユーザー情報が含まれるが、優先する組織の ID は含まれない。"
+    ]
+  },
+  {
+    "num": "問87",
+    "body": "<code>kintone.proxy()</code> に関する説明として、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. 外部の Web API に対して HTTP リクエストを送信するための API である"
+      },
+      {
+        "label": "B",
+        "html": "B. 引数の <code>successCallback</code> 以降を省略した場合、Promise オブジェクトを返す"
+      },
+      {
+        "label": "C",
+        "html": "C. <code>method</code> には、<code>GET</code> / <code>POST</code> / <code>PUT</code> / <code>DELETE</code> のいずれかを指定する"
+      },
+      {
+        "label": "D",
+        "html": "D. <code>data</code> は、HTTP メソッドが GET や DELETE のリクエストで、リクエストボディを指定したい場合に指定する"
+      }
+    ],
+    "answer": "A, B, C",
+    "explanations": [
+      "<code>data</code> は、HTTP メソッドに POST や PUT を指定した場合にのみ送信される。",
+      "一方、HTTP メソッドが GET や DELETE の場合にリクエストボディを指定したいときは、URL のクエリ文字列として指定する。"
+    ]
+  },
+  {
+    "num": "問88",
+    "body": "<code>kintone.proxy.upload()</code> に関する説明として、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. <code>method</code> には、<code>GET</code> / <code>POST</code> / <code>PUT</code> / <code>DELETE</code> のいずれかを指定する"
+      },
+      {
+        "label": "B",
+        "html": "B. <code>data.value</code> には、Blob（File を含む）を指定する"
+      },
+      {
+        "label": "C",
+        "html": "C. 引数の <code>successCallback</code> を省略した場合、Promise オブジェクトを返す"
+      },
+      {
+        "label": "D",
+        "html": "D. <code>data.format</code> には、<code>RAW</code> を指定できる"
+      }
+    ],
+    "answer": "B, C, D",
+    "explanations": [
+      "<code>kintone.proxy.upload()</code> の <code>method</code> に指定できるのは <code>POST</code> と <code>PUT</code> のみである。"
+    ]
+  },
+  {
+    "num": "問89",
+    "body": "kintone のレコード取得時におけるフィールド形式の仕様について述べたものとして、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. 文字列（1行）フィールドの値は、文字列として返される"
+      },
+      {
+        "label": "B",
+        "html": "B. 数値フィールドの値は、数値として返される"
+      },
+      {
+        "label": "C",
+        "html": "C. 日付フィールドの値は、JavaScript の Date オブジェクトとして返される"
+      },
+      {
+        "label": "D",
+        "html": "D. 複数選択フィールドの値は、配列として返される"
+      }
+    ],
+    "answer": "A, D",
+    "explanations": [
+      "数値フィールドの値は、レコードのフィールド値として取得した場合、数値ではなく文字列として返される。",
+      "また、日付フィールドの値も、JavaScript の Date オブジェクトではなく文字列として返される。"
+    ]
+  },
+  {
+    "num": "問90",
+    "body": "kintone のカスタマイズにおいて、フィールドを操作する際にフィールドコードを指定して扱うフィールドとして、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. 計算"
+      },
+      {
+        "label": "B",
+        "html": "B. スペース（フィールド）"
+      },
+      {
+        "label": "C",
+        "html": "C. ステータス"
+      },
+      {
+        "label": "D",
+        "html": "D. テーブルに含まれるフィールド"
+      }
+    ],
+    "answer": "A, D",
+    "explanations": [
+      "スペース（フィールド）は要素IDを指定して扱い、ステータスはフィールド名を指定して扱う。",
+      "両方ともフィールドコードを持たないため、フィールドコードを指定することはできない。"
+    ]
+  },
+  {
+    "num": "問91",
+    "body": "kintone のレコードIDに関する仕様について述べたものとして、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. レコードIDのフィールドタイプは <code>RECORD_NUMBER</code> である"
+      },
+      {
+        "label": "B",
+        "html": "B. アプリコードが <code>APPCODE</code> の場合、レコードIDが1のレコード番号は <code>APPCODE-1</code> である"
+      },
+      {
+        "label": "C",
+        "html": "C. レコードIDを指定して値を取得する際に用いるフィールドコードは <code>$id</code> である"
+      },
+      {
+        "label": "D",
+        "html": "D. レコードIDは、値の登録や更新を行うことはできない"
+      }
+    ],
+    "answer": "B, C, D",
+    "explanations": [
+      "レコードIDのフィールドタイプは <code>RECORD_NUMBER</code> ではなく、<code>__ID__</code> である。"
+    ]
+  },
+  {
+    "num": "問92",
+    "body": "kintone のフォーム装飾フィールドおよびフォーム関連の REST API に関する仕様について述べたものとして、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. スペース（フィールド）の要素IDは、フォームのレイアウトを取得する API で取得できる"
+      },
+      {
+        "label": "B",
+        "html": "B. フィールドを削除する API を用いて、グループを削除することができる"
+      },
+      {
+        "label": "C",
+        "html": "C. フォームのレイアウトを変更する API では、罫線の長さを変更することはできない"
+      },
+      {
+        "label": "D",
+        "html": "D. フォームのレイアウトを取得する API では、モバイル表示時のフィールドサイズを取得できる"
+      }
+    ],
+    "answer": "A, B",
+    "explanations": [
+      "フォームのレイアウトを変更する API では、罫線の長さを指定して変更することができる。",
+      "フォームのレイアウトを取得する API で取得できるのはPC版で表示したときのフィールドサイズのみであり、モバイル版で表示したときのフィールドサイズは取得できない。"
+    ]
+  },
+  {
+    "num": "問93",
+    "body": "関連レコード一覧フィールドに関する仕様について述べたものとして、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. 関連レコード一覧フィールドは、 <code>REFERENCE_TABLE</code> を指定して値を取得できる"
+      },
+      {
+        "label": "B",
+        "html": "B. レコード更新 API では、関連レコード一覧フィールドの値を更新できない"
+      },
+      {
+        "label": "C",
+        "html": "C. フィールドを取得する API で、関連レコード一覧フィールドの設定情報を取得できる"
+      },
+      {
+        "label": "D",
+        "html": "D. フィールドの設定を変更する API で、関連レコード一覧フィールドの設定を変更できる"
+      }
+    ],
+    "answer": "B, C, D",
+    "explanations": [
+      "関連レコード一覧フィールドは、このアプリのフィールド値として REST API による取得／登録／更新を行うことはできない。"
+    ]
+  },
+  {
+    "num": "問94",
+    "body": "数値フィールドに関する仕様について述べたものとして、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. 数値フィールドでは、e を用いた指数表記を使用できる"
+      },
+      {
+        "label": "B",
+        "html": "B. 数値フィールドの値を、空文字列に書き換えることはできない"
+      },
+      {
+        "label": "C",
+        "html": "C. 数値フィールドに <code>#INVALID!</code> を指定すると、値は更新されない"
+      },
+      {
+        "label": "D",
+        "html": "D. 数値フィールドには、<code>undefined</code> を指定できる"
+      }
+    ],
+    "answer": "A, C, D",
+    "explanations": [
+      "数値フィールドは空文字列を指定することで値を空にできる。"
+    ]
+  },
+  {
+    "num": "問95",
+    "body": "テーブルフィールドに関する仕様について述べたものとして、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. テーブルの行を追加または更新する場合、既存のすべての行を含めた値を指定する必要がある"
+      },
+      {
+        "label": "B",
+        "html": "B. テーブルの各行に付与される id を指定することで、指定した行の値を更新できる"
+      },
+      {
+        "label": "C",
+        "html": "C. pop() を用いて行の削除を行うことはできない"
+      },
+      {
+        "label": "D",
+        "html": "D. テーブル内のフィールドの値は、<code>テーブルのフィールドコード.value[0].value.テーブル内のフィールドコード.value</code> の形式で参照できる"
+      }
+    ],
+    "answer": "A, B, D",
+    "explanations": [
+      "テーブルの各行は配列として扱われるため、JavaScript の配列操作として push() や pop() を利用できる。"
+    ]
+  },
+  {
+    "num": "問96",
+    "body": "テーブルフィールドについて述べたものとして、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. 既存レコードのテーブルフィールドに行を追加したい場合、追加する行のみをリクエストに含めればよい"
+      },
+      {
+        "label": "B",
+        "html": "B. テーブルの行を削除したい場合、削除対象行のオブジェクトの値を空にすればよい"
+      },
+      {
+        "label": "C",
+        "html": "C. <code>subtable.value[0].value.userSelect.value[0].name</code> の形式で、テーブル内ユーザー選択フィールドで選択されたユーザー名を取得できる"
+      },
+      {
+        "label": "D",
+        "html": "D. テーブルの一部を更新したい場合、既存のすべての行をリクエストに含める必要がある"
+      }
+    ],
+    "answer": "C, D",
+    "explanations": [
+      "既存レコードのテーブルフィールドに追加する行のみを指定すると、指定していない既存行は削除される。",
+      "行削除は、テーブルの配列から該当行を削除する操作として行われる。行オブジェクトの値を空にしても、行削除にはならない。"
+    ]
+  },
+  {
+    "num": "問97",
+    "body": "カスタマイズビューについて述べたものとして、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. 表形式やカレンダー形式と同じく、アプリの管理者権限があればカスタマイズビューを作成できる"
+      },
+      {
+        "label": "B",
+        "html": "B. カスタマイズビューは一覧画面と詳細画面で利用できる"
+      },
+      {
+        "label": "C",
+        "html": "C. 「ページネーションを表示する」を選択すると、レコード一覧画面を表示したときにイベントオブジェクトの <code>records</code> プロパティにレコード情報が含まれる"
+      },
+      {
+        "label": "D",
+        "html": "D. あらかじめ一覧の設定の「HTML」にベースとなる HTML を書いておくと、JavaScript により HTML を操作できる"
+      }
+    ],
+    "answer": "C, D",
+    "explanations": [
+      "カスタマイズビューを作成・編集するには、アプリの管理者権限ではなく kintone システム管理者権限が必要である。",
+      "また、カスタマイズビューはレコード一覧画面で利用するものであり、詳細画面では利用できない。"
+    ]
+  },
+  {
+    "num": "問98",
+    "body": "イベント処理の記述方法について述べたものとして、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. <code>kintone.events.off()</code> は、引数をすべて省略して呼び出すことができる"
+      },
+      {
+        "label": "B",
+        "html": "B. 同一のイベントに新しいイベントハンドラーを登録すると、既存のイベントハンドラーは上書きされる"
+      },
+      {
+        "label": "C",
+        "html": "C. <code>kintone.events.on()</code> の引数 type には、イベント名の配列を指定することができる"
+      },
+      {
+        "label": "D",
+        "html": "D. <code>kintone.events.on()</code> は、スペースの本文に貼り付けたアプリでは利用できない"
+      }
+    ],
+    "answer": "A, C, D",
+    "explanations": [
+      "既存のイベントハンドラーは上書きされず、登録した分だけ追加されていく仕様である。",
+      "そのため、既存のイベントハンドラーを置き換えたい場合は、<code>kintone.events.off()</code> を使って削除した後に、新しいイベントハンドラーを登録する必要がある。"
+    ]
+  },
+  {
+    "num": "問99",
+    "body": "イベントオブジェクトで実行できる操作について述べたものとして、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. 同じイベントタイプの複数のハンドラーが登録されている場合、最後のハンドラーが return した値を基準にフィールドの値が書き換わる"
+      },
+      {
+        "label": "B",
+        "html": "B. 計算フィールドの disabled を false に設定すると、フィールドを編集できる"
+      },
+      {
+        "label": "C",
+        "html": "C. 編集権限のないフィールドの disabled プロパティに false を設定しても、フィールドは編集可にならない"
+      },
+      {
+        "label": "D",
+        "html": "D. ステータスの値を書き換えてイベントオブジェクトを return すると、プロセスが進む"
+      }
+    ],
+    "answer": "A, C",
+    "explanations": [
+      "計算フィールドは手入力による編集ができるフィールドではなく、disabled を false に設定しても編集可能にはならない。",
+      "ステータスの変更はプロセス管理の操作によって行われるものであり、フィールドの値を書き換えて return するだけではプロセスは進まない。"
+    ]
+  },
+  {
+    "num": "問100",
+    "body": "イベントオブジェクトで利用できるプロパティについて述べたものとして、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. <code>event.error</code> を設定すると、他のイベントオブジェクトの変更内容は反映されず、処理はキャンセルされる"
+      },
+      {
+        "label": "B",
+        "html": "B. <code>event.url</code> に <code>null</code> を設定すると、画面遷移は行われない"
+      },
+      {
+        "label": "C",
+        "html": "C. テーブル内の行を削除した際には、<code>event.changes.row</code> には削除された行の情報が格納される"
+      },
+      {
+        "label": "D",
+        "html": "D. <code>event.url</code> を設定した場合でも、<code>event.error</code> を設定すると画面遷移は行われる"
+      }
+    ],
+    "answer": "A, B",
+    "explanations": [
+      "テーブル内の行を削除した際には、<code>event.changes.row</code> は <code>null</code> となり、削除された行の情報は保持されない。",
+      "<code>event.error</code> が設定されている場合は、<code>event.url</code> を設定していても画面遷移は行われない。"
+    ]
+  },
+  {
+    "num": "問101",
+    "body": "イベントオブジェクトを変更して <code>return</code> しても、画面やレコードに反映されない対象について述べたものとして、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. 計算フィールドの値をイベントオブジェクトで書き換えて <code>return</code> しても、変更内容は反映されない"
+      },
+      {
+        "label": "B",
+        "html": "B. ルックアップフィールドの値をイベントオブジェクトで書き換えて <code>return</code> すると、参照元レコードも更新される"
+      },
+      {
+        "label": "C",
+        "html": "C. プロセス管理のステータスは、イベントオブジェクトで値を書き換えて <code>return</code> しても変更されない"
+      },
+      {
+        "label": "D",
+        "html": "D. フィールドの値を書き換えた後に <code>event.error</code> を設定して <code>return</code> した場合でも、値の変更は反映される"
+      }
+    ],
+    "answer": "A, C",
+    "explanations": [
+      "ルックアップフィールドは参照結果を表示する仕組みであり、イベントオブジェクトを <code>return</code> しても参照元レコードが更新されることはない。",
+      "<code>event.error</code> が設定されている場合は、他のイベントオブジェクトの変更内容は反映されない。"
+    ]
+  },
+  {
+    "num": "問102",
+    "body": "次のイベントタイプに関する説明として、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. プロセス管理でアクションを実行するときのイベントタイプでは、イベントハンドラーとして Promise を返すことができる"
+      },
+      {
+        "label": "B",
+        "html": "B. レコード一覧画面の「保存した後」のイベントタイプでは、非同期処理の完了を待つ形式のイベントハンドラーを利用できる"
+      },
+      {
+        "label": "C",
+        "html": "C. 「フィールドの値を変更するとき」のイベントタイプは、非同期処理を前提としたイベントハンドラーの実行形式ではない"
+      },
+      {
+        "label": "D",
+        "html": "D. レコード編集画面の「保存するとき」のイベントタイプでは、非同期処理の結果を待ってから処理を完了させることはできない"
+      }
+    ],
+    "answer": "A, C",
+    "explanations": [
+      "レコード一覧画面の「保存した後」のイベントタイプは、Promise に対応していない。",
+      "レコード編集画面の「保存するとき」のイベントタイプは、Promise に対応している。"
+    ]
+  },
+  {
+    "num": "問103",
+    "body": "Promise に関する説明として、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. async / await は非同期処理でも上から順に実行し、処理の完了を待てる"
+      },
+      {
+        "label": "B",
+        "html": "B. Promise を使って非同期処理を連続して書く場合、<code>then()</code> が増えてネストが深くなる"
+      },
+      {
+        "label": "C",
+        "html": "C. <code>kintone.api()</code> は、コールバック関数を指定しない場合、Promise オブジェクトを返す"
+      },
+      {
+        "label": "D",
+        "html": "D. レコード更新に関するイベントで非同期処理を行った場合は、Promise オブジェクトを return しなくても処理の完了を待つ"
+      }
+    ],
+    "answer": "A, B, C",
+    "explanations": [
+      "レコード作成や更新に関するイベントでは、非同期処理を行う場合、Promise オブジェクトを return しないと処理の完了は待たれない。"
+    ]
+  },
+  {
+    "num": "問104",
+    "body": "Cybozu CDN に掲載されているライブラリに関する説明として、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. Cybozu CDN には、JavaScript ライブラリと CSS ライブラリの両方が含まれている"
+      },
+      {
+        "label": "B",
+        "html": "B. Cybozu CDN に掲載されているライブラリは、すべて kintone 専用に開発されたものである"
+      },
+      {
+        "label": "C",
+        "html": "C. Cybozu CDN には、UI 表示や画面構築に関係するライブラリが含まれている"
+      },
+      {
+        "label": "D",
+        "html": "D. Cybozu CDN には、kintone のカスタマイズで利用されることを想定した外部ライブラリが掲載されている"
+      }
+    ],
+    "answer": "A, C, D",
+    "explanations": [
+      "掲載されているライブラリには、一般的に利用されている外部ライブラリが含まれており、すべてが kintone 専用ではない。"
+    ]
+  },
+  {
+    "num": "問105",
+    "body": "kintone REST API の利用に関して、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. kintone REST API を利用する場合、必ず API トークン認証を使用しなければならない"
+      },
+      {
+        "label": "B",
+        "html": "B. kintone REST API は、HTTP リクエストを用いて kintone のデータを操作するための API である"
+      },
+      {
+        "label": "C",
+        "html": "C. kintone REST API では、リクエストの内容に応じて認証情報を HTTP ヘッダーに指定する"
+      },
+      {
+        "label": "D",
+        "html": "D. ゲストユーザーが kintone REST API を利用する場合、使用できる認証方式はセッション認証に限られる"
+      }
+    ],
+    "answer": "B, C, D",
+    "explanations": [
+      "kintone REST API では、API トークン認証のほかにも、パスワード認証、OAuth クライアント認証、セッション認証など複数の認証方式が用意されている。"
+    ]
+  },
+  {
+    "num": "問106",
+    "body": "kintone REST API のリクエストヘッダーに関して、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. API トークン認証を利用する場合、認証情報は HTTP リクエストヘッダーに指定する"
+      },
+      {
+        "label": "B",
+        "html": "B. セッション認証を利用する場合、HTTP リクエストヘッダーに X-Requested-With を指定する"
+      },
+      {
+        "label": "C",
+        "html": "C. パスワード認証を利用する場合、HTTP リクエストヘッダーに X-Cybozu-Authorization を指定する"
+      },
+      {
+        "label": "D",
+        "html": "D. <code>kintone.api()</code> を利用して REST API を実行する場合には、認証に必要な HTTP リクエストヘッダーを明示的に指定する必要がある"
+      }
+    ],
+    "answer": "A, B, C",
+    "explanations": [
+      "<code>kintone.api()</code> を利用する場合は、認証に必要な HTTP リクエストヘッダーを明示的に指定する必要はない。"
+    ]
+  },
+  {
+    "num": "問107",
+    "body": "kintone REST API のリクエスト方法について述べたものとして、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. kintone REST API では、HTTP メソッドとして GET / POST / PUT / DELETE が利用できる"
+      },
+      {
+        "label": "B",
+        "html": "B. kintone REST API では、POST リクエストの場合はリクエストパラメーターを URL のクエリ文字列として指定する"
+      },
+      {
+        "label": "C",
+        "html": "C. X-HTTP-Method-Override は、URL の長さが制限を超える場合の回避策として利用できる"
+      },
+      {
+        "label": "D",
+        "html": "D. X-HTTP-Method-Override を利用すると、POST リクエストとして送信しつつ、GET や PUT、DELETE として処理させることができる"
+      }
+    ],
+    "answer": "A, C, D",
+    "explanations": [
+      "kintone REST API では、GET リクエストの場合はパラメーターを URL のクエリ文字列として指定するが、POST や PUT などではリクエストボディに指定する。"
+    ]
+  },
+  {
+    "num": "問108",
+    "body": "kintone REST API の認証方式について述べたものとして、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. OAuth2.0 は、kintone の外部から REST API を実行する際の認可方式として利用できる"
+      },
+      {
+        "label": "B",
+        "html": "B. 認証方式の優先順位は、パスワード認証、API トークン認証、OAuth クライアント認証、セッション認証の順である"
+      },
+      {
+        "label": "C",
+        "html": "C. ゲストユーザーが kintone REST API を利用する場合、API トークン認証を使用できる"
+      },
+      {
+        "label": "D",
+        "html": "D. kintone.api()を使用せずセッション認証を利用する場合、HTTP リクエストヘッダーに X-Requested-With を指定する"
+      }
+    ],
+    "answer": "A, B, D",
+    "explanations": [
+      "ゲストユーザーが利用できる認証方式はセッション認証のみであり、API トークン認証は使用できない。"
+    ]
+  },
+  {
+    "num": "問109",
+    "body": "kintone REST API のリクエスト／レスポンス、およびセッション認証での実行方法に関して述べたものとして、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. セッション認証で Fetch API を用いる場合、POST / PUT / DELETE では CSRF トークンをクエリパラメーターまたはリクエストボディに付与する"
+      },
+      {
+        "label": "B",
+        "html": "B. kintone REST API では、ファイルアップロード時を除き、リクエストボディを JSON 形式で指定する"
+      },
+      {
+        "label": "C",
+        "html": "C. ファイルをダウンロードするAPI では、レスポンスボディとしてバイナリデータが返される"
+      },
+      {
+        "label": "D",
+        "html": "D. kintone.api() を使って REST API を実行した場合のコールバック関数にはレスポンスボディ以外の情報も含まれる"
+      }
+    ],
+    "answer": "A, B, C",
+    "explanations": [
+      "kintone.api() を使って REST API を実行した場合、コールバック関数に渡されるのはレスポンスボディのみである。",
+      "レスポンスボディ以外の情報を利用する場合は Fetch API や XMLHttpRequest を用いる。"
+    ]
+  },
+  {
+    "num": "問110",
+    "body": "セッション認証を利用して kintone REST API を実行する方法に関する仕様について述べたものとして、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. セッション認証では、kintone.api() を利用する方法と、Fetch API や XMLHttpRequest を利用する方法が定義されている"
+      },
+      {
+        "label": "B",
+        "html": "B. ゲストスペースの REST API の URL では、/k/guest/{SPACE_ID}/v1/ のようにスペースIDを指定する必要がある"
+      },
+      {
+        "label": "C",
+        "html": "C. セッション認証で Fetch API を用いる場合、POST / PUT / DELETE メソッドでは X-Requested-With ヘッダーに加えて CSRF トークンを付与する"
+      },
+      {
+        "label": "D",
+        "html": "D. ファイルをアップロードする API では、kintone.api() を使用できないが、ファイルをダウンロードする API では、kintone.api() を使用できる"
+      }
+    ],
+    "answer": "A, B, C",
+    "explanations": [
+      "ファイルをアップロードまたはダウンロードする API では、kintone.api() を使用できない。"
+    ]
+  },
+  {
+    "num": "問111",
+    "body": "レコード取得に関する REST API ついて述べたものとして、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. 1件のレコードを取得する API は、GET メソッドで <code>/k/v1/record.json</code> を使用する"
+      },
+      {
+        "label": "B",
+        "html": "B. 一度のリクエストで取得できるレコードの最大件数は、100件である"
+      },
+      {
+        "label": "C",
+        "html": "C. 複数のレコードを取得する API は、GET メソッドで <code>/k/v1/records.json</code> を使用する"
+      },
+      {
+        "label": "D",
+        "html": "D. offset を順に指定してリクエストを繰り返すことで、レコード件数に制限なく全件取得できる"
+      }
+    ],
+    "answer": "A, C",
+    "explanations": [
+      "一度のリクエストで取得できるレコードの最大件数は 500 件であり、100 件ではない。",
+      "offset の上限値は10,000件であり、件数が多い場合はカーソルを利用した取得方法を用いる必要がある。"
+    ]
+  },
+  {
+    "num": "問112",
+    "body": "レコードの登録／更新／削除に関する REST API について述べたものとして、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. 複数のレコード更新 API を UPSERT モードで実行すると、既存のレコードは更新され、存在しない場合は新規に追加される"
+      },
+      {
+        "label": "B",
+        "html": "B. 複数のレコードを登録、更新、削除する API で、一度に実行できるレコードは 100 件までである"
+      },
+      {
+        "label": "C",
+        "html": "C. 1件のレコードを削除する API は、DELETE メソッドで <code>/k/v1/record.json</code> を使用する"
+      },
+      {
+        "label": "D",
+        "html": "D. 複数のレコード更新 API では、各レコードに <code>id</code> または <code>updateKey</code> のいずれかを指定する"
+      }
+    ],
+    "answer": "A, B, D",
+    "explanations": [
+      "1件のレコードを削除する専用APIはなく、削除は複数のレコードを削除するAPIで行う。"
+    ]
+  },
+  {
+    "num": "問113",
+    "body": "カーソルに関する REST API について述べたものとして、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. アプリに対して大量のレコードを一括で取得したい場合には、カーソルを利用することができる"
+      },
+      {
+        "label": "B",
+        "html": "B. 作成したカーソルから取得できるすべてのレコードを取得すると、そのカーソルは自動的に削除される"
+      },
+      {
+        "label": "C",
+        "html": "C. 作成したカーソルを削除する API は、HTTP メソッドとして DELETE を使用する"
+      },
+      {
+        "label": "D",
+        "html": "D. カーソルからレコードを取得する API は、認証方式として OAuth 認証に対応している"
+      }
+    ],
+    "answer": "A, B, C",
+    "explanations": [
+      "カーソルからレコードを取得する API の認証方式には OAuth 認証が含まれず、パスワード認証、APIトークン認証、セッション認証にのみ対応している。"
+    ]
+  },
+  {
+    "num": "問114",
+    "body": "レコード更新時の revision に関する REST API について述べたものとして、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. レコードを更新する際に revision を指定しない場合でも、レコードを更新することができる"
+      },
+      {
+        "label": "B",
+        "html": "B. レコードを更新する際に指定した revision が現在の値と一致しない場合、更新は失敗する"
+      },
+      {
+        "label": "C",
+        "html": "C. 複数のレコードを更新する API では、revision を指定することはできない"
+      },
+      {
+        "label": "D",
+        "html": "D. レコードを更新して成功した場合、レスポンスボディには更新後の revision が含まれる"
+      }
+    ],
+    "answer": "A, B, D",
+    "explanations": [
+      "複数のレコードを更新する API でも、revision を指定することができる"
+    ]
+  },
+  {
+    "num": "問115",
+    "body": "レコードのコメントに関する REST API について述べたものとして、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. コメントを更新する際に、HTTP メソッドとして UPDATE を使用できる"
+      },
+      {
+        "label": "B",
+        "html": "B. 一度に取得できるコメントの件数は 100 件までである"
+      },
+      {
+        "label": "C",
+        "html": "C. コメントはレコードごとに取得する"
+      },
+      {
+        "label": "D",
+        "html": "D. コメントを投稿する際に、メンションを指定することができる"
+      }
+    ],
+    "answer": "C, D",
+    "explanations": [
+      "コメントに関する REST API では、HTTP メソッドとして UPDATE は使用できない。",
+      "一度に取得できるコメントの件数は 10 件までである。"
+    ]
+  },
+  {
+    "num": "問116",
+    "body": "レコードのプロセス管理に関する REST API について述べたものとして、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. レコードのステータスを更新する REST API では、実行するアクション名を指定して実行できる"
+      },
+      {
+        "label": "B",
+        "html": "B. プロセス管理が有効でないアプリでも、レコードの作業者を更新する REST API を実行できる"
+      },
+      {
+        "label": "C",
+        "html": "C. レコードのステータスを更新する REST API では、更新後のステータス名を指定して実行できる"
+      },
+      {
+        "label": "D",
+        "html": "D. 複数のレコードのステータス更新が成功した場合、レスポンスボディには更新後の revision が含まれる"
+      }
+    ],
+    "answer": "A, D",
+    "explanations": [
+      "レコードのステータス変更は、プロセス管理で定義されたアクション名を指定して実行され、変更後のステータス名を指定して変更することはできない。",
+      "プロセス管理が有効でないアプリでは、レコードの作業者を更新する REST API は利用できない。"
+    ]
+  },
+  {
+    "num": "問117",
+    "body": "bulkRequest に関する REST API について述べたものとして、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. bulkRequest API を使うと、複数の kintone アプリに対してまとめて複数のレコード操作 API を実行できる"
+      },
+      {
+        "label": "B",
+        "html": "B. bulkRequest API の HTTP メソッドは GET である"
+      },
+      {
+        "label": "C",
+        "html": "C. bulkRequest で、100 件のレコード更新 API は最大 20 回指定できるため、合計 2,000 件のレコードを更新できる"
+      },
+      {
+        "label": "D",
+        "html": "D. bulkRequest で途中のリクエストが失敗した場合、全体で一括ロールバックされる"
+      }
+    ],
+    "answer": "A, C, D",
+    "explanations": [
+      "bulkRequest API の HTTP メソッドは GET ではなく、POST で <code>/k/v1/bulkRequest.json</code> に対して実行する。"
+    ]
+  },
+  {
+    "num": "問118",
+    "body": "API を実行したユーザーのアクセス権を取得する REST API について述べたものとして、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. この API を実行したユーザーに閲覧権限のないフィールドは、評価結果に含まれない"
+      },
+      {
+        "label": "B",
+        "html": "B. この API ではテーブルに関するアクセス権は取得できない"
+      },
+      {
+        "label": "C",
+        "html": "C. この API ではグループフィールドのアクセス権を取得できる"
+      },
+      {
+        "label": "D",
+        "html": "D. この API を実行したユーザーに閲覧権限のないレコードは、評価結果として取得できない"
+      }
+    ],
+    "answer": "A, B",
+    "explanations": [
+      "グループフィールドに関するアクセス権はこのAPIで取得できない。",
+      "レコード自体に閲覧権限がない場合は、閲覧権限がないという評価結果として取得できる。"
+    ]
+  },
+  {
+    "num": "問119",
+    "body": "kintone REST API の実行方法に関する説明として、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. <code>kintone.api()</code> で URL を指定する際、<code>https://sample.cybozu.com/k/v1/record.json</code> に対して <code>/k/v1/record.json</code> を指定できる。"
+      },
+      {
+        "label": "B",
+        "html": "B. curl を使って 1 件のレコードを取得する場合、URL でリクエストパラメーターを指定することはできない。"
+      },
+      {
+        "label": "C",
+        "html": "C. <code>kintone.api()</code> を使って kintone REST API を実行する場合、「X-Cybozu-API-Token」ヘッダーを指定しなくてもよい。"
+      },
+      {
+        "label": "D",
+        "html": "D. kintone REST API では、GET／POST／PUT／DELETE を利用できる。"
+      }
+    ],
+    "answer": "A, C, D",
+    "explanations": [
+      "curl を用いた場合でも、URL のクエリとしてリクエストパラメーターを指定して API を実行できる。"
+    ]
+  },
+  {
+    "num": "問120",
+    "body": "レコード保存後にステータスを自動更新するカスタマイズに関する説明として、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. レコードの保存処理が成功した後の処理として、 <code>app.record.create.submit.success</code> を利用できる。"
+      },
+      {
+        "label": "B",
+        "html": "B. レコードのステータスを更新する API の HTTP メソッドは、 <code>POST</code> で実行する。"
+      },
+      {
+        "label": "C",
+        "html": "C. プロセス管理の作業者は配列ではなく文字列なので、承認者を指定するフィールドに複数人入っていたとしても1人目しか実行できない。"
+      },
+      {
+        "label": "D",
+        "html": "D. レコードのステータスを更新する API は、<code>/k/v1/record.json</code> を指定して実行する。"
+      }
+    ],
+    "answer": "A, C",
+    "explanations": [
+      "レコードのステータスを更新する API は <code>/k/v1/record/status.json</code> であり、HTTP メソッドは <code>PUT</code> で実行される。"
+    ]
+  },
+  {
+    "num": "問121",
+    "body": "ファイルをアップロードする API およびファイルをダウンロードする API に関する説明として、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. セッション認証でファイルをアップロードする API を利用する場合は、CSRF トークンを必要とする"
+      },
+      {
+        "label": "B",
+        "html": "B. ファイルをアップロードする API では、1回のリクエストで複数のファイルを同時にアップロードできる"
+      },
+      {
+        "label": "C",
+        "html": "C. ファイルをダウンロードする API では、HTTP メソッドに GET を用い、<code>fileKey</code> をリクエストパラメーターに含めて指定できる"
+      },
+      {
+        "label": "D",
+        "html": "D. ファイルをダウンロードする API は、<code>kintone.api()</code> を利用して実行できる"
+      }
+    ],
+    "answer": "A, C",
+    "explanations": [
+      "ファイルをアップロードするAPIでは、一度にアップロードできるファイルは1つであり、複数ファイルを同時にアップロードすることはできない。",
+      "ファイルをダウンロードするAPIは、<code>kintone.api()</code> を利用できない。"
+    ]
+  },
+  {
+    "num": "問122",
+    "body": "ファイルをアップロードする API およびファイルをダウンロードする API に関する説明として、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. ファイルをアップロードする API は、1件のレコードを取得する API で取得した <code>fileKey</code> を使用できる"
+      },
+      {
+        "label": "B",
+        "html": "B. ファイルをアップロードする API は、FormData にファイルと CSRF トークンを設定し、Fetch API を用いてアップロードすることができる"
+      },
+      {
+        "label": "C",
+        "html": "C. <code>kintone.api()</code> を利用してファイルをアップロードする API を呼び出すことができる"
+      },
+      {
+        "label": "D",
+        "html": "D. ファイルをダウンロードする API では、レスポンスを Blob として受け取ることができる"
+      }
+    ],
+    "answer": "B, D",
+    "explanations": [
+      "ファイルをアップロードする API で使用する <code>fileKey</code> は、ファイルアップロード API のレスポンスとして取得したものに限られており、レコード取得 API で取得した <code>fileKey</code> は使用できない。",
+      "ファイルをアップロードする API は <code>kintone.api()</code> で実行することはできない。"
+    ]
+  },
+  {
+    "num": "問123",
+    "body": "スペースの情報を取得するAPIに関する説明として、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. <code>/k/v1/space.json</code> を用いて、通常スペースとゲストスペースの情報を取得できる"
+      },
+      {
+        "label": "B",
+        "html": "B. 非公開スペースの場合、スペースメンバーのみ実行可能である"
+      },
+      {
+        "label": "C",
+        "html": "C. ゲストスペースでは、レスポンスに含まれる <code>showThreadList</code> プロパティは null となる"
+      },
+      {
+        "label": "D",
+        "html": "D. レスポンスに含まれるカバー画像の種類は、あらかじめ定義された値のいずれかで表される"
+      }
+    ],
+    "answer": "B, C, D",
+    "explanations": [
+      "ゲストスペースの情報を取得する場合には、<code>/k/guest/GUEST_SPACE_ID/v1/space.json</code> を用いる。"
+    ]
+  },
+  {
+    "num": "問124",
+    "body": "<code>kintone.api.url()</code> に関する説明として、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. 第1引数には、ベース URL を含まないパスを指定する"
+      },
+      {
+        "label": "B",
+        "html": "B. URL の末尾が <code>.json</code> 以外で終わる API に対しては利用できない"
+      },
+      {
+        "label": "C",
+        "html": "C. プラグイン設定画面では利用できない"
+      },
+      {
+        "label": "D",
+        "html": "D. 第2引数を省略した場合、ゲストスペース用の URL が生成される"
+      }
+    ],
+    "answer": "A, B",
+    "explanations": [
+      "<code>kintone.api.url()</code> はプラグイン設定画面でも利用できる。",
+      "第2引数を省略した場合の既定値は false であり、通常スペース用の URL が生成される。"
+    ]
+  },
+  {
+    "num": "問125",
+    "body": "スペースのカスタマイズに関する説明として、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. スペースのカスタマイズは、kintone 全体のカスタマイズ画面で JavaScript ファイルをアップロードする"
+      },
+      {
+        "label": "B",
+        "html": "B. <code>kintone.space.portal.getContentSpaceElement()</code> には引数としてスペースIDが必要である"
+      },
+      {
+        "label": "C",
+        "html": "C. 特定のスペースが表示されたときのイベントは <code>space.portal.show.スペースID</code> である"
+      },
+      {
+        "label": "D",
+        "html": "D. スペースのポータル画面の上側の要素を取得するには、あらかじめスペースの設定で「ポータルと複数のスレッドを使用する」を有効にしておく必要がある"
+      }
+    ],
+    "answer": "A, D",
+    "explanations": [
+      "<code>kintone.space.portal.getContentSpaceElement()</code> は引数を必要としない。",
+      "<code>space.portal.show</code> はスペースIDを含めて指定することはできない。"
+    ]
+  },
+  {
+    "num": "問126",
+    "body": "kintone REST API の利用制限に関する説明として、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. ファイルアップロード API でアップロードしたファイルは一時保管領域に保存され、レコードに添付されない場合は3日後に削除される"
+      },
+      {
+        "label": "B",
+        "html": "B. 同時接続数が100を超えると REST API の実行時にエラーが発生し、同時接続数が100を下回らない限り REST API によるリクエストが通らない状況に陥る"
+      },
+      {
+        "label": "C",
+        "html": "C. 100を超える同時接続が長時間続く状況で kintone を利用し続けると、REST API を利用していないアプリでもレスポンス遅延が起きることがある"
+      },
+      {
+        "label": "D",
+        "html": "D. レコードにコメントする API では、一度に取得できるレコードのコメントは100件までである"
+      }
+    ],
+    "answer": "A, B, C",
+    "explanations": [
+      "レコードにコメントする API で一度に取得できるコメント数は10件までである。"
+    ]
+  },
+  {
+    "num": "問127",
+    "body": "kintone REST API の利用制限に関する説明として、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. 1つのアプリにつき1日に実行できる API リクエスト数の上限は、スタンダードコースが10,000件、ワイドコースが100,000件である"
+      },
+      {
+        "label": "B",
+        "html": "B. 「ファイルをアップロードする」リクエストは、1日に実行できる API リクエスト数としてカウントされる"
+      },
+      {
+        "label": "C",
+        "html": "C. レスポンスヘッダーの <code>X-ConcurrencyLimit-Limit</code> は同時接続数の上限値を表し、100が返る"
+      },
+      {
+        "label": "D",
+        "html": "D. 同時接続数の増加は複合的な要因で起きるため、増加を防ぐ確実な方法はない"
+      }
+    ],
+    "answer": "A, C, D",
+    "explanations": [
+      "「ファイルをアップロードする」リクエストは、1日に実行できる API リクエスト数としてカウントされない。"
+    ]
+  },
+  {
+    "num": "問128",
+    "body": "kintone REST API の同時接続数制限や、その影響範囲について述べたものとして、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. 同時接続数の制限はドメイン単位で適用され、特定のアプリやユーザー単位で個別に適用されるものではない"
+      },
+      {
+        "label": "B",
+        "html": "B. 同時接続数が制限値を超えた場合、その影響は REST API を利用している処理のみに限定される"
+      },
+      {
+        "label": "C",
+        "html": "C. 同時接続数が100を超える状態が続くと、REST API を利用していないアプリでも、画面表示に影響が出ることがある"
+      },
+      {
+        "label": "D",
+        "html": "D. 同時接続数の制限に達した場合でも、一定時間が経過すれば自動的に制限が解除される"
+      }
+    ],
+    "answer": "A, C",
+    "explanations": [
+      "同時接続数の制限による影響は REST API を利用している処理に限られず、REST API を利用していないアプリにも影響が出る場合がある。",
+      "また、同時接続数の制限は時間経過によって自動的に解除されるものではなく、同時接続数が制限値を下回らない限り状況は改善しない。"
+    ]
+  },
+  {
+    "num": "問129",
+    "body": "kintone REST APIの利用制限の種類や、それぞれの制限が及ぼす影響について述べたものとして、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. 同時接続数の制限と、1日に実行できる API リクエスト数の上限は、いずれも kintone REST API の利用制限として定められている"
+      },
+      {
+        "label": "B",
+        "html": "B. 同時接続数の制限に達した場合でも、1日に実行できる API リクエスト数の上限には影響しない"
+      },
+      {
+        "label": "C",
+        "html": "C. 1日に実行できる API リクエスト数の上限に達した場合、その影響は同時接続数の増減として現れる"
+      },
+      {
+        "label": "D",
+        "html": "D. リクエストデータ、およびレスポンスデータの JSON フォーマットには、今後フィールドやキーなどが追加される場合がある"
+      }
+    ],
+    "answer": "A, B, D",
+    "explanations": [
+      "1日に実行できる API リクエスト数の上限に達した場合でも、その影響が同時接続数の増減として現れることはない。"
+    ]
+  },
+  {
+    "num": "問130",
+    "body": "kintoneのWebhook機能を用いて外部サービスと連携する際の挙動や確認方法について述べたものとして、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. Webhookは、アプリで指定したイベントが発生した場合に、設定したURLに対してリクエストを送信する"
+      },
+      {
+        "label": "B",
+        "html": "B. Webhookの送信が失敗した場合でも、失敗した送信結果はWebhookログとしてアプリの管理画面から確認できる"
+      },
+      {
+        "label": "C",
+        "html": "C. Webhookログで送信成功を確認できれば、外部サービス側の処理内容も確認できる"
+      },
+      {
+        "label": "D",
+        "html": "D. Webhookを利用して外部のメールサービスに通知を送る場合、Webhookの送信結果は外部サービス側の動作とは独立して確認する必要がある"
+      }
+    ],
+    "answer": "A, B, D",
+    "explanations": [
+      "Webhookログには、kintoneから送信したリクエストの結果は記録されるが、外部サービス側で行われた処理内容までは把握できない。"
+    ]
+  },
+  {
+    "num": "問131",
+    "body": "kintone の Webhook ログと、Webhook 送信が失敗した場合の考え方について述べたものとして、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. Webhook の送信が失敗した場合、その事実は Webhook ログから確認できるため、まずログを確認することが重要である"
+      },
+      {
+        "label": "B",
+        "html": "B. Webhook ログを確認すれば、送信失敗時に kintone 側でどのような再送処理が行われたかまで把握できる"
+      },
+      {
+        "label": "C",
+        "html": "C. Webhook による外部連携では、kintone 側の送信結果とは別に、外部サービス側での処理結果を確認する必要がある"
+      },
+      {
+        "label": "D",
+        "html": "D. Webhook ログを確認すれば、失敗した送信について外部サービス側でどのような再試行が行われたかまで把握できる"
+      }
+    ],
+    "answer": "A, C",
+    "explanations": [
+      "Webhook ログは kintone からの送信結果を確認するためのものであり、送信失敗時に kintone 内部でどのような処理が行われたかまでは確認できない。",
+      "また、Webhook ログを確認しても、失敗した送信について外部サービス側でどのような試行が行われたかまで把握できない。"
+    ]
+  },
+  {
+    "num": "問132",
+    "body": "Microsoft Power Automate の kintone コネクタや Webhook を用いた連携について述べたものとして、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. kintone コネクタは Microsoft Power Automate の有償プランでのみ利用できる"
+      },
+      {
+        "label": "B",
+        "html": "B. kintone コネクタはゲストスペース内アプリでは利用できない"
+      },
+      {
+        "label": "C",
+        "html": "C. kintone アプリにレコードを追加時に Outlook に予定が登録される機能を実装できる"
+      },
+      {
+        "label": "D",
+        "html": "D. kintone の Webhook でエラーが発生した場合、リトライ機能が実行される"
+      }
+    ],
+    "answer": "A, B, C",
+    "explanations": [
+      "kintone の Webhook では、送信エラーが発生した場合にリトライ機能やメール通知機能は提供されていない。"
+    ]
+  },
+  {
+    "num": "問133",
+    "body": "kintone のレコード一括取得における offset の制限と、その取り扱いについて述べたものとして、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. レコードを一括取得する API では、offset パラメーターに指定できる値には上限値 10,000 が設けられている"
+      },
+      {
+        "label": "B",
+        "html": "B. offset の上限値を超える指定が行われた場合、該当アプリのレコード一覧画面に警告メッセージが表示される"
+      },
+      {
+        "label": "C",
+        "html": "C. offset の制限を考慮せずに大量のレコードを取得する方法として、カーソル API を利用する方法がある"
+      },
+      {
+        "label": "D",
+        "html": "D. cli-kintone を利用する場合でも、offset を考慮したレコードの一括取得が必要である"
+      }
+    ],
+    "answer": "A, B, C",
+    "explanations": [
+      "cli-kintone を利用することで、offset や limit を考慮せずにレコードの一括取得が可能である"
+    ]
+  },
+  {
+    "num": "問134",
+    "body": "cli-kintone に関する説明として、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. kintone アプリやレコードのデータをまとめて取得・保存する用途を想定した CLI ツールである"
+      },
+      {
+        "label": "B",
+        "html": "B. 複数レコードの添付ファイルフィールドそれぞれにファイルを添付することができる"
+      },
+      {
+        "label": "C",
+        "html": "C. cli-kintone は、kintone アプリの画面操作を自動化できる"
+      },
+      {
+        "label": "D",
+        "html": "D. cli-kintone は、kintone の JavaScript カスタマイズの一部として実行される仕組みである"
+      }
+    ],
+    "answer": "A, B",
+    "explanations": [
+      "cli-kintone はコマンドラインから実行するツールであり、画面操作を自動化するツールではない。",
+      "cli-kintone は kintone の JavaScript カスタマイズとして実行される仕組みではなく、独立した CLI ツールである。"
+    ]
+  },
+  {
+    "num": "問135",
+    "body": "kintone プラグインにおける関数の説明として、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. <code>kintone.plugin.app.getConfig()</code> は、プラグインの設定画面で保存された設定情報をオブジェクトとして取得する"
+      },
+      {
+        "label": "B",
+        "html": "B. <code>kintone.plugin.app.setConfig()</code> 実行時に <code>successCallback</code> を省略すると、設定の保存後にアプリ設定のプラグイン一覧画面に遷移する"
+      },
+      {
+        "label": "C",
+        "html": "C. <code>kintone.plugin.app.getConfig()</code> は、設定画面でのみ実行でき、アプリが表示されている画面では使用できない"
+      },
+      {
+        "label": "D",
+        "html": "D. <code>kintone.plugin.app.setConfig()</code> では、引数 config オブジェクトの各プロパティの値を文字列として指定する"
+      }
+    ],
+    "answer": "A, B, D",
+    "explanations": [
+      "<code>kintone.plugin.app.getConfig()</code> は設定画面専用の API ではなく、プラグインの JavaScript が実行されるアプリの各画面で使用できる。"
+    ]
+  },
+  {
+    "num": "問136",
+    "body": "外部 API の実行に必要な情報を取得／保存する関数に関する説明として、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. <code>kintone.plugin.app.setProxyConfig()</code> では、指定した URL と HTTP メソッドの組み合わせがすでに存在している場合、当該プラグインの設定が上書きされる"
+      },
+      {
+        "label": "B",
+        "html": "B. <code>kintone.plugin.app.getProxyConfig()</code> で取得できる設定情報は、<code>kintone.plugin.app.setProxyConfig()</code> によって保存されたものである"
+      },
+      {
+        "label": "C",
+        "html": "C. <code>kintone.plugin.app.getProxyConfig()</code> は、プラグインの設定画面以外でも利用でき、設定画面と同じ形式のオブジェクトを返す"
+      },
+      {
+        "label": "D",
+        "html": "D. プラグインから外部 API を実行する時に指定した URL は、大文字と小文字は区別されない"
+      }
+    ],
+    "answer": "A, B",
+    "explanations": [
+      "<code>kintone.plugin.app.getProxyConfig()</code> はプラグインの設定画面で利用することを前提とした関数であり、設定画面以外で利用するものではない。",
+      "また、外部 API の実行時に設定が適用される条件として、実行する API の URL は前方一致で判定され、URL の大文字と小文字は区別される。"
+    ]
+  },
+  {
+    "num": "問137",
+    "body": "プラグインから外部APIを実行する関数に関する説明として、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. <code>kintone.plugin.app.proxy()</code> を利用すると、クロスドメイン制約を受けずに外部 API へリクエストを送信できる"
+      },
+      {
+        "label": "B",
+        "html": "B. <code>kintone.plugin.app.proxy()</code> は、<code>successCallback</code> を省略しても Promise オブジェクトを返さない"
+      },
+      {
+        "label": "C",
+        "html": "C. <code>kintone.plugin.app.proxy()</code> を用いて外部 API を実行した場合、<code>setProxyConfig()</code> により保存した設定は、条件を満たすとリクエストに追加される"
+      },
+      {
+        "label": "D",
+        "html": "D. <code>kintone.plugin.app.proxy()</code> の実行時には、HTTP メソッドと実行する API の URL を指定する"
+      }
+    ],
+    "answer": "A, C, D",
+    "explanations": [
+      "<code>kintone.plugin.app.proxy()</code> は、<code>successCallback</code> を省略した場合に Promise オブジェクトを返し、レスポンス情報を非同期に受け取る。"
+    ]
+  },
+  {
+    "num": "問138",
+    "body": "プラグインから外部にファイルをアップロードする API に関する説明として、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. <code>kintone.plugin.app.proxy.upload()</code> の HTTP メソッドには、<code>GET</code> / <code>POST</code> / <code>PUT</code> / <code>DELETE</code> のいずれかを指定できる"
+      },
+      {
+        "label": "B",
+        "html": "B. <code>kintone.plugin.app.proxy.upload()</code> の第1引数には、API を実行するプラグインの ID を指定する"
+      },
+      {
+        "label": "C",
+        "html": "C. <code>kintone.plugin.app.proxy.upload()</code> の <code>data</code> では、<code>data.format</code> に <code>RAW</code> を指定し、<code>data.value</code> に Blob（File を含む）を指定する"
+      },
+      {
+        "label": "D",
+        "html": "D. <code>kintone.plugin.app.proxy.upload()</code> は、<code>successCallback</code> を省略すると Promise オブジェクトを返し、レスポンスボディ・ステータスコード・レスポンスヘッダーが格納された配列で解決される"
+      }
+    ],
+    "answer": "B, C, D",
+    "explanations": [
+      "<code>kintone.plugin.app.proxy.upload()</code> はファイル送信専用の API であり、HTTP メソッドは <code>POST</code> と <code>PUT</code> のみが定義されている。"
+    ]
+  },
+  {
+    "num": "問139",
+    "body": "kintone プラグインに関する説明として、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. JavaScript／CSS ファイルをアップロードする方法と異なり、バージョンアップを一括ですべてのアプリに適用できる"
+      },
+      {
+        "label": "B",
+        "html": "B. cli-kintone を利用してプラグインをパッケージングすることができる"
+      },
+      {
+        "label": "C",
+        "html": "C. manifest.json はプラグイン作成に必要なファイル情報をまとめた設定ファイルだが、manifest.json はプラグイン作成時に必須ではない"
+      },
+      {
+        "label": "D",
+        "html": "D. JavaScript／CSS ファイルをアップロードして適用する方法では、認証情報を JavaScript ファイルに直接記述することになり、Web ブラウザーの開発者ツールでその内容を閲覧できる"
+      }
+    ],
+    "answer": "A, B, D",
+    "explanations": [
+      "manifest.json は、kintone プラグインの作成に必須である。"
+    ]
+  },
+  {
+    "num": "問140",
+    "body": "User API の認証方式およびリクエストヘッダーの扱いについて述べたものとして、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. API トークンを用いる場合、<code>Authorization</code> ヘッダーに <code>Bearer &lt;API トークン&gt;</code> の形式で指定する"
+      },
+      {
+        "label": "B",
+        "html": "B. パスワード認証を用いる場合、<code>X-Cybozu-Authorization</code> ヘッダーに ログイン名:パスワードを Base64 エンコードした値を指定する"
+      },
+      {
+        "label": "C",
+        "html": "C. 複数の認証情報が指定された場合、セッション認証が最優先で評価される"
+      },
+      {
+        "label": "D",
+        "html": "D. セッション認証は、User API を直接実行する用途では使用できない"
+      }
+    ],
+    "answer": "A, B",
+    "explanations": [
+      "複数の認証情報が指定された場合は、API トークン認証、パスワード認証、セッション認証の順に評価される。",
+      "セッション認証は、kintone や Garoon に適用した JavaScript から User API を実行する場合に利用できる。"
+    ]
+  },
+  {
+    "num": "問141",
+    "body": "User API の共通仕様について述べたものとして、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. <code>Host</code> は必須であり、User API を実行するドメインとポート番号（443）を「ドメイン:ポート番号」の形式で指定する"
+      },
+      {
+        "label": "B",
+        "html": "B. GET メソッドの API では、URL のクエリパラメーターとしてリクエストパラメーターを付与してリクエストを送信できる"
+      },
+      {
+        "label": "C",
+        "html": "C. クエリパラメーターのキーや値は、URL の仕様に従ったパーセントエンコーディングする"
+      },
+      {
+        "label": "D",
+        "html": "D. リクエストに失敗した場合、200番台のステータスコードが返る"
+      }
+    ],
+    "answer": "A, B, C",
+    "explanations": [
+      "リクエストに失敗した場合、200番台以外のステータスコードとエラーレスポンスが返る。"
+    ]
+  },
+  {
+    "num": "問142",
+    "body": "User API で使用するデータ構造について述べたものとして、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. User 型の <code>primaryOrganization</code> は配列（Organization 型）であり、所属する組織の情報を保持する"
+      },
+      {
+        "label": "B",
+        "html": "B. User 型は <code>customItemValues</code> を配列（CustomItemValue 型）として持ち、カスタマイズ項目の項目コードと値を含む"
+      },
+      {
+        "label": "C",
+        "html": "C. Organization 型は <code>parentCode</code> を文字列として持ち、親が root の場合は null が返る"
+      },
+      {
+        "label": "D",
+        "html": "D. Group 型は <code>description</code> を文字列として持ち、未設定の場合は null が返る"
+      }
+    ],
+    "answer": "B, C, D",
+    "explanations": [
+      "User 型の <code>primaryOrganization</code> は数値であり、優先する組織の組織IDを表す。"
+    ]
+  },
+  {
+    "num": "問143",
+    "body": "ユーザーの取得・追加・更新・削除について述べたものとして、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. ユーザーの取得・追加・更新・削除はいずれも同じ URL でリクエストできる"
+      },
+      {
+        "label": "B",
+        "html": "B. ユーザーの追加・更新・削除は、一度に処理できるユーザーは 100件までである"
+      },
+      {
+        "label": "C",
+        "html": "C. ユーザーを取得する API のレスポンスに含まれる <code>users</code> の並び順は、<code>users[].id</code> の昇順である"
+      },
+      {
+        "label": "D",
+        "html": "D. ユーザーを取得する API が一度に取得できるユーザーは 500件までである"
+      }
+    ],
+    "answer": "A, B, C",
+    "explanations": [
+      "ユーザーの取得も、追加・更新・削除と同様に一度に処理できるユーザーは 100件までである。"
+    ]
+  },
+  {
+    "num": "問144",
+    "body": "ユーザーのログイン名を更新する API について述べたものとして、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. URL の末尾は <code>/v1/users/codes.json</code> である"
+      },
+      {
+        "label": "B",
+        "html": "B. HTTP メソッドは <code>PUT</code> である"
+      },
+      {
+        "label": "C",
+        "html": "C. リクエストパラメーターはユーザーごとの配列であり、各要素にユーザーID と更新後のログイン名を指定する"
+      },
+      {
+        "label": "D",
+        "html": "D. 一度に更新できるユーザーは 100件までである"
+      }
+    ],
+    "answer": "A, B, D",
+    "explanations": [
+      "リクエストパラメーターの配列にはユーザーID ではなく現在のログイン名を指定する"
+    ]
+  },
+  {
+    "num": "問145",
+    "body": "ユーザーが所属する組織／グループ（ロール）の取得・更新APIについて述べたものとして、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. ユーザーが所属する組織を取得する API は、ユーザーが所属する組織と、その組織におけるユーザーの役職を取得する"
+      },
+      {
+        "label": "B",
+        "html": "B. ユーザーが所属する組織を更新する API では、すでに指定している組織も指定しないと組織から削除される"
+      },
+      {
+        "label": "C",
+        "html": "C. ユーザーが所属するグループ（ロール）を更新する API は <code>PUT /v1/user/groups.json</code> であり、未所属にする場合は空配列を指定し、動的グループは指定できない"
+      },
+      {
+        "label": "D",
+        "html": "D. ユーザーが所属するグループ（ロール）を取得する API のリクエストパラメーター <code>code</code> には、グループコードを指定する"
+      }
+    ],
+    "answer": "A, B, C",
+    "explanations": [
+      "<code>code</code> はユーザーのログイン名を指定する。"
+    ]
+  },
+  {
+    "num": "問146",
+    "body": "ユーザーが所属する組織／グループ（ロール）の取得・更新 API について述べたものとして、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. ユーザーが所属する組織を取得する API とユーザーが所属する組織を更新する API の URL は同一である"
+      },
+      {
+        "label": "B",
+        "html": "B. ユーザーが所属する組織を更新する API では、すでに指定している組織も指定しないと組織から削除される"
+      },
+      {
+        "label": "C",
+        "html": "C. ユーザーが所属するグループ（ロール）を更新する API リクエストの <code>group</code> パラメータに動的グループを指定できない"
+      },
+      {
+        "label": "D",
+        "html": "D. ユーザーが所属する組織を取得する API は、ユーザーが所属する組織と、その組織におけるユーザーの役職を取得する"
+      }
+    ],
+    "answer": "B, C, D",
+    "explanations": [
+      "ユーザーが所属する組織を取得する API の URL の末尾は <code>/v1/user/organizations.json</code> であり、ユーザーが所属する組織を更新する API の URL の末尾は <code>/v1/userOrganizations.json</code> である。"
+    ]
+  },
+  {
+    "num": "問147",
+    "body": "ユーザーの利用サービスを取得する API とユーザーの利用サービスを更新する API について述べたものとして、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. ユーザーの利用サービスを更新する API でユーザーの利用サービスをすべて解除するには <code>users[].services</code> に空配列を指定する"
+      },
+      {
+        "label": "B",
+        "html": "B. ユーザーの利用サービスを取得する API は 1回のリクエストで最大 100件のユーザー情報を取得できる"
+      },
+      {
+        "label": "C",
+        "html": "C. ユーザーの利用サービスを取得する API と利用サービスを更新する API の URL は同一である"
+      },
+      {
+        "label": "D",
+        "html": "D. ユーザーの利用サービスを取得する API のアクセス権は cybozu.com 共通管理者である"
+      }
+    ],
+    "answer": "A, B, C",
+    "explanations": [
+      "ユーザーの利用サービスを取得する API はアクセス権を必要としない。"
+    ]
+  },
+  {
+    "num": "問148",
+    "body": "組織の取得・追加・更新・削除 API について述べたものとして、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. 組織の取得・追加・更新・削除はいずれもURLの末尾が <code>/v1/organizations.json</code> である"
+      },
+      {
+        "label": "B",
+        "html": "B. 組織の削除に必要なアクセス権は cybozu.com 共通管理者である"
+      },
+      {
+        "label": "C",
+        "html": "C. 組織を更新する API のリクエストでは、<code>ids</code> を指定する"
+      },
+      {
+        "label": "D",
+        "html": "D. 組織を追加する際に別言語での表示名を指定できる"
+      }
+    ],
+    "answer": "A, B, D",
+    "explanations": [
+      "組織を更新する API のリクエストでは、<code>ids</code> ではなく <code>codes</code> を指定する。"
+    ]
+  },
+  {
+    "num": "問149",
+    "body": "組織コードを更新する API について述べたものとして、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. 組織の事前設定で予約データが作成されている場合は、API を実行できない"
+      },
+      {
+        "label": "B",
+        "html": "B. HTTP メソッドは <code>POST</code> である"
+      },
+      {
+        "label": "C",
+        "html": "C. API トークンを利用する場合、スコープが「Read and Write」以上のトークンが必要である"
+      },
+      {
+        "label": "D",
+        "html": "D. リクエストパラメーターは配列であり、各要素に現在の組織コードと更新後の組織コードを指定する"
+      }
+    ],
+    "answer": "A, C, D",
+    "explanations": [
+      "組織コードを更新する API の HTTP メソッドは <code>PUT</code> である。"
+    ]
+  },
+  {
+    "num": "問150",
+    "body": "組織の所属ユーザーを取得する API について述べたものとして、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. API を実行するために必要なアクセス権は cybozu.com 共通管理者である"
+      },
+      {
+        "label": "B",
+        "html": "B. リクエストパラメーターには組織コードを指定する"
+      },
+      {
+        "label": "C",
+        "html": "C. 100人以上所属する組織でも、1回で 100人までしか取得できない"
+      },
+      {
+        "label": "D",
+        "html": "D. ゲストユーザーが含まれる場合、通常ユーザーと同時に取得される"
+      }
+    ],
+    "answer": "B, C",
+    "explanations": [
+      "組織の所属ユーザーを取得する API は、実行にアクセス権を必要としない。",
+      "また、ゲストユーザーを取得することはできない。"
+    ]
+  },
+  {
+    "num": "問151",
+    "body": "グループの取得・追加・更新・削除を行う API について述べたものとして、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. グループを追加する API では、グループの種類に 静的グループまたは動的グループを指定できる"
+      },
+      {
+        "label": "B",
+        "html": "B. グループを更新する API では、<code>groups[].type</code> を指定してグループの種類を変更できる"
+      },
+      {
+        "label": "C",
+        "html": "C. グループを削除する API では、ビルトイングループ（「Everyone」「Administrators」）を削除することはできない"
+      },
+      {
+        "label": "D",
+        "html": "D. グループを更新する API では、<code>groups[].name</code> に <code>null</code> を指定すると値は更新されない"
+      }
+    ],
+    "answer": "A, C, D",
+    "explanations": [
+      "グループを更新する API でグループの種類を変更することはできない。"
+    ]
+  },
+  {
+    "num": "問152",
+    "body": "グループコードを更新する API について述べたものとして、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. HTTP メソッドは <code>PUT</code> である"
+      },
+      {
+        "label": "B",
+        "html": "B. 一度に更新できるグループは 100件までである"
+      },
+      {
+        "label": "C",
+        "html": "C. リクエストパラメーターは配列であり、各要素に現在のグループコードと更新後のグループコードを指定する"
+      },
+      {
+        "label": "D",
+        "html": "D. API の実行に必要なアクセス権は kintone システム管理者である"
+      }
+    ],
+    "answer": "A, B, C",
+    "explanations": [
+      "API の実行に必要なアクセス権は cybozu.com 共通管理者である。"
+    ]
+  },
+  {
+    "num": "問153",
+    "body": "グループの所属ユーザーを取得する API と更新する API について述べたものとして、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. グループの所属ユーザーを取得する API と更新する API の URL は同一である"
+      },
+      {
+        "label": "B",
+        "html": "B. グループの所属ユーザーを更新する API で API トークンを利用する場合、スコープが「Read and Write」以上のトークンが必要である"
+      },
+      {
+        "label": "C",
+        "html": "C. グループの所属ユーザーの CSV ファイルをエクスポートする API はない"
+      },
+      {
+        "label": "D",
+        "html": "D. グループの所属ユーザーを更新する API のリクエストでは、グループの所属ユーザーのログイン名を最大 1,000件まで指定できる"
+      }
+    ],
+    "answer": "A, C, D",
+    "explanations": [
+      "グループの所属ユーザーを更新する API で API トークンを利用する場合、スコープが「Dangerous Zone」のトークンが必要である。"
+    ]
+  },
+  {
+    "num": "問154",
+    "body": "kintone アプリから cybozu.com のユーザーを登録する手順・注意点として、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. アプリの情報から CSV ファイルを作成し、その CSV をユーザインポート API で登録することができる"
+      },
+      {
+        "label": "B",
+        "html": "B. ファイルのアップロードやダウンロードは、API トークン認証で実行することができる"
+      },
+      {
+        "label": "C",
+        "html": "C. CSV ファイルをアップロードした後、そのレスポンスから <code>fileKey</code> を取得し、<code>fileKey</code> を指定してユーザインポート API で登録できる"
+      },
+      {
+        "label": "D",
+        "html": "D. ユーザインポート API は <code>POST</code> で実行する"
+      }
+    ],
+    "answer": "A, C, D",
+    "explanations": [
+      "ファイルのアップロードおよびダウンロードを実行する際には、セッション認証が必要である。"
+    ]
+  },
+  {
+    "num": "問155",
+    "body": "User API の CSV 関連機能について述べたものとして、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. CSV ファイルをサーバーに送信する処理は、CSV の内容をもとにユーザーや組織を登録・更新する処理とは別の API として提供されている"
+      },
+      {
+        "label": "B",
+        "html": "B. CSV ファイルをアップロードした結果として返される <code>fileKey</code> は、処理結果を取得する API のリクエストに指定する"
+      },
+      {
+        "label": "C",
+        "html": "C. CSV を用いたインポート処理の実行結果は、専用の結果取得 API を用いて確認する"
+      },
+      {
+        "label": "D",
+        "html": "D. CSV のインポート API のレスポンスには、インポート処理の詳細な実行結果が含まれる"
+      }
+    ],
+    "answer": "A, C",
+    "explanations": [
+      "CSV ファイルのアップロードで取得した <code>fileKey</code> は、インポート API の実行時に指定するものであり、結果を確認する API のリクエストで指定するのは <code>fileKey</code> ではなく <code>id</code> である。",
+      "CSV のインポート API のレスポンスにはインポート処理の成否は含まれず、成否はインポートの結果を確認する API で確認する。"
+    ]
+  },
+  {
+    "num": "問156",
+    "body": "User API の CSV フォーマット仕様について述べたものとして、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. 1行目からデータ行として扱われ、見出し行（ヘッダー行）は使用しない"
+      },
+      {
+        "label": "B",
+        "html": "B. UTF-8 でエンコードされたテキストファイルとして作成する"
+      },
+      {
+        "label": "C",
+        "html": "C. 情報を変更しない項目には、空白を指定する"
+      },
+      {
+        "label": "D",
+        "html": "D. 旧漢字の「神」をインポートすると「神」に変換されてデータが登録される"
+      }
+    ],
+    "answer": "A, B, D",
+    "explanations": [
+      "情報を変更しない項目には、*（アスタリスク）を指定する。"
+    ]
+  },
+  {
+    "num": "問157",
+    "body": "User API の CSV を用いたインポートおよびエクスポートの仕様について述べたものとして、正しいものを全て選びなさい。",
+    "choices": [
+      {
+        "label": "A",
+        "html": "A. ユーザーの利用サービスをインポートする API は、ユーザー情報をインポートする API とは独立して用意されている"
+      },
+      {
+        "label": "B",
+        "html": "B. エクスポートする API を利用すると、CSV ファイルがローカル PC に保存される"
+      },
+      {
+        "label": "C",
+        "html": "C. ユーザーが所属する組織をエクスポートする API の CSV には、役職コードが含まれる"
+      },
+      {
+        "label": "D",
+        "html": "D. 役職情報をエクスポートする API の CSV には、役職コードが含まれる"
+      }
+    ],
+    "answer": "A, C, D",
+    "explanations": [
+      "エクスポートする API は CSV データをレスポンスとして返すものであり、CSV ファイルをローカル PC に保存する処理は API の仕様には含まれない。"
+    ]
+  }
+]

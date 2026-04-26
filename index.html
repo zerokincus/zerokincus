@@ -110,10 +110,19 @@
         プログラミング未経験でも大丈夫。本書を手に取ったその一歩が、kintoneカスタマイズの第一歩。<br>
         サンプルコード・補足資料・最新情報をこちらから入手して、ぜひ手を動かしながら読み進めてください。
       </p>
-      <a class="hero-cta" href="#downloads">
-        <span>サンプルコードをダウンロード</span>
-        <span class="hero-cta-arrow">↓</span>
-      </a>
+      <div style="display:flex;flex-wrap:wrap;gap:1rem;align-items:center;">
+        <a class="hero-cta" href="#downloads">
+          <span>サンプルコードをダウンロード</span>
+          <span class="hero-cta-arrow">↓</span>
+        </a>
+        <button onclick="document.getElementById('quiz-overlay').style.display='flex';document.body.style.overflow='hidden';"
+          style="display:inline-flex;align-items:center;gap:.6rem;background:transparent;color:#e6edf3;font-family:'Noto Sans JP',sans-serif;font-weight:700;font-size:.95rem;padding:.8rem 1.8rem;border-radius:6px;border:2px solid #388bfd;cursor:pointer;transition:background .2s,color .2s;white-space:nowrap;"
+          onmouseover="this.style.background='rgba(56,139,253,.15)'"
+          onmouseout="this.style.background='transparent'">
+          <span>📝</span>
+          <span>練習問題に挑戦</span>
+        </button>
+      </div>
       <div style="display:flex;gap:2rem;margin-top:1.2rem;">
         <div style="display:flex;align-items:baseline;gap:.4rem;">
           <span style="font-family:var(--mono);font-size:1.5rem;font-weight:700;color:var(--accent);">528</span>
@@ -670,6 +679,22 @@
     <span class="footer-note">// ゼロから始めるkintoneカスタマイズ入門 読者ポータル</span>
   </footer>
 
+  <!-- ══ QUIZ MODAL ══ -->
+  <div id="quiz-overlay" style="display:none;position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.7);align-items:center;justify-content:center;padding:1rem;">
+    <div style="background:#0d1117;border-radius:16px;overflow:hidden;width:100%;max-width:860px;height:90vh;display:flex;flex-direction:column;box-shadow:0 24px 64px rgba(0,0,0,.5);">
+      <div style="background:#161b22;border-bottom:1px solid #30363d;padding:.9rem 1.4rem;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;">
+        <div style="display:flex;align-items:center;gap:.6rem;">
+          <span style="font-size:1.1rem;">📝</span>
+          <span style="color:#e6edf3;font-weight:700;font-size:.93rem;">カスタマイズスペシャリスト 練習問題</span>
+        </div>
+        <button id="quiz-close" aria-label="閉じる" style="background:none;border:none;cursor:pointer;color:#7d8590;font-size:1.6rem;line-height:1;padding:.2rem .5rem;transition:color .2s;" onmouseover="this.style.color='#e6edf3'" onmouseout="this.style.color='#7d8590'">×</button>
+      </div>
+      <div style="flex:1;overflow:hidden;">
+        <iframe src="quiz.html" style="width:100%;height:100%;border:none;" loading="lazy"></iframe>
+      </div>
+    </div>
+  </div>
+
   <!-- ══ FORM MODAL（ご意見・ご要望） ══ -->
   <div id="form-overlay" style="display:none;position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.6);align-items:center;justify-content:center;padding:1rem;">
     <div style="background:#fff;border-radius:16px;overflow:hidden;width:100%;max-width:680px;max-height:90vh;display:flex;flex-direction:column;box-shadow:0 24px 64px rgba(0,0,0,.3);">
@@ -704,6 +729,10 @@
 
   <!-- ══ FABボタン群（右下縦並び） ══ -->
   <div style="position:fixed;bottom:1.5rem;right:1.5rem;z-index:190;display:flex;flex-direction:column;gap:.75rem;align-items:flex-end;">
+    <button id="quiz-fab" aria-label="練習問題に挑戦" style="display:flex;align-items:center;gap:.6rem;background:#161b22;color:#58a6ff;font-family:'Noto Sans JP',sans-serif;font-weight:700;font-size:.85rem;padding:.75rem 1.25rem;border-radius:50px;border:2px solid #388bfd;cursor:pointer;box-shadow:0 4px 20px rgba(56,139,253,.3);white-space:nowrap;">
+      <span style="font-size:1.1rem;">📝</span>
+      <span>練習問題に挑戦</span>
+    </button>
     <button id="event-fab" aria-label="イベントに関するアンケート" style="display:flex;align-items:center;gap:.6rem;background:#2d2d2d;color:#f5c800;font-family:'Noto Sans JP',sans-serif;font-weight:700;font-size:.85rem;padding:.75rem 1.25rem;border-radius:50px;border:2px solid #f5c800;cursor:pointer;box-shadow:0 4px 20px rgba(0,0,0,.3);white-space:nowrap;">
       <span style="font-size:1.1rem;">📋</span>
       <span>イベントアンケート</span>
@@ -724,10 +753,16 @@
       var eoverlay  = document.getElementById('event-overlay');
       var ecloseBtn = document.getElementById('event-close');
 
-      function openForm()  { overlay.style.display  = 'flex'; document.body.style.overflow = 'hidden'; }
-      function closeForm() { overlay.style.display  = 'none'; document.body.style.overflow = ''; }
+      var qfab      = document.getElementById('quiz-fab');
+      var qoverlay  = document.getElementById('quiz-overlay');
+      var qcloseBtn = document.getElementById('quiz-close');
+
+      function openForm()   { overlay.style.display  = 'flex'; document.body.style.overflow = 'hidden'; }
+      function closeForm()  { overlay.style.display  = 'none'; document.body.style.overflow = ''; }
       function openEvent()  { eoverlay.style.display = 'flex'; document.body.style.overflow = 'hidden'; }
       function closeEvent() { eoverlay.style.display = 'none'; document.body.style.overflow = ''; }
+      function openQuiz()   { qoverlay.style.display = 'flex'; document.body.style.overflow = 'hidden'; }
+      function closeQuiz()  { qoverlay.style.display = 'none'; document.body.style.overflow = ''; }
 
       fab.addEventListener('click', openForm);
       closeBtn.addEventListener('click', closeForm);
@@ -737,8 +772,12 @@
       ecloseBtn.addEventListener('click', closeEvent);
       eoverlay.addEventListener('click', function(e) { if (e.target === eoverlay) closeEvent(); });
 
+      qfab.addEventListener('click', openQuiz);
+      qcloseBtn.addEventListener('click', closeQuiz);
+      qoverlay.addEventListener('click', function(e) { if (e.target === qoverlay) closeQuiz(); });
+
       document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape') { closeForm(); closeEvent(); }
+        if (e.key === 'Escape') { closeForm(); closeEvent(); closeQuiz(); }
       });
     })();
   </script>
