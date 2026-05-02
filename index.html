@@ -2,6 +2,15 @@
 <html lang="ja">
 
 <head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-H5SZ3VB8R7"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-H5SZ3VB8R7');
+  </script>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ゼロキンカス道場 | ゼロから始めるkintoneカスタマイズ入門 読者ポータル</title>
@@ -14,18 +23,19 @@
   <link rel="sitemap" type="application/xml" href="/sitemap.xml">
 
   <!-- OGP（SNSシェア用） -->
-  <meta property="og:title" content="ゼロキンカス道場">
-  <meta property="og:description" content="ゼロから始めるkintoneカスタマイズ入門 読者ポータル">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://zerokincus.com/">
+  <meta property="og:title" content="ゼロキンカス道場 | ゼロから始めるkintoneカスタマイズ入門">
+  <meta property="og:description" content="「ゼロから始めるkintoneカスタマイズ入門」（日経BP）の公式読者ポータル。サンプルコード・練習問題・最新情報を無料公開中。">
   <meta property="og:image" content="https://zerokincus.com/og-image.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="ゼロキンカス道場">
+  <meta property="og:locale" content="ja_JP">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="ゼロキンカス道場">
-  <meta name="twitter:description" content="ゼロから始めるkintoneカスタマイズ入門 読者ポータル">
+  <meta name="twitter:site" content="@Shokun1108">
+  <meta name="twitter:title" content="ゼロキンカス道場 | ゼロから始めるkintoneカスタマイズ入門">
+  <meta name="twitter:description" content="「ゼロから始めるkintoneカスタマイズ入門」（日経BP）の公式読者ポータル。サンプルコード・練習問題・最新情報を無料公開中。">
   <meta name="twitter:image" content="https://zerokincus.com/og-image.png">
 
   <link rel="icon" type="image/png" href="portal/favicon.png">
@@ -34,6 +44,50 @@
     href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Roboto+Mono:wght@400;700&family=Syne:wght@400;600;800&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="portal/style.css">
+
+  <!-- 構造化データ（JSON-LD） -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "name": "ゼロキンカス道場",
+        "url": "https://zerokincus.com/",
+        "description": "「ゼロから始めるkintoneカスタマイズ入門」の公式読者ポータル。kintoneカスタマイズのサンプルコード・練習問題・最新情報を無料公開。"
+      },
+      {
+        "@type": "Book",
+        "name": "ゼロから始めるkintoneカスタマイズ入門",
+        "author": [
+          { "@type": "Person", "name": "松田正太郎" },
+          { "@type": "Person", "name": "石井健太郎" },
+          { "@type": "Person", "name": "中村徹" }
+        ],
+        "publisher": {
+          "@type": "Organization",
+          "name": "日経BP"
+        },
+        "isbn": "",
+        "numberOfPages": "528",
+        "inLanguage": "ja",
+        "url": "https://amzn.to/4cGhJag",
+        "image": "https://zerokincus.com/portal/cover.png",
+        "description": "プログラミング未経験者でもkintoneカスタマイズをマスターできる入門書。4段階のカスタマイズレベルで体系的に学べる。kintone認定カスタマイズスペシャリスト試験範囲をカバー。"
+      },
+      {
+        "@type": "Organization",
+        "name": "アスノート株式会社",
+        "url": "https://zerokincus.com/",
+        "sameAs": [
+          "https://x.com/Shokun1108",
+          "https://www.youtube.com/@pjasunote",
+          "https://note.com/shokun1108"
+        ]
+      }
+    ]
+  }
+  </script>
 </head>
 
 <body>
@@ -352,7 +406,7 @@
     </div>
   </div>
 
-  <!-- ══ CERTIFICATION ══ --><!-- ══ CERTIFICATION ══ -->
+  <!-- ══ CERTIFICATION ══ -->
   <div id="certification" style="background: #f2f2f0; border-top: 1px solid #ddddd8;">
     <div class="section">
       <div class="divider"></div>
@@ -444,7 +498,7 @@
     </div>
   </div>
 
-  <!-- ══ FAQ ══ --><!-- ══ FAQ ══ -->
+  <!-- ══ FAQ ══ -->
   <div id="faq" style="background: #ffffff;">
     <div class="section">
       <div class="divider"></div>
@@ -492,7 +546,7 @@
     </div>
   </div>
 
-  <!-- ══ LINKS ══ --><!-- ══ BOOK ══ -->
+  <!-- ══ BOOK ══ -->
   <div id="book" style="background:#f2f2f0; border-top:1px solid #ddddd8;">
     <div class="section">
       <div class="divider"></div>
@@ -796,31 +850,7 @@
     })();
   </script>
 
-  <script>
-    (function() {
-      var fab     = document.getElementById('form-fab');
-      var overlay = document.getElementById('form-overlay');
-      var closeBtn = document.getElementById('form-close');
 
-      function openForm() {
-        overlay.style.display = 'flex';
-        document.body.style.overflow = 'hidden';
-      }
-      function closeForm() {
-        overlay.style.display = 'none';
-        document.body.style.overflow = '';
-      }
-
-      fab.addEventListener('click', openForm);
-      closeBtn.addEventListener('click', closeForm);
-      overlay.addEventListener('click', function(e) {
-        if (e.target === overlay) closeForm();
-      });
-      document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape') closeForm();
-      });
-    })();
-  </script>
 
 </body>
 
