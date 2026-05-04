@@ -1,5 +1,14 @@
 [
   {
+    "url": "https://zerokincus.connpass.com/",
+    "title": "ゼロキンカス道場（イベントグループ）",
+    "desc": "初心者向け勉強会「ゼロキンカス道場」のconnpassグループです。",
+    "tag": "connpass",
+    "date": "2026-05-04",
+    "cta": "詳しく見る",
+    "thumb": "https://github.com/zerokincus/zerokincus/blob/main/og-image.png"
+  },
+  {
     "url": "https://note.com/shokun1108/m/m07251b1e4d43",
     "title": "ゼロキンカス道場（ゼロから始めるkintoneカスタマイズ）",
     "desc": "非エンジニアでもkintoneカスタマイズをやりたい！著者・松田正太郎によるnoteマガジン。",
