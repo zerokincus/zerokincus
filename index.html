@@ -259,7 +259,14 @@
       </div>
 
       <!-- イベント -->
-      <h3 style="font-family:var(--sans);font-size:1rem;font-weight:700;color:var(--ink);margin-top:2.5rem;margin-bottom:1.25rem;">イベント</h3>
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem;margin-top:2.5rem;margin-bottom:1.25rem;">
+        <h3 style="font-family:var(--sans);font-size:1rem;font-weight:700;color:var(--ink);">イベント</h3>
+        <a href="https://zerokincus.connpass.com/event/" target="_blank"
+          style="display:inline-flex;align-items:center;gap:.4rem;font-size:.8rem;color:var(--accent2);text-decoration:none;font-weight:600;transition:opacity .2s;"
+          onmouseover="this.style.opacity='.7'" onmouseout="this.style.opacity='1'">
+          📅 connpassグループを見る →
+        </a>
+      </div>
       <div class="article-grid" id="event-grid">
         <!-- events.jsonから動的生成 -->
       </div>
@@ -317,6 +324,13 @@
               '<p style="color:#888;font-size:.88rem;">イベント情報を読み込めませんでした。</p>';
           });
       </script>
+      <div style="margin-top:1rem;text-align:right;">
+        <a href="https://zerokincus.connpass.com/event/" target="_blank"
+          style="display:inline-flex;align-items:center;gap:.5rem;background:#2d2d2d;color:#f5c800;font-family:'Noto Sans JP',sans-serif;font-weight:700;font-size:.82rem;padding:.6rem 1.2rem;border-radius:6px;text-decoration:none;transition:opacity .2s;"
+          onmouseover="this.style.opacity='.8'" onmouseout="this.style.opacity='1'">
+          📅 すべてのイベントをconnpassで見る →
+        </a>
+      </div>
 
       <!-- 関連記事カード -->
       <h3 style="font-family:var(--sans);font-size:1rem;font-weight:700;color:var(--ink);margin-top:2.5rem;margin-bottom:1.25rem;">関連記事・動画</h3>
@@ -803,6 +817,7 @@
         <div class="links-group">
           <h4>本ポータルについて</h4>
           <ul>
+            <li><a href="https://zerokincus.connpass.com/event/" target="_blank">connpassグループ（イベント情報）</a></li>
             <li><a href="https://bookplus.nikkei.com/atcl/catalog/26/03/31/02558/" target="_blank">正誤表・更新情報</a></li>
             <li><a href="#">お問い合わせ</a></li>
             <li><a href="https://github.com/zerokincus/zerokincus#readme" target="_blank">ご利用規約</a></li>
