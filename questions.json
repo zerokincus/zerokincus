@@ -1707,11 +1707,11 @@
     "choices": [
       {
         "label": "A",
-        "html": "A. <code>kintone.app.record.getRecordActions()</code> は、現在開いているレコードの実行可能なプロセス管理のアクション一覧を取得する"
+        "html": "A. <code>kintone.app.record.getActions()</code> は、現在開いているレコードの実行可能なプロセス管理のアクション一覧を取得する"
       },
       {
         "label": "B",
-        "html": "B. <code>kintone.app.record.getRecordFieldPermissions()</code> は、ログインユーザーの現在開いているレコードのフィールドに対するアクセス権を取得する"
+        "html": "B. <code>kintone.app.record.getFieldPermissions()</code> は、ログインユーザーの現在開いているレコードのフィールドに対するアクセス権を取得する"
       },
       {
         "label": "C",
@@ -1719,12 +1719,12 @@
       },
       {
         "label": "D",
-        "html": "D. <code>kintone.app.record.getRecordPermissions()</code> は、ログインユーザーの現在開いているレコードに対するアクセス権を取得する"
+        "html": "D. <code>kintone.app.record.getPermissions()</code> は、ログインユーザーの現在開いているレコードに対するアクセス権を取得する"
       }
     ],
     "answer": "B, C, D",
     "explanations": [
-      "<code>kintone.app.record.getRecordActions()</code> は、プロセス管理のアクション一覧ではなく、アプリアクションの一覧を取得する API である。"
+      "<code>kintone.app.record.getActions()</code> は、プロセス管理のアクション一覧ではなく、アプリアクションの一覧を取得する API である。"
     ]
   },
   {
